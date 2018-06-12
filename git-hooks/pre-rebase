@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo " No rebasing until we grow up. Aborting rebase."
+exit 1
+
+

@@ -1,0 +1,7 @@
+#!/bin/sh
+./bin/make-tree-output.sh
+./bin/make-swagger-documentation.sh
+./bin/phpcs-report.sh && ./bin/phpmd-report.sh
+php artisan dcas:clear-incident-folder
+git add tree.txt storage/swagger/swagger.json
+touch storage/app/incident/.gitkeep

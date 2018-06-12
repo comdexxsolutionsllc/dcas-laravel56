@@ -1,0 +1,3 @@
+#!/bin/bash
+./bin/clear-project-files.sh
+say You\'ve just made a commit! Time for a break. -r 240
