@@ -25,6 +25,6 @@ class LogSuccessfulLogin
      */
     public function handle(Login $event)
     {
-        Log::info("[" . now() . "] {$event->user->email}  successfully logged in.");
+        Log::notice("[" . now() . "] {$event->user->email}  successfully logged in.");
     }
 }

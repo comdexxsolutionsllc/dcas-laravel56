@@ -8050,16 +8050,16 @@
         },
         {
             "name": "teamtnt/tntsearch",
-            "version": "v1.3.2",
+            "version": "v1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/tntsearch.git",
-                "reference": "5e25eec81de42617001fa2ef8fc3f38d9f9263f1"
+                "reference": "8447a36b016f51917592abc9f775e287e6a8ea93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/5e25eec81de42617001fa2ef8fc3f38d9f9263f1",
-                "reference": "5e25eec81de42617001fa2ef8fc3f38d9f9263f1",
+                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/8447a36b016f51917592abc9f775e287e6a8ea93",
+                "reference": "8447a36b016f51917592abc9f775e287e6a8ea93",
                 "shasum": ""
             },
             "require": {
@@ -8102,7 +8102,7 @@
                 "teamtnt",
                 "tntsearch"
             ],
-            "time": "2018-06-03T13:46:42+00:00"
+            "time": "2018-06-29T11:48:52+00:00"
         },
         {
             "name": "tightenco/collect",
@@ -8336,28 +8336,28 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.4.0",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c"
+                "reference": "6ae3e2e6494bb5e58c2decadafc3de7f1453f70a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c",
-                "reference": "3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/6ae3e2e6494bb5e58c2decadafc3de7f1453f70a",
+                "reference": "6ae3e2e6494bb5e58c2decadafc3de7f1453f70a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.0"
+                "phpunit/phpunit": "^4.8.35 || ^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
@@ -8367,7 +8367,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause-Attribution"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -8382,7 +8382,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2016-09-01T10:05:43+00:00"
+            "time": "2018-07-01T10:25:50+00:00"
         },
         {
             "name": "yajra/laravel-datatables",
@@ -11508,16 +11508,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v3.17.1",
+            "version": "v3.17.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "24faa4690f8a4e2787035ffc5bb286f122f0ccaa"
+                "reference": "bf21ebbc0c6cfbab32560b410303a5001c06d815"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/24faa4690f8a4e2787035ffc5bb286f122f0ccaa",
-                "reference": "24faa4690f8a4e2787035ffc5bb286f122f0ccaa",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/bf21ebbc0c6cfbab32560b410303a5001c06d815",
+                "reference": "bf21ebbc0c6cfbab32560b410303a5001c06d815",
                 "shasum": ""
             },
             "type": "library",
@@ -11561,7 +11561,7 @@
                 "swagger",
                 "ui"
             ],
-            "time": "2018-06-16T07:43:19+00:00"
+            "time": "2018-06-30T19:26:41+00:00"
         },
         {
             "name": "symfony/class-loader",

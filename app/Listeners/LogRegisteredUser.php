@@ -25,6 +25,6 @@ class LogRegisteredUser
      */
     public function handle(Registered $event)
     {
-        //
+        Log::notice("[" . now() . "] {$event->user->email}  successfully registered to the system from " . request()->ip());
     }
 }

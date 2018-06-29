@@ -25,6 +25,6 @@ class LogSuccessfulLogout
      */
     public function handle(Logout $event)
     {
-        Log::info("[" . now() . "] {$event->user->email}  successfully logged out.");
+        Log::notice("[" . now() . "] {$event->user->email}  successfully logged out.");
     }
 }

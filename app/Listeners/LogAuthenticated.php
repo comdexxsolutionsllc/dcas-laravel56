@@ -25,6 +25,6 @@ class LogAuthenticated
      */
     public function handle(Authenticated $event)
     {
-        Log::info("[" . now() . "] {$event->user->email}  successfully authenticated to the system.");
+        Log::notice("[" . now() . "] {$event->user->email}  successfully authenticated to the system.");
     }
 }

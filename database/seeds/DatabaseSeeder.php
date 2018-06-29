@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         /**
          * @todo
          */
-//         $this->call(RolesAndPermissionsSeeder::class);
+         $this->call(UserTableSeeder::class);
     }
 }

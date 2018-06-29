@@ -25,6 +25,6 @@ class LogFailedLogin
      */
     public function handle(Failed $event)
     {
-        Log::info("[" . now() . "] {$event->user->email}  failed to logged in from " . request()->ip());
+        Log::alert("[" . now() . "] {$event->user->email}  failed to logged in from " . request()->ip());
     }
 }

@@ -25,6 +25,6 @@ class LogLockout
      */
     public function handle(Lockout $event)
     {
-        Log::info("[" . now() . "] Login lockout detected from " . request()->ip());
+        Log::critical("[" . now() . "] Login lockout detected from " . request()->ip());
     }
 }

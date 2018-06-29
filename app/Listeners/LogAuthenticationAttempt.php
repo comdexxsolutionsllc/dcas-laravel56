@@ -25,6 +25,6 @@ class LogAuthenticationAttempt
      */
     public function handle(Attempting $event)
     {
-        //
+        Log::alert("[" . now() . "] {$event->user->email}  attempted to authenticate to the system from " . request()->ip());
     }
 }
