@@ -1,12 +1,12 @@
 <?php
 
-use Silber\Bouncer\Database\Models;
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Silber\Bouncer\Database\Models;
 
 class CreateBouncerTables extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -33,10 +33,7 @@ class CreateBouncerTables extends Migration
             $table->integer('scope')->nullable()->index();
             $table->timestamps();
 
-            $table->unique(
-                ['name', 'scope'],
-                'roles_name_unique'
-            );
+            $table->unique(['name', 'scope'], 'roles_name_unique');
         });
 
         Schema::create(Models::table('assigned_roles'), function (Blueprint $table) {
@@ -45,14 +42,9 @@ class CreateBouncerTables extends Migration
             $table->string('entity_type', 150);
             $table->integer('scope')->nullable()->index();
 
-            $table->index(
-                ['entity_id', 'entity_type', 'scope'],
-                'assigned_roles_entity_index'
-            );
+            $table->index(['entity_id', 'entity_type', 'scope'], 'assigned_roles_entity_index');
 
-            $table->foreign('role_id')
-                  ->references('id')->on(Models::table('roles'))
-                  ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on(Models::table('roles'))->onUpdate('cascade')->onDelete('cascade');
         });
 
         Schema::create(Models::table('permissions'), function (Blueprint $table) {
@@ -62,14 +54,9 @@ class CreateBouncerTables extends Migration
             $table->boolean('forbidden')->default(false);
             $table->integer('scope')->nullable()->index();
 
-            $table->index(
-                ['entity_id', 'entity_type', 'scope'],
-                'permissions_entity_index'
-            );
+            $table->index(['entity_id', 'entity_type', 'scope'], 'permissions_entity_index');
 
-            $table->foreign('ability_id')
-                  ->references('id')->on(Models::table('abilities'))
-                  ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('ability_id')->references('id')->on(Models::table('abilities'))->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

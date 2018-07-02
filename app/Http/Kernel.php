@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+
     /**
      * The application's global HTTP middleware stack.
      *
@@ -53,25 +54,23 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-        'reformulator.clean_array' => \FewAgency\Reformulator\Middleware\CleanArrayInput::class,
-        'reformulator.concatenate' => \FewAgency\Reformulator\Middleware\ConcatenateInput::class,
-        'reformulator.datetime' => \FewAgency\Reformulator\Middleware\DatetimeInput::class,
+        'auth'                        => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic'                  => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'                    => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'cache.headers'               => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'can'                         => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'                       => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'reformulator.clean_array'    => \FewAgency\Reformulator\Middleware\CleanArrayInput::class,
+        'reformulator.concatenate'    => \FewAgency\Reformulator\Middleware\ConcatenateInput::class,
+        'reformulator.datetime'       => \FewAgency\Reformulator\Middleware\DatetimeInput::class,
         'reformulator.datetime-local' => \FewAgency\Reformulator\Middleware\DatetimeLocalInput::class,
-        'reformulator.explode' => \FewAgency\Reformulator\Middleware\ExplodeInput::class,
-        'reformulator.filter' => \FewAgency\Reformulator\Middleware\FilterInput::class,
-        'reformulator.remove_empty' => \FewAgency\Reformulator\Middleware\RemoveEmptyInput::class,
-        'reformulator.strip_repeats' => \FewAgency\Reformulator\Middleware\StripRepeatNonWordCharsFromInput::class,
-        'reformulator.trim' => \FewAgency\Reformulator\Middleware\TrimInput::class,
-        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
-        'secure.content' => \Stevenmaguire\Laravel\Http\Middleware\EnforceContentSecurity::class,
-        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'reformulator.explode'        => \FewAgency\Reformulator\Middleware\ExplodeInput::class,
+        'reformulator.filter'         => \FewAgency\Reformulator\Middleware\FilterInput::class,
+        'reformulator.remove_empty'   => \FewAgency\Reformulator\Middleware\RemoveEmptyInput::class,
+        'reformulator.strip_repeats'  => \FewAgency\Reformulator\Middleware\StripRepeatNonWordCharsFromInput::class,
+        'reformulator.trim'           => \FewAgency\Reformulator\Middleware\TrimInput::class,
+        'secure.content'              => \Stevenmaguire\Laravel\Http\Middleware\EnforceContentSecurity::class,
+        'signed'                      => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle'                    => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 trait CreatesApplication
 {
+
     /**
      * Creates the application.
      *
@@ -18,7 +19,7 @@ trait CreatesApplication
 
         $app->make(Kernel::class)->bootstrap();
 
-        Hash::driver('bcrypt')->setRounds(4);
+        Hash::driver('argon')->setRounds(4);
 
         return $app;
     }

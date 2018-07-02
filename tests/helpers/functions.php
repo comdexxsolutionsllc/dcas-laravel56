@@ -34,8 +34,5 @@ function generateApiKey($length = 32)
     $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $multiplier = ceil($length / strlen($chars));
 
-    return substr(
-        str_shuffle(
-            str_repeat($chars, $multiplier)
-        ), 1, $length);
+    return substr(str_shuffle(str_repeat($chars, $multiplier)), 1, $length);
 }
