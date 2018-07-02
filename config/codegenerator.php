@@ -17,7 +17,7 @@ return [
     | executed 'php artisan vendor:publish' command, will override your changes!
     |
      */
-    'template' => 'default',
+    'template'                     => 'default',
 
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ return [
     | In this path, you can add more templates.
     |
      */
-    'templates_path' => 'resources/laravel-code-generator/templates',
+    'templates_path'               => 'resources/laravel-code-generator/templates',
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     | https://laravel.com/docs/5.5/filesystem
     |
      */
-    'files_upload_path' => 'uploads',
+    'files_upload_path'            => 'uploads',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     | ensure that this method exists otherwise a MethodNotFound exception thrown.
     |
      */
-    'create_move_file_method' => true,
+    'create_move_file_method'      => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +89,7 @@ return [
     | "date-format" property of the field.
     |
      */
-    'datetime_out_format' => 'j/n/Y g:i A',
+    'datetime_out_format'          => 'j/n/Y g:i A',
 
     /*
     |--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ return [
     | In this path, you can create json file to import the resources from.
     |
      */
-    'resource_file_path' => 'resources/laravel-code-generator/sources',
+    'resource_file_path'           => 'resources/laravel-code-generator/sources',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +107,7 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'system_files_path' => 'resources/laravel-code-generator/system',
+    'system_files_path'            => 'resources/laravel-code-generator/system',
 
     /*
     |--------------------------------------------------------------------------
@@ -115,7 +115,7 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'migrations_path' => 'database/migrations',
+    'migrations_path'              => 'database/migrations',
 
     /*
     |--------------------------------------------------------------------------
@@ -131,7 +131,7 @@ return [
     | system will know what migration should be created.
     |
      */
-    'use_smart_migrations' => true,
+    'use_smart_migrations'         => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -152,7 +152,7 @@ return [
     | php artisan migrate:status-all
     |
      */
-    'organize_migrations' => false,
+    'organize_migrations'          => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -160,7 +160,7 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'form_requests_path' => 'Http/Requests',
+    'form_requests_path'           => 'Http/Requests',
 
     /*
     |--------------------------------------------------------------------------
@@ -168,7 +168,7 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'controllers_path' => 'Http/Controllers',
+    'controllers_path'             => 'Http/Controllers',
 
     /*
     |--------------------------------------------------------------------------
@@ -176,7 +176,7 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'models_path' => 'Models',
+    'models_path'                  => 'Models',
 
     /*
     |--------------------------------------------------------------------------
@@ -184,7 +184,7 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'languages_path' => 'resources/lang',
+    'languages_path'               => 'resources/lang',
 
     /*
     |--------------------------------------------------------------------------
@@ -192,7 +192,7 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'default_mapper_file_name' => 'resources_map.json',
+    'default_mapper_file_name'     => 'resources_map.json',
 
     /*
     |--------------------------------------------------------------------------
@@ -200,7 +200,7 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'auto_manage_resource_mapper' => true,
+    'auto_manage_resource_mapper'  => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -212,7 +212,7 @@ return [
     | match any field name that starts with the word "head"
     |
      */
-    'common_header_patterns' => [
+    'common_header_patterns'       => [
         'title',
         'name',
         'label',
@@ -245,12 +245,12 @@ return [
     | [% field_name_singular_variable %] <=> "ownerName"
     |
      */
-    'placeholder_by_html_type' => [
-        'text' => 'Enter [% field_name %] here...',
-        'number' => 'Enter [% field_name %] here...',
-        'password' => 'Enter [% field_name %] here...',
-        'email' => 'Enter [% field_name %] here...',
-        'select' => 'Select [% field_name %]',
+    'placeholder_by_html_type'     => [
+        'text'           => 'Enter [% field_name %] here...',
+        'number'         => 'Enter [% field_name %] here...',
+        'password'       => 'Enter [% field_name %] here...',
+        'email'          => 'Enter [% field_name %] here...',
+        'select'         => 'Select [% field_name %]',
         'multipleSelect' => 'Select [% field_name %]',
     ],
 
@@ -266,7 +266,7 @@ return [
     | database naming convension.
     |
      */
-    'common_key_patterns' => [
+    'common_key_patterns'          => [
         '*_id',
         '*_by',
     ],
@@ -282,142 +282,142 @@ return [
     | you from having to re-define the properties for common fields.
     |
      */
-    'common_definitions' => [
+    'common_definitions'           => [
         [
             'match' => '*',
-            'set' => [
+            'set'   => [
                 // You may use any of the field templates to create the label
                 'labels' => '[% field_name_title %]',
             ],
         ],
         [
             'match' => 'id',
-            'set' => [
-                'is-on-form' => false,
-                'is-on-index' => false,
-                'is-on-show' => false,
-                'html-type' => 'hidden',
-                'data-type' => 'integer',
-                'is-primary' => true,
+            'set'   => [
+                'is-on-form'        => false,
+                'is-on-index'       => false,
+                'is-on-show'        => false,
+                'html-type'         => 'hidden',
+                'data-type'         => 'integer',
+                'is-primary'        => true,
                 'is-auto-increment' => true,
-                'is-nullable' => false,
-                'is-unsigned' => true,
+                'is-nullable'       => false,
+                'is-unsigned'       => true,
             ],
         ],
         [
             'match' => ['title', 'name', 'label', 'subject', 'head*'],
-            'set' => [
-                'is-nullable' => false,
-                'data-type' => 'string',
+            'set'   => [
+                'is-nullable'      => false,
+                'data-type'        => 'string',
                 'data-type-params' => [255],
             ],
         ],
         [
             'match' => ['*count*', 'total*', '*number*', '*age*'],
-            'set' => [
+            'set'   => [
                 'html-type' => 'number',
             ],
         ],
         [
             'match' => ['description*', 'detail*', 'note*', 'message*'],
-            'set' => [
-                'is-on-index' => false,
-                'html-type' => 'textarea',
+            'set'   => [
+                'is-on-index'      => false,
+                'html-type'        => 'textarea',
                 'data-type-params' => [1000],
             ],
         ],
         [
             'match' => ['picture', 'file', 'photo', 'avatar'],
-            'set' => [
+            'set'   => [
                 'is-on-index' => false,
-                'html-type' => 'file',
+                'html-type'   => 'file',
             ],
         ],
         [
             'match' => ['*password*'],
-            'set' => [
+            'set'   => [
                 'html-type' => 'password',
             ],
         ],
         [
             'match' => ['*email*'],
-            'set' => [
+            'set'   => [
                 'html-type' => 'email',
             ],
         ],
         [
             'match' => ['*_id', '*_by'],
-            'set' => [
-                'data-type' => 'integer',
-                'html-type' => 'select',
+            'set'   => [
+                'data-type'   => 'integer',
+                'html-type'   => 'select',
                 'is-nullable' => false,
                 'is-unsigned' => true,
-                'is-index' => true,
+                'is-index'    => true,
             ],
         ],
         [
             'match' => ['*_at'],
-            'set' => [
+            'set'   => [
                 'data-type' => 'datetime',
             ],
         ],
         [
             'match' => ['created_at', 'updated_at', 'deleted_at'],
-            'set' => [
-                'data-type' => 'datetime',
-                'is-on-form' => false,
+            'set'   => [
+                'data-type'   => 'datetime',
+                'is-on-form'  => false,
                 'is-on-index' => false,
-                'is-on-show' => true,
+                'is-on-show'  => true,
             ],
         ],
         [
             'match' => ['*_date', 'date_*'],
-            'set' => [
-                'data-type' => 'date',
+            'set'   => [
+                'data-type'   => 'date',
                 'date-format' => 'j/n/Y',
             ],
         ],
         [
             'match' => ['is_*', 'has_*'],
-            'set' => [
-                'data-type' => 'boolean',
-                'html-type' => 'checkbox',
+            'set'   => [
+                'data-type'   => 'boolean',
+                'html-type'   => 'checkbox',
                 'is-nullable' => false,
-                'options' => ["No", "Yes"],
+                'options'     => ["No", "Yes"],
             ],
         ],
         [
             'match' => 'created_by',
-            'set' => [
-                'title' => 'Creator',
-                'data-type' => 'integer',
+            'set'   => [
+                'title'            => 'Creator',
+                'data-type'        => 'integer',
                 'foreign-relation' => [
-                    'name' => 'creator',
-                    'type' => 'belongsTo',
+                    'name'   => 'creator',
+                    'type'   => 'belongsTo',
                     'params' => [
                         'App\\User',
                         'created_by',
                     ],
-                    'field' => 'name',
+                    'field'  => 'name',
                 ],
-                'on-store' => 'Illuminate\Support\Facades\Auth::Id();',
+                'on-store'         => 'Illuminate\Support\Facades\Auth::Id();',
             ],
         ],
         [
             'match' => ['updated_by', 'modified_by'],
-            'set' => [
-                'title' => 'Updater',
-                'data-type' => 'integer',
+            'set'   => [
+                'title'            => 'Updater',
+                'data-type'        => 'integer',
                 'foreign-relation' => [
-                    'name' => 'updater',
-                    'type' => 'belongsTo',
+                    'name'   => 'updater',
+                    'type'   => 'belongsTo',
                     'params' => [
                         'App\\User',
                         'updated_by',
                     ],
-                    'field' => 'name',
+                    'field'  => 'name',
                 ],
-                'on-update' => 'Illuminate\Support\Facades\Auth::Id();',
+                'on-update'        => 'Illuminate\Support\Facades\Auth::Id();',
             ],
         ],
     ],
@@ -428,13 +428,13 @@ return [
     |--------------------------------------------------------------------------
     |
      */
-    'plural_names_for' => [
-        'controller-name' => true,
-        'request-form-name' => true,
-        'route-group' => true,
+    'plural_names_for'             => [
+        'controller-name'    => true,
+        'request-form-name'  => true,
+        'route-group'        => true,
         'language-file-name' => true,
         'resource-file-name' => true,
-        'table-name' => true,
+        'table-name'         => true,
     ],
 
     /*
@@ -446,7 +446,7 @@ return [
     | set this value to an empty string. Or, you can set it to any other value.
     |
      */
-    'controller_name_postfix' => 'Controller',
+    'controller_name_postfix'      => 'Controller',
 
     /*
     |--------------------------------------------------------------------------
@@ -457,7 +457,7 @@ return [
     | set this value to an empty string. Or, you can set it to any other value.
     |
      */
-    'form_request_name_postfix' => 'FormRequest',
+    'form_request_name_postfix'    => 'FormRequest',
 
     /*
     |--------------------------------------------------------------------------
@@ -475,7 +475,7 @@ return [
     | form of the word, and the value represents the plural-form.
     |
      */
-    'irregular_plurals' => [
+    'irregular_plurals'            => [
         'software' => 'software',
     ],
 
@@ -517,65 +517,65 @@ return [
     | Finally, add [% custom_template_example %] in the view where you want it to appear!
     |
      */
-    'generic_view_labels' => [
-        'create' => [
-            'text' => 'Create New [% model_name_title %]',
+    'generic_view_labels'          => [
+        'create'            => [
+            'text'     => 'Create New [% model_name_title %]',
             'template' => 'create_model',
         ],
-        'delete' => [
-            'text' => 'Delete [% model_name_title %]',
-            'template' => 'delete_model',
+        'delete'            => [
+            'text'                        => 'Delete [% model_name_title %]',
+            'template'                    => 'delete_model',
             'in-function-with-collective' => true,
         ],
-        'edit' => [
-            'text' => 'Edit [% model_name_title %]',
+        'edit'              => [
+            'text'     => 'Edit [% model_name_title %]',
             'template' => 'edit_model',
         ],
-        'show' => [
-            'text' => 'Show [% model_name_title %]',
+        'show'              => [
+            'text'     => 'Show [% model_name_title %]',
             'template' => 'show_model',
         ],
-        'show_all' => [
-            'text' => 'Show All [% model_name_title %]',
+        'show_all'          => [
+            'text'     => 'Show All [% model_name_title %]',
             'template' => 'show_all_models',
         ],
-        'add' => [
-            'text' => 'Add',
-            'template' => 'add',
+        'add'               => [
+            'text'                        => 'Add',
+            'template'                    => 'add',
             'in-function-with-collective' => true,
         ],
-        'update' => [
-            'text' => 'Update',
-            'template' => 'update',
+        'update'            => [
+            'text'                        => 'Update',
+            'template'                    => 'update',
             'in-function-with-collective' => true,
         ],
-        'confirm_delete' => [
-            'text' => 'Delete [% model_name_title %]?',
-            'template' => 'confirm_delete',
+        'confirm_delete'    => [
+            'text'                        => 'Delete [% model_name_title %]?',
+            'template'                    => 'confirm_delete',
             'in-function-with-collective' => true,
         ],
-        'none_available' => [
-            'text' => 'No [% model_name_plural_title %] Available!',
+        'none_available'    => [
+            'text'     => 'No [% model_name_plural_title %] Available!',
             'template' => 'no_models_available',
         ],
-        'model_plural' => [
-            'text' => '[% model_name_plural_title %]',
+        'model_plural'      => [
+            'text'     => '[% model_name_plural_title %]',
             'template' => 'model_plural',
         ],
-        'model_was_added' => [
-            'text' => '[% model_name_title %] was successfully added!',
+        'model_was_added'   => [
+            'text'     => '[% model_name_title %] was successfully added!',
             'template' => 'model_was_added',
         ],
         'model_was_updated' => [
-            'text' => '[% model_name_title %] was successfully updated!',
+            'text'     => '[% model_name_title %] was successfully updated!',
             'template' => 'model_was_updated',
         ],
         'model_was_deleted' => [
-            'text' => '[% model_name_title %] was successfully deleted!',
+            'text'     => '[% model_name_title %] was successfully deleted!',
             'template' => 'model_was_deleted',
         ],
-        'unexpected_error' => [
-            'text' => 'Unexpected error occurred while trying to process your request!',
+        'unexpected_error'  => [
+            'text'     => 'Unexpected error occurred while trying to process your request!',
             'template' => 'unexpected_error',
         ],
     ],
@@ -591,59 +591,59 @@ return [
     | with the code generator.
     |
      */
-    'eloquent_type_to_method' => [
-        'char' => 'char',
-        'date' => 'date',
-        'datetime' => 'dateTime',
-        'datetimetz' => 'dateTimeTz',
-        'biginteger' => 'bigIncrements',
-        'bigint' => 'bigIncrements',
-        'tinyblob' => 'binary',
-        'mediumblob' => 'binary',
-        'blob' => 'binary',
-        'longblob' => 'binary',
-        'binary' => 'binary',
-        'bool' => 'boolean',
-        'boolean' => 'boolean',
-        'bit' => 'boolean',
-        'decimal' => 'decimal',
-        'double' => 'double',
-        'enum' => 'enum',
-        'list' => 'enum',
-        'float' => 'float',
-        'int' => 'integer',
-        'integer' => 'integer',
-        'ipaddress' => 'ipAddress',
-        'json' => 'json',
-        'jsonb' => 'jsonb',
-        'longtext' => 'longText',
-        'macaddress' => 'macAddress',
-        'mediuminteger' => 'mediumInteger',
-        'mediumint' => 'mediumInteger',
-        'mediumtext' => 'mediumText',
-        'smallInteger' => 'smallInteger',
-        'smallint' => 'smallInteger',
-        'morphs' => 'morphs',
-        'string' => 'string',
-        'varchar' => 'string',
-        'nvarchar' => 'string',
-        'text' => 'text',
-        'time' => 'time',
-        'timetz' => 'timeTz',
-        'tinyinteger' => 'tinyInteger',
-        'tinyint' => 'tinyInteger',
-        'timestamp' => 'timestamp',
-        'timestamptz' => 'timestampTz',
-        'unsignedbiginteger' => 'unsignedBigInteger',
-        'unsignedbigint' => 'unsignedBigInteger',
-        'unsignedInteger' => 'unsignedInteger',
-        'unsignedint' => 'unsignedInteger',
+    'eloquent_type_to_method'      => [
+        'char'                  => 'char',
+        'date'                  => 'date',
+        'datetime'              => 'dateTime',
+        'datetimetz'            => 'dateTimeTz',
+        'biginteger'            => 'bigIncrements',
+        'bigint'                => 'bigIncrements',
+        'tinyblob'              => 'binary',
+        'mediumblob'            => 'binary',
+        'blob'                  => 'binary',
+        'longblob'              => 'binary',
+        'binary'                => 'binary',
+        'bool'                  => 'boolean',
+        'boolean'               => 'boolean',
+        'bit'                   => 'boolean',
+        'decimal'               => 'decimal',
+        'double'                => 'double',
+        'enum'                  => 'enum',
+        'list'                  => 'enum',
+        'float'                 => 'float',
+        'int'                   => 'integer',
+        'integer'               => 'integer',
+        'ipaddress'             => 'ipAddress',
+        'json'                  => 'json',
+        'jsonb'                 => 'jsonb',
+        'longtext'              => 'longText',
+        'macaddress'            => 'macAddress',
+        'mediuminteger'         => 'mediumInteger',
+        'mediumint'             => 'mediumInteger',
+        'mediumtext'            => 'mediumText',
+        'smallInteger'          => 'smallInteger',
+        'smallint'              => 'smallInteger',
+        'morphs'                => 'morphs',
+        'string'                => 'string',
+        'varchar'               => 'string',
+        'nvarchar'              => 'string',
+        'text'                  => 'text',
+        'time'                  => 'time',
+        'timetz'                => 'timeTz',
+        'tinyinteger'           => 'tinyInteger',
+        'tinyint'               => 'tinyInteger',
+        'timestamp'             => 'timestamp',
+        'timestamptz'           => 'timestampTz',
+        'unsignedbiginteger'    => 'unsignedBigInteger',
+        'unsignedbigint'        => 'unsignedBigInteger',
+        'unsignedInteger'       => 'unsignedInteger',
+        'unsignedint'           => 'unsignedInteger',
         'unsignedmediuminteger' => 'unsignedMediumInteger',
-        'unsignedmediumint' => 'unsignedMediumInteger',
-        'unsignedsmallinteger' => 'unsignedSmallInteger',
-        'unsignedsmallint' => 'unsignedSmallInteger',
-        'unsignedtinyinteger' => 'unsignedTinyInteger',
-        'uuid' => 'uuid',
+        'unsignedmediumint'     => 'unsignedMediumInteger',
+        'unsignedsmallinteger'  => 'unsignedSmallInteger',
+        'unsignedsmallint'      => 'unsignedSmallInteger',
+        'unsignedtinyinteger'   => 'unsignedTinyInteger',
+        'uuid'                  => 'uuid',
     ],
 
     /*
@@ -654,45 +654,45 @@ return [
     | This is the mapping used to convert database-column into html field
     |
      */
-    'eloquent_type_to_html_type' => [
-        'char' => 'text',
-        'date' => 'text',
-        'dateTime' => 'text',
-        'dateTimeTz' => 'text',
-        'bigIncrements' => 'number',
-        'bigIncrements' => 'number',
-        'binary' => 'textarea',
-        'boolean' => 'checkbox',
-        'decimal' => 'number',
-        'double' => 'number',
-        'enum' => 'select',
-        'float' => 'number',
-        'integer' => 'number',
-        'integer' => 'number',
-        'ipAddress' => 'text',
-        'json' => 'checkbox',
-        'jsonb' => 'checkbox',
-        'longText' => 'textarea',
-        'macAddress' => 'text',
-        'mediumInteger' => 'number',
-        'mediumText' => 'textarea',
-        'string' => 'text',
-        'text' => 'textarea',
-        'time' => 'text',
-        'timeTz' => 'text',
-        'tinyInteger' => 'number',
-        'tinyInteger' => 'number',
-        'timestamp' => 'text',
-        'timestampTz' => 'text',
-        'unsignedBigInteger' => 'number',
-        'unsignedBigInteger' => 'number',
-        'unsignedInteger' => 'number',
-        'unsignedInteger' => 'number',
+    'eloquent_type_to_html_type'   => [
+        'char'                  => 'text',
+        'date'                  => 'text',
+        'dateTime'              => 'text',
+        'dateTimeTz'            => 'text',
+        'bigIncrements'         => 'number',
+        'bigIncrements'         => 'number',
+        'binary'                => 'textarea',
+        'boolean'               => 'checkbox',
+        'decimal'               => 'number',
+        'double'                => 'number',
+        'enum'                  => 'select',
+        'float'                 => 'number',
+        'integer'               => 'number',
+        'integer'               => 'number',
+        'ipAddress'             => 'text',
+        'json'                  => 'checkbox',
+        'jsonb'                 => 'checkbox',
+        'longText'              => 'textarea',
+        'macAddress'            => 'text',
+        'mediumInteger'         => 'number',
+        'mediumText'            => 'textarea',
+        'string'                => 'text',
+        'text'                  => 'textarea',
+        'time'                  => 'text',
+        'timeTz'                => 'text',
+        'tinyInteger'           => 'number',
+        'tinyInteger'           => 'number',
+        'timestamp'             => 'text',
+        'timestampTz'           => 'text',
+        'unsignedBigInteger'    => 'number',
+        'unsignedBigInteger'    => 'number',
+        'unsignedInteger'       => 'number',
+        'unsignedInteger'       => 'number',
         'unsignedMediumInteger' => 'number',
         'unsignedMediumInteger' => 'number',
-        'unsignedSmallInteger' => 'number',
-        'unsignedSmallInteger' => 'number',
-        'unsignedTinyInteger' => 'number',
-        'uuid' => 'text',
+        'unsignedSmallInteger'  => 'number',
+        'unsignedSmallInteger'  => 'number',
+        'unsignedTinyInteger'   => 'number',
+        'uuid'                  => 'text',
     ],
 ];

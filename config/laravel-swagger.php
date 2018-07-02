@@ -25,12 +25,10 @@ return [
         'http',
     ],
 
-    'consumes' => [
-        // 'application/json',
+    'consumes' => [// 'application/json',
     ],
 
-    'produces' => [
-        // 'application/json',
+    'produces' => [// 'application/json',
     ],
 
     /*

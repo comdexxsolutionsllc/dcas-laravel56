@@ -7,6 +7,7 @@ use Log;
 
 class LogPasswordReset
 {
+
     /**
      * Create the event listener.
      *
@@ -20,7 +21,8 @@ class LogPasswordReset
     /**
      * Handle the event.
      *
-     * @param  PasswordReset  $event
+     * @param  PasswordReset $event
+     *
      * @return void
      */
     public function handle(PasswordReset $event)

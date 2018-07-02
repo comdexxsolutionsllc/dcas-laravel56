@@ -11,7 +11,7 @@ return [
     */
 
     'filename' => '_ide_helper',
-    'format' => 'php',
+    'format'   => 'php',
 
     'meta_filename' => '.phpstorm.meta.php',
 
@@ -50,7 +50,7 @@ return [
     'include_helpers' => true,
 
     'helper_files' => [
-        base_path().'/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
+        base_path() . '/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
     ],
 
     /*
@@ -65,6 +65,10 @@ return [
 
     'model_locations' => [
         'app',
+        'app/Models/*',
+        'app/Entities/*',
+        'Modules/*/Entities/*',
+        'Modules/*/Models/*',
     ],
 
     /*
@@ -78,18 +82,18 @@ return [
 
     'extra' => [
         'Eloquent' => ['Illuminate\Database\Eloquent\Builder', 'Illuminate\Database\Query\Builder'],
-        'Session' => ['Illuminate\Session\Store'],
+        'Session'  => ['Illuminate\Session\Store'],
     ],
 
     'magic' => [
         'Log' => [
-            'debug' => 'Monolog\Logger::addDebug',
-            'info' => 'Monolog\Logger::addInfo',
-            'notice' => 'Monolog\Logger::addNotice',
-            'warning' => 'Monolog\Logger::addWarning',
-            'error' => 'Monolog\Logger::addError',
-            'critical' => 'Monolog\Logger::addCritical',
-            'alert' => 'Monolog\Logger::addAlert',
+            'debug'     => 'Monolog\Logger::addDebug',
+            'info'      => 'Monolog\Logger::addInfo',
+            'notice'    => 'Monolog\Logger::addNotice',
+            'warning'   => 'Monolog\Logger::addWarning',
+            'error'     => 'Monolog\Logger::addError',
+            'critical'  => 'Monolog\Logger::addCritical',
+            'alert'     => 'Monolog\Logger::addAlert',
             'emergency' => 'Monolog\Logger::addEmergency',
         ],
     ],
@@ -104,7 +108,7 @@ return [
     |
     */
 
-    'interfaces' => [],
+    'interfaces'                  => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -132,7 +136,7 @@ return [
     |  ),
     |
     */
-    'custom_db_types' => [],
+    'custom_db_types'             => [],
 
     /*
      |--------------------------------------------------------------------------
@@ -168,7 +172,7 @@ return [
     | Cast the given "real type" to the given "type".
     |
     */
-    'type_overrides' => [
+    'type_overrides'              => [
         'integer' => 'int',
         'boolean' => 'bool',
     ],
