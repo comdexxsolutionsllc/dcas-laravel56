@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
+
     use CreatesApplication;
 
     /**
@@ -31,7 +32,7 @@ abstract class TestCase extends BaseTestCase
      */
     public function signIn($user = null)
     {
-        if (!$user) {
+        if (! $user) {
             $user = factory(User::class)->create();
         }
 
@@ -52,19 +53,17 @@ abstract class TestCase extends BaseTestCase
      */
     public function signInAdmin($user = null, $roleType = 'super_admin')
     {
-        if (!$user) {
+        if (! $user) {
             $user = factory(User::class)->create();
         }
 
         $this->user = $user;
 
-        $this->user->attachRole(
-            $adminRole = create(Role::class, [
-                'name' => $roleType,
-                'display_name' => '',
-                'description' => '',
-            ])
-        );
+        $this->user->attachRole($adminRole = create(Role::class, [
+            'name'         => $roleType,
+            'display_name' => '',
+            'description'  => '',
+        ]));
 
         $this->actingAs($this->user);
 
@@ -122,6 +121,7 @@ abstract class TestCase extends BaseTestCase
         $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
         $this->app->instance(ExceptionHandler::class, new class extends Handler
         {
+
             public function __construct()
             {
             }

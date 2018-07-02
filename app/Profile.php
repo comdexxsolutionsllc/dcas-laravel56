@@ -9,21 +9,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Profile
  *
- * @property int $id
- * @property int $user_id
- * @property string|null $address_1
- * @property string|null $address_2
- * @property string|null $city
- * @property string|null $state
- * @property string|null $postal_code
- * @property string|null $country
- * @property int|null $country_code
- * @property int|null $npa_nxx_suffix
- * @property string|null $phone_type
- * @property string|null $deleted_at
+ * @property int                 $id
+ * @property int                 $user_id
+ * @property string|null         $address_1
+ * @property string|null         $address_2
+ * @property string|null         $city
+ * @property string|null         $state
+ * @property string|null         $postal_code
+ * @property string|null         $country
+ * @property int|null            $country_code
+ * @property int|null            $npa_nxx_suffix
+ * @property string|null         $phone_type
+ * @property string|null         $deleted_at
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @property-read \App\User $user
+ * @property-read \App\User      $user
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|\App\Profile onlyTrashed()
  * @method static bool|null restore()
@@ -47,6 +47,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Profile extends Model
 {
+
     use SoftDeletes;
 
     /**
