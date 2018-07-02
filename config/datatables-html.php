@@ -4,9 +4,9 @@ return [
     /*
      * Default table attributes when generating the table.
      */
-    'table' => [
+    'table'    => [
         'class' => 'table',
-        'id' => 'dataTableBuilder',
+        'id'    => 'dataTableBuilder',
     ],
     /*
      * Default condition to determine if a parameter is a callback or not

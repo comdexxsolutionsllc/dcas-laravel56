@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 
 class AuthPermissionCommand extends Command
 {
+
     /**
      * @var string
      */
@@ -23,7 +24,6 @@ class AuthPermissionCommand extends Command
             } else {
                 $this->warn('No permissions for ' . $this->getNameArgument() . ' found!');
             }
-
         } else {
             // create permissions
             foreach ($permissions as $permission) {
@@ -43,7 +43,7 @@ class AuthPermissionCommand extends Command
     /**
      * @return array
      */
-    private function generatePermissions()
+    private function generatePermissions(): array
     {
         $abilities = ['view', 'add', 'edit', 'delete'];
         $name = $this->getNameArgument();
@@ -56,7 +56,7 @@ class AuthPermissionCommand extends Command
     /**
      * @return string
      */
-    private function getNameArgument()
+    private function getNameArgument(): string
     {
         return strtolower(str_plural($this->argument('name')));
     }

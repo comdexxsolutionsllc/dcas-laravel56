@@ -7,6 +7,7 @@ use Log;
 
 class LogFailedLogin
 {
+
     /**
      * Create the event listener.
      *
@@ -20,7 +21,8 @@ class LogFailedLogin
     /**
      * Handle the event.
      *
-     * @param  Failed  $event
+     * @param  Failed $event
+     *
      * @return void
      */
     public function handle(Failed $event)
