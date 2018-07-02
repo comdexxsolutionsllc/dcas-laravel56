@@ -32,3 +32,4 @@ yarn-error.log
 /storage/search/
 /tmp
 /vendor
+/docs/php_cs-orig

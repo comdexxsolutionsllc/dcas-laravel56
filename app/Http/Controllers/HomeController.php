@@ -6,6 +6,7 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *

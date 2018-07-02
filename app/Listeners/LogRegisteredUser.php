@@ -7,6 +7,7 @@ use Log;
 
 class LogRegisteredUser
 {
+
     /**
      * Create the event listener.
      *
@@ -20,7 +21,8 @@ class LogRegisteredUser
     /**
      * Handle the event.
      *
-     * @param  Registered  $event
+     * @param  Registered $event
+     *
      * @return void
      */
     public function handle(Registered $event)
