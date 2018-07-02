@@ -1,0 +1,24 @@
+{
+  "name": "fiberhopllc/support",
+  "description": "",
+  "authors": [
+    {
+      "name": "Sarah Renner",
+      "email": "sarah@sarahrenner.work"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Modules\\Support\\Providers\\SupportServiceProvider"
+      ],
+      "aliases": {
+      }
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\Support\\": ""
+    }
+  }
+}

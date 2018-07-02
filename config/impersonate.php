@@ -16,7 +16,7 @@ return [
     */
 
     'session' => [
-        'is_active' => 'impersonate.is_active',
+        'is_active'     => 'impersonate.is_active',
         'original_user' => 'impersonate.original_user_id',
     ],
 ];

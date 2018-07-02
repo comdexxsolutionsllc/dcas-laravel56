@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use Illuminate\Auth\Events\Lockout;
 use Log;
 
 class LogLockout
 {
+
     /**
      * Create the event listener.
      *
@@ -20,10 +20,9 @@ class LogLockout
     /**
      * Handle the event.
      *
-     * @param  Lockout  $event
      * @return void
      */
-    public function handle(Lockout $event)
+    public function handle()
     {
         Log::critical("[" . now() . "] Login lockout detected from " . request()->ip());
     }

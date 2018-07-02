@@ -1,10 +1,14 @@
 .
-├── ./Modules
-├── ./_config.yml
 ├── ./app
 │   ├── ./app/Console
+│   │   ├── ./app/Console/Commands
+│   │   │   └── ./app/Console/Commands/AuthPermissionCommand.php
 │   │   └── ./app/Console/Kernel.php
 │   ├── ./app/DCAS
+│   │   ├── ./app/DCAS/Classes
+│   │   ├── ./app/DCAS/Contracts
+│   │   └── ./app/DCAS/Traits
+│   │       └── ./app/DCAS/Traits/Authorizable.php
 │   ├── ./app/Exceptions
 │   │   └── ./app/Exceptions/Handler.php
 │   ├── ./app/Http
@@ -24,22 +28,29 @@
 │   │       ├── ./app/Http/Middleware/TrimStrings.php
 │   │       ├── ./app/Http/Middleware/TrustProxies.php
 │   │       └── ./app/Http/Middleware/VerifyCsrfToken.php
-│   ├── ./app/Permission.php
+│   ├── ./app/Listeners
+│   │   ├── ./app/Listeners/LogAuthenticated.php
+│   │   ├── ./app/Listeners/LogAuthenticationAttempt.php
+│   │   ├── ./app/Listeners/LogFailedLogin.php
+│   │   ├── ./app/Listeners/LogLockout.php
+│   │   ├── ./app/Listeners/LogPasswordReset.php
+│   │   ├── ./app/Listeners/LogRegisteredUser.php
+│   │   ├── ./app/Listeners/LogSuccessfulLogin.php
+│   │   └── ./app/Listeners/LogSuccessfulLogout.php
+│   ├── ./app/Profile.php
 │   ├── ./app/Providers
 │   │   ├── ./app/Providers/AppServiceProvider.php
 │   │   ├── ./app/Providers/AuthServiceProvider.php
 │   │   ├── ./app/Providers/BroadcastServiceProvider.php
 │   │   ├── ./app/Providers/EventServiceProvider.php
 │   │   └── ./app/Providers/RouteServiceProvider.php
-│   ├── ./app/Role.php
-│   ├── ./app/Team.php
 │   └── ./app/User.php
 ├── ./artisan
 ├── ./behat.yml
 ├── ./bin
 │   ├── ./bin/clear-project-files.sh
-│   ├── ./bin/git-branch-status-v2.sh
 │   ├── ./bin/git-branch_status.sh
+│   ├── ./bin/git-branch-status-v2.sh
 │   ├── ./bin/insert-phpcsxsl-into-xml.php
 │   ├── ./bin/install-php.sh
 │   ├── ./bin/make-swagger-documentation.sh
@@ -56,10 +67,11 @@
 │   ├── ./config/app.php
 │   ├── ./config/auth.php
 │   ├── ./config/bootpack.php
+│   ├── ./config/breadcrumbs.php
 │   ├── ./config/broadcasting.php
 │   ├── ./config/cache.php
-│   ├── ./config/codegenerator.php
 │   ├── ./config/codegenerator_custom.php
+│   ├── ./config/codegenerator.php
 │   ├── ./config/database.php
 │   ├── ./config/datatables-buttons.php
 │   ├── ./config/datatables-fractal.php
@@ -73,16 +85,16 @@
 │   ├── ./config/ide-helper.php
 │   ├── ./config/image.php
 │   ├── ./config/impersonate.php
-│   ├── ./config/laratrust.php
-│   ├── ./config/laratrust_seeder.php
 │   ├── ./config/laravel-swagger.php
 │   ├── ./config/logging.php
-│   ├── ./config/mail.php
 │   ├── ./config/mailchimp.php
+│   ├── ./config/mail.php
 │   ├── ./config/medialibrary.php
 │   ├── ./config/modules.php
+│   ├── ./config/open-on-make.php
 │   ├── ./config/queue.php
 │   ├── ./config/scout.php
+│   ├── ./config/self-diagnosis.php
 │   ├── ./config/services.php
 │   ├── ./config/session.php
 │   ├── ./config/shield.php
@@ -93,7 +105,6 @@
 ├── ./data
 │   └── ./data/GeoIP.dat
 ├── ./database
-│   ├── ./database/database.sqlite
 │   ├── ./database/factories
 │   │   └── ./database/factories/UserFactory.php
 │   ├── ./database/migrations
@@ -102,18 +113,55 @@
 │   │   ├── ./database/migrations/2018_06_12_210214_create_notifications_table.php
 │   │   ├── ./database/migrations/2018_06_12_210247_create_failed_jobs_table.php
 │   │   ├── ./database/migrations/2018_06_12_210307_create_sessions_table.php
-│   │   ├── ./database/migrations/2018_06_12_232142_laratrust_setup_tables.php
-│   │   └── ./database/migrations/2018_06_14_013805_laratrust_setup_teams.php
+│   │   ├── ./database/migrations/2018_06_26_192828_create_profiles_table.php
+│   │   └── ./database/migrations/2018_06_28_234922_create_bouncer_tables.php
 │   └── ./database/seeds
 │       ├── ./database/seeds/DatabaseSeeder.php
-│       └── ./database/seeds/LaratrustSeeder.php
+│       └── ./database/seeds/UserTableSeeder.php
 ├── ./git-hooks
 │   ├── ./git-hooks/commit-msg
 │   ├── ./git-hooks/post-commit
 │   ├── ./git-hooks/pre-commit
-│   ├── ./git-hooks/pre-rebase
-│   └── ./git-hooks/prepare-commit-msg
-├── ./index.html
+│   ├── ./git-hooks/prepare-commit-msg
+│   └── ./git-hooks/pre-rebase
+├── ./Modules
+│   └── ./Modules/Support
+│       ├── ./Modules/Support/composer.json
+│       ├── ./Modules/Support/Config
+│       │   └── ./Modules/Support/Config/config.php
+│       ├── ./Modules/Support/Console
+│       ├── ./Modules/Support/Database
+│       │   ├── ./Modules/Support/Database/factories
+│       │   ├── ./Modules/Support/Database/Migrations
+│       │   └── ./Modules/Support/Database/Seeders
+│       │       └── ./Modules/Support/Database/Seeders/SupportDatabaseSeeder.php
+│       ├── ./Modules/Support/Emails
+│       ├── ./Modules/Support/Entities
+│       ├── ./Modules/Support/Events
+│       ├── ./Modules/Support/Http
+│       │   ├── ./Modules/Support/Http/Controllers
+│       │   │   └── ./Modules/Support/Http/Controllers/SupportController.php
+│       │   ├── ./Modules/Support/Http/Middleware
+│       │   ├── ./Modules/Support/Http/Requests
+│       │   └── ./Modules/Support/Http/routes.php
+│       ├── ./Modules/Support/Jobs
+│       ├── ./Modules/Support/Listeners
+│       ├── ./Modules/Support/module.json
+│       ├── ./Modules/Support/Notifications
+│       ├── ./Modules/Support/Policies
+│       ├── ./Modules/Support/Providers
+│       │   └── ./Modules/Support/Providers/SupportServiceProvider.php
+│       ├── ./Modules/Support/Resources
+│       │   ├── ./Modules/Support/Resources/assets
+│       │   ├── ./Modules/Support/Resources/lang
+│       │   └── ./Modules/Support/Resources/views
+│       │       ├── ./Modules/Support/Resources/views/index.blade.php
+│       │       └── ./Modules/Support/Resources/views/layouts
+│       │           └── ./Modules/Support/Resources/views/layouts/master.blade.php
+│       ├── ./Modules/Support/Rules
+│       ├── ./Modules/Support/start.php
+│       ├── ./Modules/Support/Tests
+│       └── ./Modules/Support/Transformers
 ├── ./orchid-socket.supervisor.conf
 ├── ./package.json
 ├── ./phpcs-ruleset.xml
@@ -123,7 +171,8 @@
 ├── ./phpunit.xml
 ├── ./public
 │   ├── ./public/css
-│   │   └── ./public/css/app.css
+│   │   ├── ./public/css/app.css
+│   │   └── ./public/css/phpcs.css
 │   ├── ./public/favicon.ico
 │   ├── ./public/index.php
 │   ├── ./public/js
@@ -131,6 +180,7 @@
 │   ├── ./public/mix-manifest.json
 │   ├── ./public/modules
 │   ├── ./public/phpcs.xml
+│   ├── ./public/phpcs.xsl
 │   └── ./public/phpmd.html
 ├── ./resources
 │   ├── ./resources/assets
@@ -144,8 +194,8 @@
 │   │   │           ├── ./resources/assets/js/components/passport/Clients.vue
 │   │   │           └── ./resources/assets/js/components/passport/PersonalAccessTokens.vue
 │   │   └── ./resources/assets/sass
-│   │       ├── ./resources/assets/sass/_variables.scss
-│   │       └── ./resources/assets/sass/app.scss
+│   │       ├── ./resources/assets/sass/app.scss
+│   │       └── ./resources/assets/sass/_variables.scss
 │   ├── ./resources/lang
 │   │   └── ./resources/lang/en
 │   │       ├── ./resources/lang/en/auth.php
@@ -160,11 +210,12 @@
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/controller-constructor.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/controller-getdata-method-5.5.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/controller-getdata-method.stub
+│   │       │   ├── ./resources/laravel-code-generator/templates/default/controller.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/controller-upload-method-5.3.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/controller-upload-method.stub
-│   │       │   ├── ./resources/laravel-code-generator/templates/default/controller.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/create.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/edit.blade.stub
+│   │       │   ├── ./resources/laravel-code-generator/templates/default/form.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/form-file-field.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/form-helper-field.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/form-input-field.blade.stub
@@ -179,13 +230,12 @@
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/form-selectmenu-field.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/form-selectrange-field.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/form-textarea-field.blade.stub
-│   │       │   ├── ./resources/laravel-code-generator/templates/default/form.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/index.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/index.body.cell.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/index.header.cell.blade.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/language.stub
-│   │       │   ├── ./resources/laravel-code-generator/templates/default/layout-with-validation.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/layout.stub
+│   │       │   ├── ./resources/laravel-code-generator/templates/default/layout-with-validation.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/login-partial.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/migration-schema-down.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/migration-schema-up.stub
@@ -198,8 +248,8 @@
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/model-mutator.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/model-primary-key.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/model-relation.stub
-│   │       │   ├── ./resources/laravel-code-generator/templates/default/model-timestamps.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/model.stub
+│   │       │   ├── ./resources/laravel-code-generator/templates/default/model-timestamps.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/routes-group.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/routes.stub
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/show.blade.stub
@@ -210,11 +260,12 @@
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/controller-constructor.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/controller-getdata-method-5.5.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/controller-getdata-method.stub
+│   │           ├── ./resources/laravel-code-generator/templates/default-collective/controller.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/controller-upload-method-5.3.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/controller-upload-method.stub
-│   │           ├── ./resources/laravel-code-generator/templates/default-collective/controller.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/create.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/edit.blade.stub
+│   │           ├── ./resources/laravel-code-generator/templates/default-collective/form.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/form-file-field.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/form-helper-field.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/form-input-field.blade.stub
@@ -229,13 +280,12 @@
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/form-selectmenu-field.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/form-selectrange-field.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/form-textarea-field.blade.stub
-│   │           ├── ./resources/laravel-code-generator/templates/default-collective/form.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/index.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/index.body.cell.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/index.header.cell.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/language.stub
-│   │           ├── ./resources/laravel-code-generator/templates/default-collective/layout-with-validation.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/layout.stub
+│   │           ├── ./resources/laravel-code-generator/templates/default-collective/layout-with-validation.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/login-partial.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/migration-schema-down.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/migration-schema-up.stub
@@ -248,8 +298,8 @@
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/model-mutator.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/model-primary-key.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/model-relation.stub
-│   │           ├── ./resources/laravel-code-generator/templates/default-collective/model-timestamps.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/model.stub
+│   │           ├── ./resources/laravel-code-generator/templates/default-collective/model-timestamps.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/routes-group.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/routes.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/show.blade.stub
@@ -268,155 +318,37 @@
 │       └── ./resources/views/welcome.blade.php
 ├── ./routes
 │   ├── ./routes/api.php
+│   ├── ./routes/breadcrumbs.php
 │   ├── ./routes/channels.php
 │   ├── ./routes/console.php
 │   └── ./routes/web.php
 ├── ./server.php
-├── ./staging
-│   └── ./staging/CoreUI
-│       ├── ./staging/CoreUI/base-breadcrumb.html
-│       ├── ./staging/CoreUI/base-card.html
-│       ├── ./staging/CoreUI/base-cards.html
-│       ├── ./staging/CoreUI/base-carousel.html
-│       ├── ./staging/CoreUI/base-collapse.html
-│       ├── ./staging/CoreUI/base-forms.html
-│       ├── ./staging/CoreUI/base-jumbotron.html
-│       ├── ./staging/CoreUI/base-list-group.html
-│       ├── ./staging/CoreUI/base-navbar.html
-│       ├── ./staging/CoreUI/base-navs.html
-│       ├── ./staging/CoreUI/base-pagination.html
-│       ├── ./staging/CoreUI/base-popovers.html
-│       ├── ./staging/CoreUI/base-progress.html
-│       ├── ./staging/CoreUI/base-scrollspy.html
-│       ├── ./staging/CoreUI/base-switches.html
-│       ├── ./staging/CoreUI/base-tables.html
-│       ├── ./staging/CoreUI/base-tabs.html
-│       ├── ./staging/CoreUI/base-tooltips.html
-│       ├── ./staging/CoreUI/blank.html
-│       ├── ./staging/CoreUI/buttons-button-group.html
-│       ├── ./staging/CoreUI/buttons-buttons.html
-│       ├── ./staging/CoreUI/buttons-dropdowns.html
-│       ├── ./staging/CoreUI/buttons-social-buttons.html
-│       ├── ./staging/CoreUI/charts.html
-│       ├── ./staging/CoreUI/colors.html
-│       ├── ./staging/CoreUI/css
-│       │   ├── ./staging/CoreUI/css/style.css
-│       │   └── ./staging/CoreUI/css/style.min.css
-│       ├── ./staging/CoreUI/icons-flags.html
-│       ├── ./staging/CoreUI/icons-font-awesome.html
-│       ├── ./staging/CoreUI/icons-simple-line-icons.html
-│       ├── ./staging/CoreUI/img
-│       │   ├── ./staging/CoreUI/img/avatars
-│       │   │   ├── ./staging/CoreUI/img/avatars/1.jpg
-│       │   │   ├── ./staging/CoreUI/img/avatars/2.jpg
-│       │   │   ├── ./staging/CoreUI/img/avatars/3.jpg
-│       │   │   ├── ./staging/CoreUI/img/avatars/4.jpg
-│       │   │   ├── ./staging/CoreUI/img/avatars/5.jpg
-│       │   │   ├── ./staging/CoreUI/img/avatars/6.jpg
-│       │   │   ├── ./staging/CoreUI/img/avatars/7.jpg
-│       │   │   └── ./staging/CoreUI/img/avatars/8.jpg
-│       │   ├── ./staging/CoreUI/img/favicon.png
-│       │   ├── ./staging/CoreUI/img/logo-symbol.png
-│       │   └── ./staging/CoreUI/img/logo.png
-│       ├── ./staging/CoreUI/index.html
-│       ├── ./staging/CoreUI/js
-│       │   ├── ./staging/CoreUI/js/app.js
-│       │   └── ./staging/CoreUI/js/views
-│       │       ├── ./staging/CoreUI/js/views/charts.js
-│       │       ├── ./staging/CoreUI/js/views/main.js
-│       │       ├── ./staging/CoreUI/js/views/popovers.js
-│       │       ├── ./staging/CoreUI/js/views/tooltips.js
-│       │       └── ./staging/CoreUI/js/views/widgets.js
-│       ├── ./staging/CoreUI/notifications-alerts.html
-│       ├── ./staging/CoreUI/notifications-badge.html
-│       ├── ./staging/CoreUI/notifications-modals.html
-│       ├── ./staging/CoreUI/package.json
-│       ├── ./staging/CoreUI/pages-404.html
-│       ├── ./staging/CoreUI/pages-500.html
-│       ├── ./staging/CoreUI/pages-login.html
-│       ├── ./staging/CoreUI/pages-register.html
-│       ├── ./staging/CoreUI/scss
-│       │   ├── ./staging/CoreUI/scss/_bootstrap-variables.scss
-│       │   ├── ./staging/CoreUI/scss/_core-variables.scss
-│       │   ├── ./staging/CoreUI/scss/_custom.scss
-│       │   ├── ./staging/CoreUI/scss/core
-│       │   │   ├── ./staging/CoreUI/scss/core/_animate.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_aside.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_avatars.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_badge.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_breadcrumb-menu.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_breadcrumb.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_buttons.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_callout.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_card.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_charts.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_dropdown-menu-right.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_dropdown.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_footer.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_grid.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_input-group.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_layout.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_loading.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_mixins.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_mobile.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_modal.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_nav.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_navbar.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_others.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_progress.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_rtl.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_sidebar.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_switches.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_tables.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_temp.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_typography.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_utilities.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_variables.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/_widgets.scss
-│       │   │   ├── ./staging/CoreUI/scss/core/core.scss
-│       │   │   └── ./staging/CoreUI/scss/core/utilities
-│       │   │       ├── ./staging/CoreUI/scss/core/utilities/_background.scss
-│       │   │       ├── ./staging/CoreUI/scss/core/utilities/_borders.scss
-│       │   │       └── ./staging/CoreUI/scss/core/utilities/_display.scss
-│       │   ├── ./staging/CoreUI/scss/style.scss
-│       │   └── ./staging/CoreUI/scss/vendors
-│       │       ├── ./staging/CoreUI/scss/vendors/_variables.scss
-│       │       └── ./staging/CoreUI/scss/vendors/chart.js
-│       │           └── ./staging/CoreUI/scss/vendors/chart.js/chart.scss
-│       ├── ./staging/CoreUI/typography.html
-│       ├── ./staging/CoreUI/vendors
-│       │   └── ./staging/CoreUI/vendors/css
-│       │       ├── ./staging/CoreUI/vendors/css/chart.css
-│       │       └── ./staging/CoreUI/vendors/css/chart.min.css
-│       ├── ./staging/CoreUI/vendors.json
-│       └── ./staging/CoreUI/widgets.html
 ├── ./tailwind.js
 ├── ./tests
 │   ├── ./tests/Browser
-│   │   ├── ./tests/Browser/Components
+│   │   ├── ./tests/Browser/console
 │   │   ├── ./tests/Browser/ExampleTest.php
 │   │   ├── ./tests/Browser/Pages
 │   │   │   ├── ./tests/Browser/Pages/HomePage.php
 │   │   │   └── ./tests/Browser/Pages/Page.php
-│   │   ├── ./tests/Browser/console
 │   │   └── ./tests/Browser/screenshots
 │   ├── ./tests/CreatesApplication.php
 │   ├── ./tests/DuskTestCase.php
 │   ├── ./tests/Feature
 │   │   └── ./tests/Feature/ExampleTest.php
+│   ├── ./tests/helpers
+│   │   └── ./tests/helpers/functions.php
 │   ├── ./tests/Javascript
 │   │   └── ./tests/Javascript/Helpers
 │   │       └── ./tests/Javascript/Helpers/setup-browser-env.js
-│   ├── ./tests/TestCase.php
-│   ├── ./tests/Unit
-│   │   └── ./tests/Unit/ExampleTest.php
 │   ├── ./tests/_Reports
 │   │   └── ./tests/_Reports/testdox
-│   ├── ./tests/helpers
-│   │   └── ./tests/helpers/functions.php
-│   └── ./tests/setup.js
+│   ├── ./tests/setup.js
+│   ├── ./tests/TestCase.php
+│   └── ./tests/Unit
+│       └── ./tests/Unit/ExampleTest.php
 ├── ./tinker.config.php
 ├── ./webpack.config.js
 └── ./webpack.mix.js
 
-67 directories, 352 files
+84 directories, 267 files
