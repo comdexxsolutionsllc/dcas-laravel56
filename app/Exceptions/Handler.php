@@ -8,14 +8,13 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
+
     /**
      * A list of the exception types that are not reported.
      *
      * @var array
      */
-    protected $dontReport = [
-        //
-    ];
+    protected $dontReport = [];
 
     /**
      * A list of the inputs that are never flashed for validation exceptions.
@@ -26,20 +25,6 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
-
-    /**
-     * Report or log an exception.
-     *
-     * @param  \Exception $exception
-     *
-     * @return void
-     *
-     * @throws \Exception
-     */
-    public function report(Exception $exception): void
-    {
-        parent::report($exception);
-    }
 
     /**
      * Render an exception into an HTTP response.
@@ -59,7 +44,7 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * @param $request
+     * @param           $request
      * @param Exception $exception
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
@@ -71,6 +56,21 @@ class Handler extends ExceptionHandler
         }
 
         flash()->warning($exception->getMessage());
+
         return redirect()->route('home');
+    }
+
+    /**
+     * Report or log an exception.
+     *
+     * @param  \Exception $exception
+     *
+     * @return void
+     *
+     * @throws \Exception
+     */
+    public function report(Exception $exception): void
+    {
+        parent::report($exception);
     }
 }
