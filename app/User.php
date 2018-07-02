@@ -13,20 +13,29 @@ use Laravel\Cashier\Billable;
 use Laravel\Passport\HasApiTokens;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 
-
 /**
  * App\User
  *
- * @property int $id
- * @property string $name
- * @property string $email
- * @property string $password
- * @property string|null $remember_token
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Permission[] $permissions
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Role[] $roles
+ * @property int
+ *               $id
+ * @property string
+ *               $name
+ * @property string
+ *               $email
+ * @property string
+ *               $password
+ * @property string|null
+ *               $remember_token
+ * @property \Carbon\Carbon|null
+ *               $created_at
+ * @property \Carbon\Carbon|null
+ *               $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[]
+ *                $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Permission[]
+ *                    $permissions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Role[]
+ *                    $roles
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)
@@ -37,18 +46,30 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRoleIs($role = '')
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Team[] $rolesTeams
- * @property int|null $profile_id
- * @property string $slug
- * @property string|null $stripe_id
- * @property string|null $card_brand
- * @property string|null $card_last_four
- * @property string|null $trial_ends_at
- * @property string|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[] $clients
- * @property-read \App\Profile $profile
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Cashier\Subscription[] $subscriptions
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Team[]
+ *                    $rolesTeams
+ * @property int|null
+ *               $profile_id
+ * @property string
+ *               $slug
+ * @property string|null
+ *               $stripe_id
+ * @property string|null
+ *               $card_brand
+ * @property string|null
+ *               $card_last_four
+ * @property string|null
+ *               $trial_ends_at
+ * @property string|null
+ *               $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[]
+ *                    $clients
+ * @property-read \App\Profile
+ *                    $profile
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Cashier\Subscription[]
+ *                    $subscriptions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[]
+ *                    $tokens
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|\App\User onlyTrashed()
  * @method static bool|null restore()
@@ -64,6 +85,7 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
  */
 class User extends Authenticatable
 {
+
     use Billable, HasApiTokens, HasRolesAndAbilities, HasSlug, Notifiable, SoftCascadeTrait, SoftDeletes;
 
     /**
@@ -72,7 +94,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -81,7 +105,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -90,21 +115,18 @@ class User extends Authenticatable
     protected $softCascade = [];
 
     /**
-     * @return \Bpocallaghan\Sluggable\SlugOptions
-     */
-    protected function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->slugSeperator('-')
-            ->generateSlugFrom('name')
-            ->saveSlugTo('slug');
-    }
-
-    /**
      * @return HasOne
      */
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
+    }
+
+    /**
+     * @return \Bpocallaghan\Sluggable\SlugOptions
+     */
+    protected function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()->slugSeperator('-')->generateSlugFrom('name')->saveSlugTo('slug');
     }
 }

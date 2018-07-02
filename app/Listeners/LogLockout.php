@@ -7,6 +7,7 @@ use Log;
 
 class LogLockout
 {
+
     /**
      * Create the event listener.
      *
@@ -20,7 +21,8 @@ class LogLockout
     /**
      * Handle the event.
      *
-     * @param  Lockout  $event
+     * @param  Lockout $event
+     *
      * @return void
      */
     public function handle(Lockout $event)

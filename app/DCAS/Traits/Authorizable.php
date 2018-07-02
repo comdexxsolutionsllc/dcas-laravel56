@@ -4,21 +4,23 @@ namespace DCAS\Traits;
 
 trait Authorizable
 {
+
     private $abilities = [
-        'index' => 'view',
-        'edit' => 'edit',
-        'show' => 'view',
-        'update' => 'edit',
-        'create' => 'add',
-        'store' => 'add',
-        'destroy' => 'delete'
+        'index'   => 'view',
+        'edit'    => 'edit',
+        'show'    => 'view',
+        'update'  => 'edit',
+        'create'  => 'add',
+        'store'   => 'add',
+        'destroy' => 'delete',
     ];
 
     /**
-     * Override of callAction to perform the authorization before
+     * Override of callAction to perform the authorization before.
      *
      * @param $method
      * @param $parameters
+     *
      * @return mixed
      */
     public function callAction($method, $parameters)

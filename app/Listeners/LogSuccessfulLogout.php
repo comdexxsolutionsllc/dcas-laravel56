@@ -7,6 +7,7 @@ use Log;
 
 class LogSuccessfulLogout
 {
+
     /**
      * Create the event listener.
      *
@@ -20,7 +21,8 @@ class LogSuccessfulLogout
     /**
      * Handle the event.
      *
-     * @param  Logout  $event
+     * @param  Logout $event
+     *
      * @return void
      */
     public function handle(Logout $event)

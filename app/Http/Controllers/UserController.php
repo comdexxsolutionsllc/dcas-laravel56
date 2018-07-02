@@ -2,37 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
+use App\Role;
+use App\User;
+use Auth;
 use DCAS\Traits\Authorizable;
 use Illuminate\Http\Request;
-use App\User;
-use App\Role;
-use Auth;
-use App\Permission;
 
 class UserController extends Controller
 {
-    use Authorizable;
 
+    use Authorizable;
 
     public function index()
     {
         $result = User::latest()->paginate();
+
         return view('user.index', compact('result'));
     }
 
     public function create()
     {
         $roles = Role::pluck('name', 'id');
+
         return view('user.new', compact('roles'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'bail|required|min:2',
-            'email' => 'required|email|unique:users',
+            'name'     => 'bail|required|min:2',
+            'email'    => 'required|email|unique:users',
             'password' => 'required|min:6',
-            'roles' => 'required|min:1'
+            'roles'    => 'required|min:1',
         ]);
 
         // hash password
@@ -49,6 +51,29 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
+    private function syncPermissions(Request $request, $user)
+    {
+        // Get the submitted roles
+        $roles = $request->get('roles', []);
+        $permissions = $request->get('permissions', []);
+
+        // Get the roles
+        $roles = Role::find($roles);
+
+        // check for current role changes
+        if (! $user->hasAllRoles($roles)) {
+            // reset all direct permissions for user
+            $user->permissions()->sync([]);
+        } else {
+            // handle permissions
+            $user->syncPermissions($permissions);
+        }
+
+        $user->syncRoles($roles);
+
+        return $user;
+    }
+
     public function edit($id)
     {
         $user = User::find($id);
@@ -61,9 +86,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'bail|required|min:2',
+            'name'  => 'bail|required|min:2',
             'email' => 'required|email|unique:users,email,' . $id,
-            'roles' => 'required|min:1'
+            'roles' => 'required|min:1',
         ]);
 
         // Get the user
@@ -82,6 +107,7 @@ class UserController extends Controller
 
         $user->save();
         flash()->success('User has been updated.');
+
         return redirect()->route('users.index');
     }
 
@@ -89,6 +115,7 @@ class UserController extends Controller
     {
         if (Auth::user()->id == $id) {
             flash()->warning('Deletion of currently logged in user is not allowed :(')->important();
+
             return redirect()->back();
         }
 
@@ -99,27 +126,5 @@ class UserController extends Controller
         }
 
         return redirect()->back();
-    }
-
-    private function syncPermissions(Request $request, $user)
-    {
-        // Get the submitted roles
-        $roles = $request->get('roles', []);
-        $permissions = $request->get('permissions', []);
-
-        // Get the roles
-        $roles = Role::find($roles);
-
-        // check for current role changes
-        if (!$user->hasAllRoles($roles)) {
-            // reset all direct permissions for user
-            $user->permissions()->sync([]);
-        } else {
-            // handle permissions
-            $user->syncPermissions($permissions);
-        }
-
-        $user->syncRoles($roles);
-        return $user;
     }
 }

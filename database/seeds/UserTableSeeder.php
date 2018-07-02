@@ -1,11 +1,12 @@
 <?php
 
 use App\Profile;
-use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      *
@@ -25,12 +26,10 @@ class UserTableSeeder extends Seeder
         $DefaultAccountProfile->country_code = '1';
         $DefaultAccountProfile->npa_nxx_suffix = 5551212;
         $DefaultAccountProfile->phone_type = $faker->randomElement(['alternate', 'home', 'mobile', 'work',]);
-        
+
         $defaultAccount->profile()->save($DefaultAccountProfile);
 
-
-        for ($i = 1; $i <= 99; $i++)
-        {
+        for ($i = 1; $i <= 99; $i ++) {
             $user = factory(App\User::class)->create();
 
             $profile = new Profile;
@@ -43,7 +42,6 @@ class UserTableSeeder extends Seeder
             $profile->country_code = '1';
             $profile->npa_nxx_suffix = 5551212;
             $profile->phone_type = $faker->randomElement(['alternate', 'home', 'mobile', 'work',]);
-
 
             $user->profile()->save($profile);
         }

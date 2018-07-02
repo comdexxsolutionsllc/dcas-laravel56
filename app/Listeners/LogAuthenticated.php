@@ -7,6 +7,7 @@ use Log;
 
 class LogAuthenticated
 {
+
     /**
      * Create the event listener.
      *
@@ -21,6 +22,7 @@ class LogAuthenticated
      * Handle the event.
      *
      * @param  Authenticated $event
+     *
      * @return void
      */
     public function handle(Authenticated $event)

@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+
     /**
      * Seed the application's database.
      *
@@ -20,6 +21,6 @@ class DatabaseSeeder extends Seeder
         /**
          * @todo
          */
-         $this->call(UserTableSeeder::class);
+        $this->call(UserTableSeeder::class);
     }
 }

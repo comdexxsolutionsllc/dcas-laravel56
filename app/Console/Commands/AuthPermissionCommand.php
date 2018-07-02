@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 
 class AuthPermissionCommand extends Command
 {
+
     /**
      * @var string
      */
@@ -23,7 +24,6 @@ class AuthPermissionCommand extends Command
             } else {
                 $this->warn('No permissions for ' . $this->getNameArgument() . ' found!');
             }
-
         } else {
             // create permissions
             foreach ($permissions as $permission) {

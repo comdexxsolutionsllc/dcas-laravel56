@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f4195d96a283b75b84c48fa104ff1ae",
+    "content-hash": "18f4990d855daf29b84b8702aa83c65a",
     "packages": [
         {
             "name": "askedio/laravel-soft-cascade",
@@ -103,6 +103,64 @@
                 "validation"
             ],
             "time": "2018-06-11T17:15:25+00:00"
+        },
+        {
+            "name": "beyondcode/laravel-self-diagnosis",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beyondcode/laravel-self-diagnosis.git",
+                "reference": "0693c6619ec9cdc3731147186466a3f8b1462dfb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beyondcode/laravel-self-diagnosis/zipball/0693c6619ec9cdc3731147186466a3f8b1462dfb",
+                "reference": "0693c6619ec9cdc3731147186466a3f8b1462dfb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.2.*|5.3.*|5.4.*|5.5.*|5.6.*",
+                "php": "^7.1",
+                "vlucas/phpdotenv": "~2.5"
+            },
+            "require-dev": {
+                "larapack/dd": "^1.0",
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "~3.5",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BeyondCode\\SelfDiagnosis\\SelfDiagnosisServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BeyondCode\\SelfDiagnosis\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcel Pociot",
+                    "email": "marcel@beyondco.de",
+                    "homepage": "https://beyondcode.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Perform various self diagnosis tests on your Laravel application.",
+            "homepage": "https://github.com/beyondcode/laravel-self-diagnosis",
+            "keywords": [
+                "beyondcode",
+                "laravel-self-diagnosis"
+            ],
+            "time": "2018-07-06T11:49:27+00:00"
         },
         {
             "name": "bpocallaghan/alert",
@@ -2187,16 +2245,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.63",
+            "version": "v0.64",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client-services.git",
-                "reference": "a009a33246e90bf1f60f745f8e47039ac5a87fdf"
+                "reference": "0250aa8cadbe58e790aa07d736b675f3bdd87a1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/a009a33246e90bf1f60f745f8e47039ac5a87fdf",
-                "reference": "a009a33246e90bf1f60f745f8e47039ac5a87fdf",
+                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/0250aa8cadbe58e790aa07d736b675f3bdd87a1c",
+                "reference": "0250aa8cadbe58e790aa07d736b675f3bdd87a1c",
                 "shasum": ""
             },
             "require": {
@@ -2220,7 +2278,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2018-06-07T00:22:54+00:00"
+            "time": "2018-06-30T00:22:51+00:00"
         },
         {
             "name": "google/auth",
@@ -4892,16 +4950,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.15",
+            "version": "v2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09"
+                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/10bcb46e8f3d365170f6de9d05245aa066b81f09",
-                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/29af24f25bab834fcbb38ad2a69fa93b867e070d",
+                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
                 "shasum": ""
             },
             "require": {
@@ -4937,7 +4995,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-06-08T15:26:40+00:00"
+            "time": "2018-07-04T16:31:37+00:00"
         },
         {
             "name": "phenx/php-font-lib",
@@ -5576,16 +5634,16 @@
         },
         {
             "name": "pusher/pusher-php-server",
-            "version": "v3.0.4",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "1496ef5ae12670ff8ffe83b9f47d1e4514608d9b"
+                "reference": "c13978f756ddd7871318e3a80559efc23218903b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/1496ef5ae12670ff8ffe83b9f47d1e4514608d9b",
-                "reference": "1496ef5ae12670ff8ffe83b9f47d1e4514608d9b",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/c13978f756ddd7871318e3a80559efc23218903b",
+                "reference": "c13978f756ddd7871318e3a80559efc23218903b",
                 "shasum": ""
             },
             "require": {
@@ -5625,7 +5683,7 @@
                 "rest",
                 "trigger"
             ],
-            "time": "2018-05-21T13:25:35+00:00"
+            "time": "2018-07-04T14:07:28+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -6784,16 +6842,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v6.0.2",
+            "version": "v6.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "412333372fb6c8ffb65496a2bbd7321af75733fc"
+                "reference": "aa899fef280b1c1aec8d5d4ac069af7f80c89a23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/412333372fb6c8ffb65496a2bbd7321af75733fc",
-                "reference": "412333372fb6c8ffb65496a2bbd7321af75733fc",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/aa899fef280b1c1aec8d5d4ac069af7f80c89a23",
+                "reference": "aa899fef280b1c1aec8d5d4ac069af7f80c89a23",
                 "shasum": ""
             },
             "require": {
@@ -6804,10 +6862,14 @@
                 "mockery/mockery": "~0.9.1",
                 "symfony/phpunit-bridge": "~3.3@dev"
             },
+            "suggest": {
+                "ext-intl": "Needed to support internationalized email addresses",
+                "true/punycode": "Needed to support internationalized email addresses, if ext-intl is not installed"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.0-dev"
+                    "dev-master": "6.1-dev"
                 }
             },
             "autoload": {
@@ -6829,13 +6891,13 @@
                 }
             ],
             "description": "Swiftmailer, free feature-rich PHP mailer",
-            "homepage": "http://swiftmailer.symfony.com",
+            "homepage": "https://swiftmailer.symfony.com",
             "keywords": [
                 "email",
                 "mail",
                 "mailer"
             ],
-            "time": "2017-09-30T22:39:41+00:00"
+            "time": "2018-07-04T11:12:44+00:00"
         },
         {
             "name": "symfony/console",
@@ -8553,16 +8615,16 @@
         },
         {
             "name": "yajra/laravel-datatables-html",
-            "version": "v3.7.1",
+            "version": "v3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-html.git",
-                "reference": "0d7e584d7dee74eb2c90aaec8b5771114c0f2d49"
+                "reference": "55e9b088429c5b5d727085b7081113b831d2b2bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-html/zipball/0d7e584d7dee74eb2c90aaec8b5771114c0f2d49",
-                "reference": "0d7e584d7dee74eb2c90aaec8b5771114c0f2d49",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-html/zipball/55e9b088429c5b5d727085b7081113b831d2b2bb",
+                "reference": "55e9b088429c5b5d727085b7081113b831d2b2bb",
                 "shasum": ""
             },
             "require": {
@@ -8608,20 +8670,20 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2018-03-16T01:32:45+00:00"
+            "time": "2018-07-06T01:59:07+00:00"
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v8.7.0",
+            "version": "v8.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "34c281691df93374ac2b3d96e8611f0a6abf2b47"
+                "reference": "1643ba54cf9c7556ac7bba90564f5900cc2473fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/34c281691df93374ac2b3d96e8611f0a6abf2b47",
-                "reference": "34c281691df93374ac2b3d96e8611f0a6abf2b47",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/1643ba54cf9c7556ac7bba90564f5900cc2473fe",
+                "reference": "1643ba54cf9c7556ac7bba90564f5900cc2473fe",
                 "shasum": ""
             },
             "require": {
@@ -8679,7 +8741,7 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2018-06-03T01:33:29+00:00"
+            "time": "2018-07-06T01:19:37+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -9033,16 +9095,16 @@
         },
         {
             "name": "crestapps/laravel-code-generator",
-            "version": "v2.2.10",
+            "version": "v2.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CrestApps/laravel-code-generator.git",
-                "reference": "78db6a89c8894f17f00da21b75f6c064e24778a0"
+                "reference": "4cbd834f1221b747a501dc7c50967d0ed4d95734"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CrestApps/laravel-code-generator/zipball/78db6a89c8894f17f00da21b75f6c064e24778a0",
-                "reference": "78db6a89c8894f17f00da21b75f6c064e24778a0",
+                "url": "https://api.github.com/repos/CrestApps/laravel-code-generator/zipball/4cbd834f1221b747a501dc7c50967d0ed4d95734",
+                "reference": "4cbd834f1221b747a501dc7c50967d0ed4d95734",
                 "shasum": ""
             },
             "require": {
@@ -9095,7 +9157,7 @@
                 "routes creator",
                 "views creator"
             ],
-            "time": "2018-05-24T22:49:43+00:00"
+            "time": "2018-07-04T18:00:46+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -10396,16 +10458,16 @@
         },
         {
             "name": "phpspec/phpspec",
-            "version": "4.3.0",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "0671a4c63377cad221d2202177853f070f718884"
+                "reference": "4474f1cb4cf9873996fc07fac6533ab9298eb6fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/0671a4c63377cad221d2202177853f070f718884",
-                "reference": "0671a4c63377cad221d2202177853f070f718884",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/4474f1cb4cf9873996fc07fac6533ab9298eb6fd",
+                "reference": "4474f1cb4cf9873996fc07fac6533ab9298eb6fd",
                 "shasum": ""
             },
             "require": {
@@ -10473,7 +10535,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2017-12-22T11:50:28+00:00"
+            "time": "2018-07-02T17:43:33+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -11508,16 +11570,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v3.17.2",
+            "version": "v3.17.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "bf21ebbc0c6cfbab32560b410303a5001c06d815"
+                "reference": "9709df82d363060e55c0bb92008911ab5a5975dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/bf21ebbc0c6cfbab32560b410303a5001c06d815",
-                "reference": "bf21ebbc0c6cfbab32560b410303a5001c06d815",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/9709df82d363060e55c0bb92008911ab5a5975dd",
+                "reference": "9709df82d363060e55c0bb92008911ab5a5975dd",
                 "shasum": ""
             },
             "type": "library",
@@ -11561,7 +11623,7 @@
                 "swagger",
                 "ui"
             ],
-            "time": "2018-06-30T19:26:41+00:00"
+            "time": "2018-07-07T07:56:54+00:00"
         },
         {
             "name": "symfony/class-loader",

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
-use Illuminate\Http\Request;
-use DCAS\Traits\Authorizable;
 use App\Permission;
-
+use App\Role;
+use DCAS\Traits\Authorizable;
+use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+
     use Authorizable;
 
     public function index()
@@ -37,6 +37,7 @@ class RoleController extends Controller
             // admin role has everything
             if ($role->name === 'Admin') {
                 $role->syncPermissions(Permission::all());
+
                 return redirect()->route('roles.index');
             }
 

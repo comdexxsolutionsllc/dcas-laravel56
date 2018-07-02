@@ -4,7 +4,7 @@ return [
     /**
      * Base paths to search for models (paths ending in '*' search recursively).
      * */
-    'model_paths' => [
+    'model_paths'       => [
         '/app',
         '/app/Models/*',
         '/app/Entities/*',
@@ -17,7 +17,7 @@ return [
     /**
      * Only define these models (all other models will be ignored).
      * */
-    'only' => [
+    'only'              => [
         // 'App\OnlyThisModel',
         // 'App\AlsoOnlyThisModel',
     ],
@@ -25,7 +25,7 @@ return [
     /**
      * Ignore these models.
      * */
-    'except' => [
+    'except'            => [
         // 'App\IgnoreThisModel',
         // 'App\AlsoIgnoreThisModel',
     ],
@@ -34,7 +34,7 @@ return [
      * Model shortcut naming strategy (e.g. 'App\User' = '$u', '$u_', 'u()').
      * Supported values: 'pascal', 'shortestUnique'
      * */
-    'strategy' => 'pascal',
+    'strategy'          => 'pascal',
     /**
      * Alternatively, you may pass a resolvable fully qualified class name
      * implementing 'Ajthinking\Tinx\Naming\Strategy'.
@@ -44,17 +44,17 @@ return [
     /**
      * Column name (e.g. 'id', 'created_at') used to determine last model shortcut (i.e. '$u_').
      * */
-    'latest_column' => 'created_at',
+    'latest_column'     => 'created_at',
 
     /**
      * If true, models without database tables will also have shortcuts defined.
      * */
-    'tableless_models' => false,
+    'tableless_models'  => false,
 
     /**
      * Include these file(s) before starting tinker.
      * */
-    'include' => [
+    'include'           => [
         // '/include/this/file.php',
         // '/also/include/this/file.php',
     ],

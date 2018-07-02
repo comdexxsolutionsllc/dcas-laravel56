@@ -7,6 +7,7 @@ use Log;
 
 class LogAuthenticationAttempt
 {
+
     /**
      * Create the event listener.
      *
@@ -20,7 +21,8 @@ class LogAuthenticationAttempt
     /**
      * Handle the event.
      *
-     * @param  Attempting  $event
+     * @param  Attempting $event
+     *
      * @return void
      */
     public function handle(Attempting $event)
