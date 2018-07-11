@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-07-10 16:44:41.
+    * Generated on 2018-07-11 13:30:46.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -46,6 +46,7 @@ namespace PHPSTORM_META {
         'tinx.storage' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'command.generate:diagram' => \BeyondCode\ErdGenerator\GenerateDiagramCommand::class,
         'command.selfdiagnosis' => \BeyondCode\SelfDiagnosis\SelfDiagnosisCommand::class,
         'alert' => \Bpocallaghan\Alert\Alert::class,
         'impersonate' => \Bpocallaghan\Impersonate\Impersonate::class,
@@ -246,6 +247,7 @@ namespace PHPSTORM_META {
         'tinx.storage' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'command.generate:diagram' => \BeyondCode\ErdGenerator\GenerateDiagramCommand::class,
         'command.selfdiagnosis' => \BeyondCode\SelfDiagnosis\SelfDiagnosisCommand::class,
         'alert' => \Bpocallaghan\Alert\Alert::class,
         'impersonate' => \Bpocallaghan\Impersonate\Impersonate::class,
@@ -446,6 +448,7 @@ namespace PHPSTORM_META {
         'tinx.storage' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'command.generate:diagram' => \BeyondCode\ErdGenerator\GenerateDiagramCommand::class,
         'command.selfdiagnosis' => \BeyondCode\SelfDiagnosis\SelfDiagnosisCommand::class,
         'alert' => \Bpocallaghan\Alert\Alert::class,
         'impersonate' => \Bpocallaghan\Impersonate\Impersonate::class,
@@ -646,6 +649,7 @@ namespace PHPSTORM_META {
         'tinx.storage' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'command.generate:diagram' => \BeyondCode\ErdGenerator\GenerateDiagramCommand::class,
         'command.selfdiagnosis' => \BeyondCode\SelfDiagnosis\SelfDiagnosisCommand::class,
         'alert' => \Bpocallaghan\Alert\Alert::class,
         'impersonate' => \Bpocallaghan\Impersonate\Impersonate::class,
@@ -846,6 +850,7 @@ namespace PHPSTORM_META {
         'tinx.storage' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'command.generate:diagram' => \BeyondCode\ErdGenerator\GenerateDiagramCommand::class,
         'command.selfdiagnosis' => \BeyondCode\SelfDiagnosis\SelfDiagnosisCommand::class,
         'alert' => \Bpocallaghan\Alert\Alert::class,
         'impersonate' => \Bpocallaghan\Impersonate\Impersonate::class,
@@ -1046,6 +1051,7 @@ namespace PHPSTORM_META {
         'tinx.storage' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'command.generate:diagram' => \BeyondCode\ErdGenerator\GenerateDiagramCommand::class,
         'command.selfdiagnosis' => \BeyondCode\SelfDiagnosis\SelfDiagnosisCommand::class,
         'alert' => \Bpocallaghan\Alert\Alert::class,
         'impersonate' => \Bpocallaghan\Impersonate\Impersonate::class,
@@ -1246,6 +1252,7 @@ namespace PHPSTORM_META {
         'tinx.storage' => \Illuminate\Filesystem\FilesystemAdapter::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'command.generate:diagram' => \BeyondCode\ErdGenerator\GenerateDiagramCommand::class,
         'command.selfdiagnosis' => \BeyondCode\SelfDiagnosis\SelfDiagnosisCommand::class,
         'alert' => \Bpocallaghan\Alert\Alert::class,
         'impersonate' => \Bpocallaghan\Impersonate\Impersonate::class,

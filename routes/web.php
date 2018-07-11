@@ -17,4 +17,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('home');
+Route::group(['prefix' => '/dashboard'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+
+    Route::group(['prefix' => '/admin'], function () {
+        Route::resource('permissions', PermissionController::class)->except([
+            'destroy',
+            'edit',
+            'update',
+        ]);
+
+        Route::resource('roles', RoleController::class)->except([
+            'destroy',
+            'edit',
+            'update',
+        ]);
+    });
+});
