@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "5e2c1daa210555aa65d2cbd4a9d7eb64",
+=======
+    "content-hash": "8b63407d01722660d82908e3c6816046",
+>>>>>>> 6cedaa8a8004e7330af97d90832b83607a9cae95
     "packages": [
         {
             "name": "askedio/laravel-soft-cascade",
@@ -9429,6 +9433,7 @@
             "time": "2016-06-13T19:28:20+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "beyondcode/laravel-er-diagram-generator",
             "version": "0.2.3",
             "source": {
@@ -9453,21 +9458,55 @@
                 "orchestra/testbench": "~3.5",
                 "phpunit/phpunit": "^7.0",
                 "spatie/phpunit-snapshot-assertions": "^1.3"
+=======
+            "name": "beyondcode/laravel-dump-server",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beyondcode/laravel-dump-server.git",
+                "reference": "d442abc61867a27135de75a869f55fa0761634b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beyondcode/laravel-dump-server/zipball/d442abc61867a27135de75a869f55fa0761634b7",
+                "reference": "d442abc61867a27135de75a869f55fa0761634b7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "5.6.*",
+                "illuminate/http": "5.6.*",
+                "illuminate/support": "5.6.*",
+                "php": "^7.1",
+                "symfony/var-dumper": "^4.1.1"
+            },
+            "require-dev": {
+                "larapack/dd": "^1.0",
+                "phpunit/phpunit": "^7.0"
+>>>>>>> 6cedaa8a8004e7330af97d90832b83607a9cae95
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
+<<<<<<< HEAD
                         "BeyondCode\\ErdGenerator\\ErdGeneratorServiceProvider"
                     ],
                     "aliases": {
                         "ErdGenerator": "BeyondCode\\ErdGenerator\\ErdGeneratorFacade"
                     }
+=======
+                        "BeyondCode\\DumpServer\\DumpServerServiceProvider"
+                    ]
+>>>>>>> 6cedaa8a8004e7330af97d90832b83607a9cae95
                 }
             },
             "autoload": {
                 "psr-4": {
+<<<<<<< HEAD
                     "BeyondCode\\ErdGenerator\\": "src"
+=======
+                    "BeyondCode\\DumpServer\\": "src"
+>>>>>>> 6cedaa8a8004e7330af97d90832b83607a9cae95
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -9482,6 +9521,7 @@
                     "role": "Developer"
                 }
             ],
+<<<<<<< HEAD
             "description": "Generate ER diagrams from your Laravel models.",
             "homepage": "https://github.com/beyondcode/laravel-er-diagram-generator",
             "keywords": [
@@ -9489,6 +9529,15 @@
                 "laravel-er-diagram-generator"
             ],
             "time": "2018-07-12T08:28:30+00:00"
+=======
+            "description": "Symfony Var-Dump Server for Laravel",
+            "homepage": "https://github.com/beyondcode/laravel-dump-server",
+            "keywords": [
+                "beyondcode",
+                "laravel-dump-server"
+            ],
+            "time": "2018-07-11T15:24:14+00:00"
+>>>>>>> 6cedaa8a8004e7330af97d90832b83607a9cae95
         },
         {
             "name": "crestapps/laravel-code-generator",

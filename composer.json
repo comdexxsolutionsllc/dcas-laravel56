@@ -83,6 +83,7 @@
     "barryvdh/laravel-debugbar": "^3.1",
     "barryvdh/laravel-ide-helper": "^2.4",
     "beyondcode/laravel-er-diagram-generator": "^0.2.2",
+    "beyondcode/laravel-dump-server": "^1.1",
     "crestapps/laravel-code-generator": "*",
     "filp/whoops": "~2.0",
     "fzaninotto/faker": "~1.4",
