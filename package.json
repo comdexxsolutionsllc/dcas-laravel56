@@ -35,7 +35,7 @@
         "eslint-config-spatie": "^2.0.3",
         "eslint-plugin-import": "^2.13.0",
         "eslint-plugin-standard": "^3.1.0",
-        "eslint-plugin-vue": "^4.5.0",
+        "eslint-plugin-vue": "^4.7.0",
         "expect": "^23.4.0",
         "glob-all": "*",
         "jscs": "^3.0.7",

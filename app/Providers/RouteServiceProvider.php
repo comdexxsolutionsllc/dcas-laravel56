@@ -39,7 +39,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-        //
+
+        $this->mapVendorRoutes();
     }
 
     /**
@@ -52,6 +53,18 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes(): void
     {
         Route::prefix('api')->middleware('api')->namespace($this->namespace)->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * Define the "vendor" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapVendorRoutes(): void
+    {
+        Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/vendor.php'));
     }
 
     /**

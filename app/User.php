@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
 use Laravel\Passport\HasApiTokens;
-use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * App\User
@@ -86,11 +86,13 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIs($role)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsAll($role)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsNot($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User role($roles)
  */
 class User extends Authenticatable
 {
 
-    use Billable, HasApiTokens, HasRolesAndAbilities, HasSlug, Notifiable, SoftCascadeTrait, SoftDeletes;
+    use Billable, HasApiTokens, HasRoles, HasSlug, Notifiable, SoftCascadeTrait, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
