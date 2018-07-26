@@ -9,16 +9,6 @@ class LogAuthenticated
 {
 
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Handle the event.
      *
      * @param  Authenticated $event
