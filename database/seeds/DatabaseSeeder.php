@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +15,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserTableSeeder::class);
         $this->call(RolesAndPermissionsSeeder::class);
+
+        $this->runPostSeedCommands();
+    }
+
+    protected function runPostSeedCommands(): void
+    {
+        Artisan::call('passport:install');
+        Artisan::call('passport:keys');
     }
 }

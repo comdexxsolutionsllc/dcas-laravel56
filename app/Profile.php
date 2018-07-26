@@ -2,14 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
 /**
  * App\Profile
  *
  * @property int                 $id
- * @property int                 $user_id
+ * @property int|null            $user_id
  * @property string|null         $address_1
  * @property string|null         $address_2
  * @property string|null         $city
@@ -19,13 +16,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int|null            $country_code
  * @property int|null            $npa_nxx_suffix
  * @property string|null         $phone_type
- * @property string|null         $deleted_at
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
- * @property-read \App\User      $user
- * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Query\Builder|\App\Profile onlyTrashed()
- * @method static bool|null restore()
+ * @property array               $deleted_at
+ * @property array               $created_at
+ * @property array               $updated_at
+ * @property-read \App\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereAddress1($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereAddress2($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereCity($value)
@@ -40,19 +34,32 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereUserId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Profile withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Profile withoutTrashed()
  * @mixin \Eloquent
  */
 class Profile extends BaseModel
 {
 
-    use SoftDeletes;
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'profiles';
 
     /**
+     * The database primary key value.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'address_1',
         'address_2',
         'city',
@@ -65,10 +72,60 @@ class Profile extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
      */
-    public function user(): BelongsTo
+    protected $dates = [];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [];
+
+    /**
+     * Get the user for this model.
+     */
+    public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User', 'user_id', 'id');
+    }
+
+    /**
+     * Get deleted_at in array format
+     *
+     * @param  string $value
+     *
+     * @return array
+     */
+    public function getDeletedAtAttribute($value): array
+    {
+        return date('j/n/Y g:i A', strtotime($value));
+    }
+
+    /**
+     * Get created_at in array format
+     *
+     * @param  string $value
+     *
+     * @return array
+     */
+    public function getCreatedAtAttribute($value): array
+    {
+        return date('j/n/Y g:i A', strtotime($value));
+    }
+
+    /**
+     * Get updated_at in array format
+     *
+     * @param  string $value
+     *
+     * @return array
+     */
+    public function getUpdatedAtAttribute($value): array
+    {
+        return date('j/n/Y g:i A', strtotime($value));
     }
 }

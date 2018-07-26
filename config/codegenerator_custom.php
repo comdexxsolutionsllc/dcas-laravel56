@@ -35,5 +35,7 @@ return [
 |   ],
 |
  */
+    'models_path'         => '',
+    'organize_migrations' => true,
 
 ];

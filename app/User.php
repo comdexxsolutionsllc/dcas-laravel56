@@ -5,10 +5,12 @@ namespace App;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Bpocallaghan\Sluggable\HasSlug;
 use Bpocallaghan\Sluggable\SlugOptions;
+use if4lcon\Bareq\Visits;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Laravel\Cashier\Billable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -88,6 +90,8 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsNot($role)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User permission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User role($roles)
+ * @property-read string                                                                      $created_at_for_humans
+ * @property-read string                                                                      $updated_at_for_humans
  */
 class User extends Authenticatable
 {
@@ -129,10 +133,42 @@ class User extends Authenticatable
     }
 
     /**
+     * @return string
+     */
+    public function getCreatedAtForHumansAttribute(): string
+    {
+        return \Carbon\Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdatedAtForHumansAttribute(): string
+    {
+        return \Carbon\Carbon::createFromTimeStamp(strtotime($this->updated_at))->diffForHumans();
+    }
+
+    /**
+     * @return \if4lcon\Bareq\Visits
+     */
+    public function visits(): Visits
+    {
+        return visits($this);
+    }
+
+    /**
      * @return \Bpocallaghan\Sluggable\SlugOptions
      */
     protected function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()->slugSeperator('-')->generateSlugFrom('name')->saveSlugTo('slug');
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public static function trashed(): Collection
+    {
+        return self::onlyTrashed()->get();
     }
 }

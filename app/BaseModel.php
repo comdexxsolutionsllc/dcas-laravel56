@@ -14,6 +14,13 @@ class BaseModel extends Model
 {
 
     /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = true;
+
+    /**
      * The accessors to append to the model's array form.
      *
      * @var array
@@ -40,13 +47,6 @@ class BaseModel extends Model
      * @var int
      */
     protected $perPage = 25;
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = true;
 
     /**
      * The relationships that should be touched on save.
