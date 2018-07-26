@@ -1,0 +1,27 @@
+[
+    {
+        "model-name": "Role",
+        "resource-file": "roles.json",
+        "table-name": "roles"
+    },
+    {
+        "model-name": "Profile",
+        "resource-file": "profiles.json",
+        "table-name": "profiles"
+    },
+    {
+        "model-name": "User",
+        "resource-file": "users.json",
+        "table-name": "users"
+    },
+    {
+        "model-name": "Subscription",
+        "resource-file": "subscriptions.json",
+        "table-name": "subscriptions"
+    },
+    {
+        "model-name": "Permission",
+        "resource-file": "permissions.json",
+        "table-name": "permissions"
+    }
+]

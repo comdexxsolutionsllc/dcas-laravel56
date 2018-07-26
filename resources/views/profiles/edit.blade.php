@@ -1,4 +1,4 @@
-@extends('[% layout_name %]')
+@extends('layouts.app')
 
 @section('content')
 
@@ -7,15 +7,15 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">{{ !empty([% model_header %]) ? [% model_header %] : '[% model_name_title %]' }}</h4>
+                <h4 class="mt-5 mb-5">{{ !empty($title) ? $title : 'Profile' }}</h4>
             </div>
             <div class="btn-group btn-group-sm pull-right" role="group">
 
-                <a href="{{ route('[% index_route_name %]') }}" class="btn btn-primary" title="[% show_all_models %]">
+                <a href="{{ route('profiles.profile.index') }}" class="btn btn-primary" title="Show All Profile">
                     <span class="fa fa-th-list" aria-hidden="true"></span>
                 </a>
 
-                <a href="{{ route('[% create_route_name %]') }}" class="btn btn-success" title="[% create_model %]">
+                <a href="{{ route('profiles.profile.create') }}" class="btn btn-success" title="Create New Profile">
                     <span class="fa fa-plus" aria-hidden="true"></span>
                 </a>
 
@@ -32,16 +32,16 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('[% update_route_name %]', $[% model_name_singular_variable %]->[% primary_key %]) }}" id="[% form_id %]" name="[% form_name %]" accept-charset="UTF-8" class="form-horizontal"[% upload_files %]>
+            <form method="POST" action="{{ route('profiles.profile.update', $profile->id) }}" id="edit_profile_form" name="edit_profile_form" accept-charset="UTF-8" class="form-horizontal">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">
-            @include ('[% form_view_name %]', [
-                                        '[% model_name_singular_variable %]' => $[% model_name_singular_variable %],
+            @include ('profiles.form', [
+                                        'profile' => $profile,
                                       ])
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input class="btn btn-primary" type="submit" value="[% update %]">
+                        <input class="btn btn-primary" type="submit" value="Update">
                     </div>
                 </div>
             </form>

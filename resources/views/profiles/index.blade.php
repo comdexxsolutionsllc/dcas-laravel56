@@ -19,20 +19,20 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Roles</h4>
+                <h4 class="mt-5 mb-5">Profiles</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('roles.role.create') }}" class="btn btn-success" title="Create New Role">
+                <a href="{{ route('profiles.profile.create') }}" class="btn btn-success" title="Create New Profile">
                     <span class="fa fa-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
         
-        @if(count($roles) == 0)
+        @if(count($profiles) == 0)
             <div class="panel-body text-center">
-                <h4>No Roles Available!</h4>
+                <h4>No Profiles Available!</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
@@ -41,33 +41,49 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Guard Name</th>
+                            <th>User</th>
+                            <th>Address 1</th>
+                            <th>Address 2</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Postal Code</th>
+                            <th>Country</th>
+                            <th>Country Code</th>
+                            <th>Npa Nxx Suffix</th>
+                            <th>Phone Type</th>
 
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($roles as $role)
+                    @foreach($profiles as $profile)
                         <tr>
-                            <td>{{ $role->name }}</td>
-                            <td>{{ $role->guard_name }}</td>
+                            <td>{{ optional($profile->user)->id }}</td>
+                            <td>{{ $profile->address_1 }}</td>
+                            <td>{{ $profile->address_2 }}</td>
+                            <td>{{ $profile->city }}</td>
+                            <td>{{ $profile->state }}</td>
+                            <td>{{ $profile->postal_code }}</td>
+                            <td>{{ $profile->country }}</td>
+                            <td>{{ $profile->country_code }}</td>
+                            <td>{{ $profile->npa_nxx_suffix }}</td>
+                            <td>{{ $profile->phone_type }}</td>
 
                             <td>
 
-                                <form method="POST" action="{!! route('roles.role.destroy', $role->id) !!}" accept-charset="UTF-8">
+                                <form method="POST" action="{!! route('profiles.profile.destroy', $profile->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('roles.role.show', $role->id ) }}" class="btn btn-info" title="Show Role">
+                                        <a href="{{ route('profiles.profile.show', $profile->id ) }}" class="btn btn-info" title="Show Profile">
                                             <span class="fa fa-folder-open" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ route('roles.role.edit', $role->id ) }}" class="btn btn-primary" title="Edit Role">
+                                        <a href="{{ route('profiles.profile.edit', $profile->id ) }}" class="btn btn-primary" title="Edit Profile">
                                             <span class="fa fa-pencil" aria-hidden="true"></span>
                                         </a>
 
-                                        <button type="submit" class="btn btn-danger" title="Delete Role" onclick="return confirm(&quot;Delete Role?&quot;)">
+                                        <button type="submit" class="btn btn-danger" title="Delete Profile" onclick="return confirm(&quot;Delete Profile?&quot;)">
                                             <span class="fa fa-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
@@ -84,7 +100,7 @@
         </div>
 
         <div class="panel-footer">
-            {!! $roles->render() !!}
+            {!! $profiles->render() !!}
         </div>
         
         @endif
