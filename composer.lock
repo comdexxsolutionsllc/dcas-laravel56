@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "24ac64fa348460e5b57e5bdaf5e11955",
+    "content-hash": "d21265c97323cf1602a833ea375d15e7",
     "packages": [
         {
             "name": "askedio/laravel-soft-cascade",
@@ -51,16 +51,16 @@
         },
         {
             "name": "awssat/laravel-visits",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/awssat/laravel-visits.git",
-                "reference": "b83eacad0e25f76165b8bf0a43342d531cd75ed9"
+                "reference": "52ff6a3826732d7b1738826c714b15f08f20c02c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/awssat/laravel-visits/zipball/b83eacad0e25f76165b8bf0a43342d531cd75ed9",
-                "reference": "b83eacad0e25f76165b8bf0a43342d531cd75ed9",
+                "url": "https://api.github.com/repos/awssat/laravel-visits/zipball/52ff6a3826732d7b1738826c714b15f08f20c02c",
+                "reference": "52ff6a3826732d7b1738826c714b15f08f20c02c",
                 "shasum": ""
             },
             "require": {
@@ -122,7 +122,7 @@
                 "redis",
                 "visits"
             ],
-            "time": "2018-06-15T16:26:30+00:00"
+            "time": "2018-07-26T21:52:48+00:00"
         },
         {
             "name": "beberlei/assert",
@@ -6465,16 +6465,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "7.3.10",
+            "version": "7.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "80962e20c01a00cc8d70b143af5f037acf2edb24"
+                "reference": "5ac1ba801601b24a586ca8c322fe4791e8fa4efc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/80962e20c01a00cc8d70b143af5f037acf2edb24",
-                "reference": "80962e20c01a00cc8d70b143af5f037acf2edb24",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/5ac1ba801601b24a586ca8c322fe4791e8fa4efc",
+                "reference": "5ac1ba801601b24a586ca8c322fe4791e8fa4efc",
                 "shasum": ""
             },
             "require": {
@@ -6544,7 +6544,7 @@
                 "media",
                 "spatie"
             ],
-            "time": "2018-07-16T10:16:54+00:00"
+            "time": "2018-07-27T20:37:43+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -8365,16 +8365,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.6.27",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "f80bdbf7e51461467c0103811ca9df2ec0a561d5"
+                "reference": "64f281891ad887451b520ef77574b7a66f7d80e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/f80bdbf7e51461467c0103811ca9df2ec0a561d5",
-                "reference": "f80bdbf7e51461467c0103811ca9df2ec0a561d5",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/64f281891ad887451b520ef77574b7a66f7d80e8",
+                "reference": "64f281891ad887451b520ef77574b7a66f7d80e8",
                 "shasum": ""
             },
             "require": {
@@ -8411,7 +8411,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2018-07-11T13:31:08+00:00"
+            "time": "2018-07-26T22:33:08+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -12182,17 +12182,74 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
-            "name": "swagger-api/swagger-ui",
-            "version": "v3.17.5",
+            "name": "stolz/laravel-schema-spy",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "0af67642ecf3ced6bae89599b8f86c0314610831"
+                "url": "https://github.com/Stolz/laravel-schema-spy.git",
+                "reference": "19b94c8ca38a7e6d1f719f299dabd1dc84bd85f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/0af67642ecf3ced6bae89599b8f86c0314610831",
-                "reference": "0af67642ecf3ced6bae89599b8f86c0314610831",
+                "url": "https://api.github.com/repos/Stolz/laravel-schema-spy/zipball/19b94c8ca38a7e6d1f719f299dabd1dc84bd85f0",
+                "reference": "19b94c8ca38a7e6d1f719f299dabd1dc84bd85f0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Stolz\\SchemaSpy\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stolz\\SchemaSpy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stolz",
+                    "homepage": "https://github.com/Stolz/laravel-schema-spy",
+                    "role": "developer"
+                }
+            ],
+            "description": "Laravel artisan command that uses JAVA schemaSpy tool to generate a graphical representation of a database schema",
+            "keywords": [
+                "database",
+                "er diagram",
+                "laravel",
+                "schema",
+                "schema-spy",
+                "schemaspy",
+                "sql"
+            ],
+            "time": "2017-10-11T03:50:51+00:00"
+        },
+        {
+            "name": "swagger-api/swagger-ui",
+            "version": "v3.17.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swagger-api/swagger-ui.git",
+                "reference": "5431eed1cd2ec22101ade85d6d6163ea320dbe76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/5431eed1cd2ec22101ade85d6d6163ea320dbe76",
+                "reference": "5431eed1cd2ec22101ade85d6d6163ea320dbe76",
                 "shasum": ""
             },
             "type": "library",
@@ -12236,7 +12293,7 @@
                 "swagger",
                 "ui"
             ],
-            "time": "2018-07-19T22:34:17+00:00"
+            "time": "2018-07-28T03:43:43+00:00"
         },
         {
             "name": "symfony/class-loader",

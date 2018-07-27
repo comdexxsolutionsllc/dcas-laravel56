@@ -14,7 +14,7 @@ return [
      * So if an "Author" model would have a "posts" relation that points to a "Post" class, you need to add both
      * the "posts" attribute and the "Post::class", since the relation can get resolved in multiple ways.
      */
-    'except' => [
+    'except'  => [
         //Author::class => [
         //    Post::class,
         //    'posts',
@@ -45,10 +45,10 @@ return [
      * Writes the N+1 queries into the response body of your JSON responses
      * \BeyondCode\QueryDetector\Outputs\Json::class
      */
-    'output' => [
+    'output'  => [
         \BeyondCode\QueryDetector\Outputs\Console::class,
         \BeyondCode\QueryDetector\Outputs\Debugbar::class,
         \BeyondCode\QueryDetector\Outputs\Json::class,
         \BeyondCode\QueryDetector\Outputs\Log::class,
-    ]
+    ],
 ];

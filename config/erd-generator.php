@@ -9,7 +9,7 @@ return [
      */
     'directories'   => [
         app_path(),
-        'Modules/*/Entities',
+        'Modules/Support/Entities',
     ],
 
     /*
@@ -40,7 +40,7 @@ return [
     'graph'         => [
         'style'       => 'filled',
         'bgcolor'     => '#F7F7F7',
-        'fontsize'    => 12,
+        'fontsize'    => 10,
         'labelloc'    => 't',
         'concentrate' => true,
         'splines'     => 'polyline',
@@ -61,7 +61,7 @@ return [
 
     'edge' => [
         'color'    => '#003049',
-        'penwidth' => 1.8,
+        'penwidth' => 1.25,
         'fontname' => 'Helvetica Neue',
     ],
 

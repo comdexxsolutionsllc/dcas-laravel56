@@ -102,6 +102,7 @@
     "phpmd/phpmd": "^2.6",
     "phpspec/phpspec": "^4.3",
     "phpunit/phpunit": "~7.0",
+    "stolz/laravel-schema-spy": "^0.1.1",
     "swagger-api/swagger-ui": "^3.13"
   },
   "autoload": {

@@ -17,12 +17,14 @@ $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name'           => $faker->name,
         'email'          => $faker->unique()->safeEmail,
+        'username'       => $faker->unique()->userName,
         'password'       => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => rand(1, 100) > 42 ? str_random(10) : null,
     ];
 });
 
 $factory->state(App\User::class, 'defaultAccount', [
-    'name'  => 'Alex Renner',
-    'email' => 'theonlyalexrenner@icloud.com',
+    'name'     => 'Alex Renner',
+    'email'    => 'theonlyalexrenner@icloud.com',
+    'username' => 'arenner',
 ]);

@@ -40,20 +40,6 @@ class Profile extends BaseModel
 {
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'profiles';
-
-    /**
-     * The database primary key value.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id';
-
-    /**
      * Attributes that should be mass-assignable.
      *
      * @var array
@@ -72,26 +58,11 @@ class Profile extends BaseModel
     ];
 
     /**
-     * The attributes that should be mutated to dates.
+     * The relations to eager load on every query.
      *
      * @var array
      */
-    protected $dates = [];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [];
-
-    /**
-     * Get the user for this model.
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\User', 'user_id', 'id');
-    }
+    //protected $with = ['user'];
 
     /**
      * Get deleted_at in array format
@@ -127,5 +98,13 @@ class Profile extends BaseModel
     public function getUpdatedAtAttribute($value): array
     {
         return date('j/n/Y g:i A', strtotime($value));
+    }
+
+    /**
+     * Get the user for this model.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 }

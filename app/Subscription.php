@@ -32,20 +32,6 @@ class Subscription extends BaseModel
 {
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'subscriptions';
-
-    /**
-     * The database primary key value.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id';
-
-    /**
      * Attributes that should be mass-assignable.
      *
      * @var array
@@ -58,20 +44,6 @@ class Subscription extends BaseModel
         'trial_ends_at',
         'ends_at',
     ];
-
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = [];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [];
 
     /**
      * Get the user for this model.
