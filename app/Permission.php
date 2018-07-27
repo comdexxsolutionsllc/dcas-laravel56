@@ -27,18 +27,22 @@ class Permission extends BasePermission
 {
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
+     * @var array
      */
-    protected $table = 'permissions';
-
-    /**
-     * The database primary key value.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id';
+    public $seedData = [
+        ['name' => 'deactivated', 'guard_name' => 'web',],
+        ['name' => 'marked_fraud', 'guard_name' => 'web',],
+        ['name' => 'api', 'guard_name' => 'web',],
+        ['name' => 'billing', 'guard_name' => 'web',],
+        ['name' => 'email', 'guard_name' => 'web',],
+        ['name' => 'email_announce_only', 'guard_name' => 'web',],
+        ['name' => 'email_emergency_only', 'guard_name' => 'web',],
+        ['name' => 'ssh', 'guard_name' => 'web',],
+        ['name' => 'ticketing', 'guard_name' => 'web',],
+        /**
+         * @todo enumerate all permissions.
+         */
+    ];
 
     /**
      * Attributes that should be mass-assignable.
@@ -49,20 +53,6 @@ class Permission extends BasePermission
         'name',
         'guard_name',
     ];
-
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = [];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [];
 
     /**
      * Get created_at in array format

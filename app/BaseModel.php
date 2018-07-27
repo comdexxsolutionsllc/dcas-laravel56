@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Eloquent
  */
-class BaseModel extends Model
+abstract class BaseModel extends Model
 {
 
     /**
@@ -54,6 +54,13 @@ class BaseModel extends Model
      * @var array
      */
     protected $touches = [];
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [];
 
     /**
      * The relationship counts that should be eager loaded on every query.

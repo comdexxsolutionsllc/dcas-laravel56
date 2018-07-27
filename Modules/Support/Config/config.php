@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'name' => 'Support',
+    'name' => 'Support Desk',
 ];

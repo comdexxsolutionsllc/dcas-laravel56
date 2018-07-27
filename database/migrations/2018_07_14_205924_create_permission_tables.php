@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePermissionTables extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -33,22 +34,20 @@ class CreatePermissionTables extends Migration
             $table->unsignedInteger('permission_id');
             $table->morphs('model');
 
-            $table->foreign('permission_id')
-                ->references('id')
-                ->on($tableNames['permissions'])
-                ->onDelete('cascade');
+            $table->foreign('permission_id')->references('id')->on($tableNames['permissions'])->onDelete('cascade');
 
-            $table->primary(['permission_id', 'model_id', 'model_type'], 'model_has_permissions_permission_model_type_primary');
+            $table->primary([
+                'permission_id',
+                'model_id',
+                'model_type',
+            ], 'model_has_permissions_permission_model_type_primary');
         });
 
         Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames) {
             $table->unsignedInteger('role_id');
             $table->morphs('model');
 
-            $table->foreign('role_id')
-                ->references('id')
-                ->on($tableNames['roles'])
-                ->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on($tableNames['roles'])->onDelete('cascade');
 
             $table->primary(['role_id', 'model_id', 'model_type']);
         });
@@ -57,15 +56,9 @@ class CreatePermissionTables extends Migration
             $table->unsignedInteger('permission_id');
             $table->unsignedInteger('role_id');
 
-            $table->foreign('permission_id')
-                ->references('id')
-                ->on($tableNames['permissions'])
-                ->onDelete('cascade');
+            $table->foreign('permission_id')->references('id')->on($tableNames['permissions'])->onDelete('cascade');
 
-            $table->foreign('role_id')
-                ->references('id')
-                ->on($tableNames['roles'])
-                ->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on($tableNames['roles'])->onDelete('cascade');
 
             $table->primary(['permission_id', 'role_id']);
 
