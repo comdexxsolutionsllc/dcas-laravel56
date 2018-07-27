@@ -65,10 +65,10 @@ class UsersController extends Controller
     protected function getData(Request $request)
     {
         $rules = [
-            'name'           => 'required|string|min:1|max:255',
-            'email'          => 'required|string|min:1|max:255',
-            'password'       => 'required|string|min:1|max:255',
-            'slug'           => 'required|string|min:1|max:255',
+            'name'     => 'required|string|min:1|max:255',
+            'email'    => 'required|string|min:1|max:255',
+            'password' => 'required|string|min:1|max:255',
+            'slug'     => 'required|string|min:1|max:255',
         ];
 
         $data = $request->validate($rules);

@@ -6,6 +6,8 @@ use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Bpocallaghan\Sluggable\HasSlug;
 use Bpocallaghan\Sluggable\SlugOptions;
 use if4lcon\Bareq\Visits;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,6 +15,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Cashier\Billable;
 use Laravel\Passport\HasApiTokens;
+use Modules\Support\Entities\Comment;
+use Modules\Support\Entities\Ticket;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -84,14 +88,19 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereTrialEndsAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\User withoutTrashed()
- * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[]  $abilities
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIs($role)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsAll($role)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsNot($role)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User permission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User role($roles)
- * @property-read string                                                                      $created_at_for_humans
- * @property-read string                                                                      $updated_at_for_humans
+ * @property-read string                                                                       $created_at_for_humans
+ * @property-read string                                                                       $updated_at_for_humans
+ * @property string|null                                                                       $username
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\AccountType[]                  $accountTypes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Support\Entities\Comment[] $comments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Support\Entities\Ticket[]  $tickets
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUsername($value)
  */
 class User extends Authenticatable
 {
@@ -125,11 +134,11 @@ class User extends Authenticatable
     protected $softCascade = [];
 
     /**
-     * @return HasOne
+     * @return \Illuminate\Support\Collection
      */
-    public function profile(): HasOne
+    public static function trashed(): Collection
     {
-        return $this->hasOne(Profile::class);
+        return self::onlyTrashed()->get();
     }
 
     /**
@@ -157,18 +166,42 @@ class User extends Authenticatable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function accountTypes(): BelongsToMany
+    {
+        return $this->belongsToMany(AccountType::class)->withTimestamps();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    /**
      * @return \Bpocallaghan\Sluggable\SlugOptions
      */
     protected function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()->slugSeperator('-')->generateSlugFrom('name')->saveSlugTo('slug');
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public static function trashed(): Collection
-    {
-        return self::onlyTrashed()->get();
     }
 }

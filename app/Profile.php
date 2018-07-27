@@ -86,14 +86,6 @@ class Profile extends BaseModel
     protected $casts = [];
 
     /**
-     * Get the user for this model.
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\User', 'user_id', 'id');
-    }
-
-    /**
      * Get deleted_at in array format
      *
      * @param  string $value
@@ -127,5 +119,13 @@ class Profile extends BaseModel
     public function getUpdatedAtAttribute($value): array
     {
         return date('j/n/Y g:i A', strtotime($value));
+    }
+
+    /**
+     * Get the user for this model.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 }
