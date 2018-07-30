@@ -1,14 +1,18 @@
 .
 ├── ./app
+│   ├── ./app/AccountType.php
+│   ├── ./app/BaseModel.php
 │   ├── ./app/Console
 │   │   ├── ./app/Console/Commands
 │   │   │   └── ./app/Console/Commands/AuthPermissionCommand.php
 │   │   └── ./app/Console/Kernel.php
 │   ├── ./app/DCAS
 │   │   ├── ./app/DCAS/Classes
+│   │   │   └── ./app/DCAS/Classes/TicketId.php
 │   │   ├── ./app/DCAS/Contracts
 │   │   └── ./app/DCAS/Traits
 │   │       └── ./app/DCAS/Traits/Authorizable.php
+│   ├── ./app/Department.php
 │   ├── ./app/Exceptions
 │   │   └── ./app/Exceptions/Handler.php
 │   ├── ./app/Http
@@ -19,7 +23,12 @@
 │   │   │   │   ├── ./app/Http/Controllers/Auth/RegisterController.php
 │   │   │   │   └── ./app/Http/Controllers/Auth/ResetPasswordController.php
 │   │   │   ├── ./app/Http/Controllers/Controller.php
-│   │   │   └── ./app/Http/Controllers/HomeController.php
+│   │   │   ├── ./app/Http/Controllers/HomeController.php
+│   │   │   ├── ./app/Http/Controllers/PermissionsController.php
+│   │   │   ├── ./app/Http/Controllers/ProfilesController.php
+│   │   │   ├── ./app/Http/Controllers/RolesController.php
+│   │   │   ├── ./app/Http/Controllers/SubscriptionsController.php
+│   │   │   └── ./app/Http/Controllers/UsersController.php
 │   │   ├── ./app/Http/Kernel.php
 │   │   └── ./app/Http/Middleware
 │   │       ├── ./app/Http/Middleware/DCASRobotMiddleware.php
@@ -37,6 +46,7 @@
 │   │   ├── ./app/Listeners/LogRegisteredUser.php
 │   │   ├── ./app/Listeners/LogSuccessfulLogin.php
 │   │   └── ./app/Listeners/LogSuccessfulLogout.php
+│   ├── ./app/Permission.php
 │   ├── ./app/Profile.php
 │   ├── ./app/Providers
 │   │   ├── ./app/Providers/AppServiceProvider.php
@@ -44,6 +54,8 @@
 │   │   ├── ./app/Providers/BroadcastServiceProvider.php
 │   │   ├── ./app/Providers/EventServiceProvider.php
 │   │   └── ./app/Providers/RouteServiceProvider.php
+│   ├── ./app/Role.php
+│   ├── ./app/Subscription.php
 │   └── ./app/User.php
 ├── ./artisan
 ├── ./behat.yml
@@ -60,6 +72,7 @@
 │   ├── ./bin/phpdoc
 │   ├── ./bin/phpdoc.sh
 │   ├── ./bin/phpmd-report.sh
+│   ├── ./bin/start-laravel-dump-server.sh
 │   └── ./bin/start-webdriver.sh
 ├── ./composer.json
 ├── ./config
@@ -78,6 +91,8 @@
 │   ├── ./config/datatables-html.php
 │   ├── ./config/datatables.php
 │   ├── ./config/debugbar.php
+│   ├── ./config/debug-server.php
+│   ├── ./config/erd-generator.php
 │   ├── ./config/excel.php
 │   ├── ./config/filesystems.php
 │   ├── ./config/hashing.php
@@ -92,20 +107,29 @@
 │   ├── ./config/medialibrary.php
 │   ├── ./config/modules.php
 │   ├── ./config/open-on-make.php
+│   ├── ./config/permission.php
+│   ├── ./config/query-builder.php
+│   ├── ./config/querydetector.php
 │   ├── ./config/queue.php
 │   ├── ./config/scout.php
 │   ├── ./config/self-diagnosis.php
 │   ├── ./config/services.php
 │   ├── ./config/session.php
 │   ├── ./config/shield.php
+│   ├── ./config/spy.php
 │   ├── ./config/tinker.php
 │   ├── ./config/tinx.php
 │   ├── ./config/trustedproxy.php
-│   └── ./config/view.php
+│   ├── ./config/view.php
+│   ├── ./config/visits.php
+│   └── ./config/xray.php
+├── ./connprops.properties
 ├── ./data
 │   └── ./data/GeoIP.dat
 ├── ./database
 │   ├── ./database/factories
+│   │   ├── ./database/factories/AccountTypeFactory.php
+│   │   ├── ./database/factories/DepartmentFactory.php
 │   │   └── ./database/factories/UserFactory.php
 │   ├── ./database/migrations
 │   │   ├── ./database/migrations/2014_10_12_000000_create_users_table.php
@@ -114,9 +138,16 @@
 │   │   ├── ./database/migrations/2018_06_12_210247_create_failed_jobs_table.php
 │   │   ├── ./database/migrations/2018_06_12_210307_create_sessions_table.php
 │   │   ├── ./database/migrations/2018_06_26_192828_create_profiles_table.php
-│   │   └── ./database/migrations/2018_06_28_234922_create_bouncer_tables.php
+│   │   ├── ./database/migrations/2018_07_14_205924_create_permission_tables.php
+│   │   ├── ./database/migrations/2018_07_27_000703_create_account_types_table.php
+│   │   ├── ./database/migrations/2018_07_27_001627_create_account_type_user_pivot_table.php
+│   │   └── ./database/migrations/2018_07_28_200543_create_departments_table.php
+│   ├── ./database/schema
 │   └── ./database/seeds
+│       ├── ./database/seeds/AccountTypeTableSeeder.php
 │       ├── ./database/seeds/DatabaseSeeder.php
+│       ├── ./database/seeds/DepartmentTableSeeder.php
+│       ├── ./database/seeds/RolesAndPermissionsSeeder.php
 │       └── ./database/seeds/UserTableSeeder.php
 ├── ./git-hooks
 │   ├── ./git-hooks/commit-msg
@@ -124,28 +155,47 @@
 │   ├── ./git-hooks/pre-commit
 │   ├── ./git-hooks/prepare-commit-msg
 │   └── ./git-hooks/pre-rebase
+├── ./graph.svg
 ├── ./Modules
 │   └── ./Modules/Support
+│       ├── ./Modules/Support/Classes
+│       │   └── ./Modules/Support/Classes/ServiceLevelAgreement.php
 │       ├── ./Modules/Support/composer.json
 │       ├── ./Modules/Support/Config
 │       │   └── ./Modules/Support/Config/config.php
 │       ├── ./Modules/Support/Console
 │       ├── ./Modules/Support/Database
 │       │   ├── ./Modules/Support/Database/factories
+│       │   │   ├── ./Modules/Support/Database/factories/CategoryFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/CommentFactory.php
+│       │   │   └── ./Modules/Support/Database/factories/TicketFactory.php
 │       │   ├── ./Modules/Support/Database/Migrations
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_27_015716_create_tickets_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_27_015946_create_categories_table.php
+│       │   │   └── ./Modules/Support/Database/Migrations/2018_07_27_015953_create_comments_table.php
 │       │   └── ./Modules/Support/Database/Seeders
-│       │       └── ./Modules/Support/Database/Seeders/SupportDatabaseSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/CategoryTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/CommentTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/SupportDatabaseSeeder.php
+│       │       └── ./Modules/Support/Database/Seeders/TicketTableSeeder.php
 │       ├── ./Modules/Support/Emails
 │       ├── ./Modules/Support/Entities
+│       │   ├── ./Modules/Support/Entities/Category.php
+│       │   ├── ./Modules/Support/Entities/Comment.php
+│       │   └── ./Modules/Support/Entities/Ticket.php
 │       ├── ./Modules/Support/Events
 │       ├── ./Modules/Support/Http
 │       │   ├── ./Modules/Support/Http/Controllers
-│       │   │   └── ./Modules/Support/Http/Controllers/SupportController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/CommentsController.php
+│       │   │   └── ./Modules/Support/Http/Controllers/TicketsController.php
 │       │   ├── ./Modules/Support/Http/Middleware
+│       │   │   └── ./Modules/Support/Http/Middleware/AdminMiddleware.php
 │       │   ├── ./Modules/Support/Http/Requests
 │       │   └── ./Modules/Support/Http/routes.php
 │       ├── ./Modules/Support/Jobs
 │       ├── ./Modules/Support/Listeners
+│       ├── ./Modules/Support/Mailers
+│       │   └── ./Modules/Support/Mailers/AppMailer.php
 │       ├── ./Modules/Support/module.json
 │       ├── ./Modules/Support/Notifications
 │       ├── ./Modules/Support/Policies
@@ -155,9 +205,19 @@
 │       │   ├── ./Modules/Support/Resources/assets
 │       │   ├── ./Modules/Support/Resources/lang
 │       │   └── ./Modules/Support/Resources/views
-│       │       ├── ./Modules/Support/Resources/views/index.blade.php
-│       │       └── ./Modules/Support/Resources/views/layouts
-│       │           └── ./Modules/Support/Resources/views/layouts/master.blade.php
+│       │       ├── ./Modules/Support/Resources/views/emails
+│       │       │   ├── ./Modules/Support/Resources/views/emails/ticket_comments.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/emails/ticket_info.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/emails/ticket_status.blade.php
+│       │       ├── ./Modules/Support/Resources/views/includes
+│       │       │   └── ./Modules/Support/Resources/views/includes/flash.blade.php
+│       │       ├── ./Modules/Support/Resources/views/layouts
+│       │       │   └── ./Modules/Support/Resources/views/layouts/master.blade.php
+│       │       └── ./Modules/Support/Resources/views/tickets
+│       │           ├── ./Modules/Support/Resources/views/tickets/create.blade.php
+│       │           ├── ./Modules/Support/Resources/views/tickets/index.blade.php
+│       │           ├── ./Modules/Support/Resources/views/tickets/show.blade.php
+│       │           └── ./Modules/Support/Resources/views/tickets/user_tickets.blade.php
 │       ├── ./Modules/Support/Rules
 │       ├── ./Modules/Support/start.php
 │       ├── ./Modules/Support/Tests
@@ -170,15 +230,101 @@
 ├── ./phpunit.dusk.xml
 ├── ./phpunit.xml
 ├── ./public
+│   ├── ./public/android-icon-144x144.png
+│   ├── ./public/android-icon-192x192.png
+│   ├── ./public/android-icon-36x36.png
+│   ├── ./public/android-icon-48x48.png
+│   ├── ./public/android-icon-72x72.png
+│   ├── ./public/android-icon-96x96.png
+│   ├── ./public/apple-icon-114x114.png
+│   ├── ./public/apple-icon-120x120.png
+│   ├── ./public/apple-icon-144x144.png
+│   ├── ./public/apple-icon-152x152.png
+│   ├── ./public/apple-icon-180x180.png
+│   ├── ./public/apple-icon-57x57.png
+│   ├── ./public/apple-icon-60x60.png
+│   ├── ./public/apple-icon-72x72.png
+│   ├── ./public/apple-icon-76x76.png
+│   ├── ./public/apple-icon.png
+│   ├── ./public/apple-icon-precomposed.png
+│   ├── ./public/browserconfig.xml
 │   ├── ./public/css
 │   │   ├── ./public/css/app.css
+│   │   ├── ./public/css/font-awesome.min.css
 │   │   └── ./public/css/phpcs.css
+│   ├── ./public/favicon-16x16.png
+│   ├── ./public/favicon-32x32.png
+│   ├── ./public/favicon-96x96.png
 │   ├── ./public/favicon.ico
+│   ├── ./public/fonts
+│   │   ├── ./public/fonts/FontAwesome.otf
+│   │   ├── ./public/fonts/fontawesome-webfont.eot
+│   │   ├── ./public/fonts/fontawesome-webfont.svg
+│   │   ├── ./public/fonts/fontawesome-webfont.ttf
+│   │   ├── ./public/fonts/fontawesome-webfont.woff
+│   │   └── ./public/fonts/fontawesome-webfont.woff2
+│   ├── ./public/img
+│   │   └── ./public/img/payment-methods
+│   │       ├── ./public/img/payment-methods/dark
+│   │       │   ├── ./public/img/payment-methods/dark/10.png
+│   │       │   ├── ./public/img/payment-methods/dark/11.png
+│   │       │   ├── ./public/img/payment-methods/dark/12.png
+│   │       │   ├── ./public/img/payment-methods/dark/13.png
+│   │       │   ├── ./public/img/payment-methods/dark/14.png
+│   │       │   ├── ./public/img/payment-methods/dark/15.png
+│   │       │   ├── ./public/img/payment-methods/dark/16.png
+│   │       │   ├── ./public/img/payment-methods/dark/17.png
+│   │       │   ├── ./public/img/payment-methods/dark/18.png
+│   │       │   ├── ./public/img/payment-methods/dark/19.png
+│   │       │   ├── ./public/img/payment-methods/dark/1.png
+│   │       │   ├── ./public/img/payment-methods/dark/20.png
+│   │       │   ├── ./public/img/payment-methods/dark/21.png
+│   │       │   ├── ./public/img/payment-methods/dark/22.png
+│   │       │   ├── ./public/img/payment-methods/dark/23.png
+│   │       │   ├── ./public/img/payment-methods/dark/24.png
+│   │       │   ├── ./public/img/payment-methods/dark/2.png
+│   │       │   ├── ./public/img/payment-methods/dark/3.png
+│   │       │   ├── ./public/img/payment-methods/dark/4.png
+│   │       │   ├── ./public/img/payment-methods/dark/5.png
+│   │       │   ├── ./public/img/payment-methods/dark/6.png
+│   │       │   ├── ./public/img/payment-methods/dark/7.png
+│   │       │   ├── ./public/img/payment-methods/dark/8.png
+│   │       │   └── ./public/img/payment-methods/dark/9.png
+│   │       └── ./public/img/payment-methods/light
+│   │           ├── ./public/img/payment-methods/light/10.png
+│   │           ├── ./public/img/payment-methods/light/11.png
+│   │           ├── ./public/img/payment-methods/light/12.png
+│   │           ├── ./public/img/payment-methods/light/13.png
+│   │           ├── ./public/img/payment-methods/light/14.png
+│   │           ├── ./public/img/payment-methods/light/15.png
+│   │           ├── ./public/img/payment-methods/light/16.png
+│   │           ├── ./public/img/payment-methods/light/17.png
+│   │           ├── ./public/img/payment-methods/light/18.png
+│   │           ├── ./public/img/payment-methods/light/19.png
+│   │           ├── ./public/img/payment-methods/light/1.png
+│   │           ├── ./public/img/payment-methods/light/20.png
+│   │           ├── ./public/img/payment-methods/light/21.png
+│   │           ├── ./public/img/payment-methods/light/22.png
+│   │           ├── ./public/img/payment-methods/light/23.png
+│   │           ├── ./public/img/payment-methods/light/24.png
+│   │           ├── ./public/img/payment-methods/light/2.png
+│   │           ├── ./public/img/payment-methods/light/3.png
+│   │           ├── ./public/img/payment-methods/light/4.png
+│   │           ├── ./public/img/payment-methods/light/5.png
+│   │           ├── ./public/img/payment-methods/light/6.png
+│   │           ├── ./public/img/payment-methods/light/7.png
+│   │           ├── ./public/img/payment-methods/light/8.png
+│   │           └── ./public/img/payment-methods/light/9.png
 │   ├── ./public/index.php
 │   ├── ./public/js
 │   │   └── ./public/js/app.js
+│   ├── ./public/manifest.json
 │   ├── ./public/mix-manifest.json
 │   ├── ./public/modules
+│   ├── ./public/ms-icon-144x144.png
+│   ├── ./public/ms-icon-150x150.png
+│   ├── ./public/ms-icon-310x310.png
+│   ├── ./public/ms-icon-70x70.png
 │   ├── ./public/phpcs.xml
 │   ├── ./public/phpcs.xsl
 │   └── ./public/phpmd.html
@@ -204,6 +350,14 @@
 │   │       └── ./resources/lang/en/validation.php
 │   ├── ./resources/laravel-code-generator
 │   │   ├── ./resources/laravel-code-generator/sources
+│   │   │   ├── ./resources/laravel-code-generator/sources/permissions.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/profiles.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/resources_map.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/roles.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/subscriptions.json
+│   │   │   └── ./resources/laravel-code-generator/sources/users.json
+│   │   ├── ./resources/laravel-code-generator/system
+│   │   │   └── ./resources/laravel-code-generator/system/migration_tracker.json
 │   │   └── ./resources/laravel-code-generator/templates
 │   │       ├── ./resources/laravel-code-generator/templates/default
 │   │       │   ├── ./resources/laravel-code-generator/templates/default/controller-affirm-method.stub
@@ -312,15 +466,50 @@
 │       │   │   ├── ./resources/views/auth/passwords/email.blade.php
 │       │   │   └── ./resources/views/auth/passwords/reset.blade.php
 │       │   └── ./resources/views/auth/register.blade.php
+│       ├── ./resources/views/dashboard
+│       │   └── ./resources/views/dashboard/admin
+│       │       ├── ./resources/views/dashboard/admin/permissions
+│       │       │   ├── ./resources/views/dashboard/admin/permissions/create.blade.php
+│       │       │   ├── ./resources/views/dashboard/admin/permissions/edit.blade.php
+│       │       │   ├── ./resources/views/dashboard/admin/permissions/form.blade.php
+│       │       │   ├── ./resources/views/dashboard/admin/permissions/index.blade.php
+│       │       │   └── ./resources/views/dashboard/admin/permissions/show.blade.php
+│       │       ├── ./resources/views/dashboard/admin/roles
+│       │       │   ├── ./resources/views/dashboard/admin/roles/create.blade.php
+│       │       │   ├── ./resources/views/dashboard/admin/roles/edit.blade.php
+│       │       │   ├── ./resources/views/dashboard/admin/roles/form.blade.php
+│       │       │   ├── ./resources/views/dashboard/admin/roles/index.blade.php
+│       │       │   └── ./resources/views/dashboard/admin/roles/show.blade.php
+│       │       └── ./resources/views/dashboard/admin/users
+│       │           ├── ./resources/views/dashboard/admin/users/create.blade.php
+│       │           ├── ./resources/views/dashboard/admin/users/edit.blade.php
+│       │           ├── ./resources/views/dashboard/admin/users/form.blade.php
+│       │           ├── ./resources/views/dashboard/admin/users/index.blade.php
+│       │           └── ./resources/views/dashboard/admin/users/show.blade.php
 │       ├── ./resources/views/home.blade.php
 │       ├── ./resources/views/layouts
 │       │   └── ./resources/views/layouts/app.blade.php
+│       ├── ./resources/views/partials
+│       │   └── ./resources/views/partials/favicon.blade.php
+│       ├── ./resources/views/profiles
+│       │   ├── ./resources/views/profiles/create.blade.php
+│       │   ├── ./resources/views/profiles/edit.blade.php
+│       │   ├── ./resources/views/profiles/form.blade.php
+│       │   ├── ./resources/views/profiles/index.blade.php
+│       │   └── ./resources/views/profiles/show.blade.php
+│       ├── ./resources/views/subscriptions
+│       │   ├── ./resources/views/subscriptions/create.blade.php
+│       │   ├── ./resources/views/subscriptions/edit.blade.php
+│       │   ├── ./resources/views/subscriptions/form.blade.php
+│       │   ├── ./resources/views/subscriptions/index.blade.php
+│       │   └── ./resources/views/subscriptions/show.blade.php
 │       └── ./resources/views/welcome.blade.php
 ├── ./routes
 │   ├── ./routes/api.php
 │   ├── ./routes/breadcrumbs.php
 │   ├── ./routes/channels.php
 │   ├── ./routes/console.php
+│   ├── ./routes/vendor.php
 │   └── ./routes/web.php
 ├── ./server.php
 ├── ./tailwind.js
@@ -351,4 +540,4 @@
 ├── ./webpack.config.js
 └── ./webpack.mix.js
 
-84 directories, 267 files
+104 directories, 436 files

@@ -47,14 +47,12 @@ class SubscriptionsController extends Controller
     public function store(Request $request): RedirectResponse
     {
         try {
-
             $data = $this->getData($request);
 
             Subscription::create($data);
 
             return redirect()->route('subscriptions.subscription.index')->with('success_message', 'Subscription was successfully added!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
@@ -76,7 +74,6 @@ class SubscriptionsController extends Controller
             'quantity'      => 'required|numeric|min:-2147483648|max:2147483647',
             'trial_ends_at' => 'nullable|date_format:j/n/Y g:i A',
             'ends_at'       => 'nullable|date_format:j/n/Y g:i A',
-
         ];
 
         $data = $request->validate($rules);
@@ -125,7 +122,6 @@ class SubscriptionsController extends Controller
     public function update($id, Request $request): RedirectResponse
     {
         try {
-
             $data = $this->getData($request);
 
             $subscription = Subscription::findOrFail($id);
@@ -133,7 +129,6 @@ class SubscriptionsController extends Controller
 
             return redirect()->route('subscriptions.subscription.index')->with('success_message', 'Subscription was successfully updated!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
@@ -153,7 +148,6 @@ class SubscriptionsController extends Controller
 
             return redirect()->route('subscriptions.subscription.index')->with('success_message', 'Subscription was successfully deleted!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }

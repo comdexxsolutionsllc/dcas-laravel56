@@ -46,14 +46,12 @@ class ProfilesController extends Controller
     public function store(Request $request): RedirectResponse
     {
         try {
-
             $data = $this->getData($request);
 
             Profile::create($data);
 
             return redirect()->route('profiles.profile.index')->with('success_message', 'Profile was successfully added!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
@@ -78,7 +76,6 @@ class ProfilesController extends Controller
             'country_code'   => 'nullable|numeric|min:0|max:4294967295',
             'npa_nxx_suffix' => 'nullable|numeric|min:0|max:4294967295',
             'phone_type'     => 'nullable',
-
         ];
 
         $data = $request->validate($rules);
@@ -126,7 +123,6 @@ class ProfilesController extends Controller
     public function update($id, Request $request): RedirectResponse
     {
         try {
-
             $data = $this->getData($request);
 
             $profile = Profile::findOrFail($id);
@@ -134,7 +130,6 @@ class ProfilesController extends Controller
 
             return redirect()->route('profiles.profile.index')->with('success_message', 'Profile was successfully updated!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
@@ -154,7 +149,6 @@ class ProfilesController extends Controller
 
             return redirect()->route('profiles.profile.index')->with('success_message', 'Profile was successfully deleted!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }

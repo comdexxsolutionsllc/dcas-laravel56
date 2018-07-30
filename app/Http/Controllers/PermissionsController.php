@@ -119,7 +119,6 @@ class PermissionsController extends Controller
 
             return redirect()->route('permissions.permission.index')->with('success_message', 'Permission was successfully updated!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
@@ -139,7 +138,6 @@ class PermissionsController extends Controller
 
             return redirect()->route('permissions.permission.index')->with('success_message', 'Permission was successfully deleted!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      * All models in these directories will be scanned for ER diagram generation.
      * The directories will not be scanned recursively, so be sure to add all
@@ -85,5 +84,4 @@ return [
             'arrowtail' => 'none',
         ],
     ],
-
 ];

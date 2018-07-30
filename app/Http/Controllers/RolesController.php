@@ -43,14 +43,12 @@ class RolesController extends Controller
     public function store(Request $request): RedirectResponse
     {
         try {
-
             $data = $this->getData($request);
 
             Role::create($data);
 
             return redirect()->route('roles.role.index')->with('success_message', 'Role was successfully added!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
@@ -114,7 +112,6 @@ class RolesController extends Controller
     public function update($id, Request $request): RedirectResponse
     {
         try {
-
             $data = $this->getData($request);
 
             $role = Role::findOrFail($id);
@@ -122,7 +119,6 @@ class RolesController extends Controller
 
             return redirect()->route('roles.role.index')->with('success_message', 'Role was successfully updated!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
@@ -142,7 +138,6 @@ class RolesController extends Controller
 
             return redirect()->route('roles.role.index')->with('success_message', 'Role was successfully deleted!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }

@@ -43,14 +43,12 @@ class UsersController extends Controller
     public function store(Request $request): RedirectResponse
     {
         try {
-
             $data = $this->getData($request);
 
             User::create($data);
 
             return redirect()->route('users.user.index')->with('success_message', 'User was successfully added!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
@@ -115,7 +113,6 @@ class UsersController extends Controller
     public function update($id, Request $request): RedirectResponse
     {
         try {
-
             $data = $this->getData($request);
 
             $user = User::findOrFail($id);
@@ -123,7 +120,6 @@ class UsersController extends Controller
 
             return redirect()->route('users.user.index')->with('success_message', 'User was successfully updated!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
@@ -143,7 +139,6 @@ class UsersController extends Controller
 
             return redirect()->route('users.user.index')->with('success_message', 'User was successfully deleted!');
         } catch (Exception $exception) {
-
             return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request!']);
         }
     }
