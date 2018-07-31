@@ -23,23 +23,24 @@
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('subscriptions.subscription.create') }}" class="btn btn-success" title="Create New Subscription">
+                <a href="{{ route('subscriptions.subscription.create') }}" class="btn btn-success"
+                   title="Create New Subscription">
                     <span class="fa fa-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
         </div>
-        
+
         @if(count($subscriptions) == 0)
             <div class="panel-body text-center">
                 <h4>No Subscriptions Available!</h4>
             </div>
         @else
-        <div class="panel-body panel-body-with-table">
-            <div class="table-responsive">
+            <div class="panel-body panel-body-with-table">
+                <div class="table-responsive">
 
-                <table class="table table-striped ">
-                    <thead>
+                    <table class="table table-striped ">
+                        <thead>
                         <tr>
                             <th>User</th>
                             <th>Name</th>
@@ -51,53 +52,58 @@
 
                             <th></th>
                         </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($subscriptions as $subscription)
-                        <tr>
-                            <td>{{ optional($subscription->user)->name }}</td>
-                            <td>{{ $subscription->name }}</td>
-                            <td>{{ optional($subscription->stripe)->id }}</td>
-                            <td>{{ $subscription->stripe_plan }}</td>
-                            <td>{{ $subscription->quantity }}</td>
-                            <td>{{ $subscription->trial_ends_at }}</td>
-                            <td>{{ $subscription->ends_at }}</td>
+                        </thead>
+                        <tbody>
+                        @foreach($subscriptions as $subscription)
+                            <tr>
+                                <td>{{ optional($subscription->user)->name }}</td>
+                                <td>{{ $subscription->name }}</td>
+                                <td>{{ optional($subscription->stripe)->id }}</td>
+                                <td>{{ $subscription->stripe_plan }}</td>
+                                <td>{{ $subscription->quantity }}</td>
+                                <td>{{ $subscription->trial_ends_at }}</td>
+                                <td>{{ $subscription->ends_at }}</td>
 
-                            <td>
+                                <td>
 
-                                <form method="POST" action="{!! route('subscriptions.subscription.destroy', $subscription->id) !!}" accept-charset="UTF-8">
-                                <input name="_method" value="DELETE" type="hidden">
-                                {{ csrf_field() }}
+                                    <form method="POST"
+                                          action="{!! route('subscriptions.subscription.destroy', $subscription->id) !!}"
+                                          accept-charset="UTF-8">
+                                        <input name="_method" value="DELETE" type="hidden">
+                                        {{ csrf_field() }}
 
-                                    <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('subscriptions.subscription.show', $subscription->id ) }}" class="btn btn-info" title="Show Subscription">
-                                            <span class="fa fa-folder-open" aria-hidden="true"></span>
-                                        </a>
-                                        <a href="{{ route('subscriptions.subscription.edit', $subscription->id ) }}" class="btn btn-primary" title="Edit Subscription">
-                                            <span class="fa fa-pencil" aria-hidden="true"></span>
-                                        </a>
+                                        <div class="btn-group btn-group-xs pull-right" role="group">
+                                            <a href="{{ route('subscriptions.subscription.show', $subscription->id ) }}"
+                                               class="btn btn-info" title="Show Subscription">
+                                                <span class="fa fa-folder-open" aria-hidden="true"></span>
+                                            </a>
+                                            <a href="{{ route('subscriptions.subscription.edit', $subscription->id ) }}"
+                                               class="btn btn-primary" title="Edit Subscription">
+                                                <span class="fa fa-pencil" aria-hidden="true"></span>
+                                            </a>
 
-                                        <button type="submit" class="btn btn-danger" title="Delete Subscription" onclick="return confirm(&quot;Delete Subscription?&quot;)">
-                                            <span class="fa fa-trash" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
+                                            <button type="submit" class="btn btn-danger" title="Delete Subscription"
+                                                    onclick="return confirm(&quot;Delete Subscription?&quot;)">
+                                                <span class="fa fa-trash" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
 
-                                </form>
-                                
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                                    </form>
 
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
-        </div>
 
-        <div class="panel-footer">
-            {!! $subscriptions->render() !!}
-        </div>
-        
+            <div class="panel-footer">
+                {!! $subscriptions->render() !!}
+            </div>
+
         @endif
-    
+
     </div>
 @endsection
