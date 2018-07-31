@@ -2,12 +2,16 @@
 
 namespace App\Exceptions;
 
+use DCAS\Traits\LogHttpError;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
+
+    use LogHttpError;
 
     /**
      * A list of the exception types that are not reported.
@@ -37,27 +41,14 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof AuthorizationException) {
-            return $this->unauthorized($request, $exception);
+            return $this->outputHttpError($request, '403', $exception);
+        }
+
+        if ($exception instanceof NotFoundHttpException) {
+            return $this->outputHttpError($request, '404', $exception);
         }
 
         return parent::render($request, $exception);
-    }
-
-    /**
-     * @param           $request
-     * @param Exception $exception
-     *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     */
-    private function unauthorized($request, Exception $exception)
-    {
-        if ($request->expectsJson()) {
-            return response()->json(['error' => $exception->getMessage()], 403);
-        }
-
-        flash()->warning($exception->getMessage());
-
-        return redirect()->route('home');
     }
 
     /**
