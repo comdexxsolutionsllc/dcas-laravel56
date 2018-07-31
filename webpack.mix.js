@@ -1,5 +1,6 @@
 let mix = require('laravel-mix');
 require('laravel-mix-tailwind');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,7 +14,17 @@ require('laravel-mix-tailwind');
  */
 
 mix
-    .js('resources/assets/js/app.js', 'public/js')
+    .js('resources/js/app.js', 'public/js')
     .sourceMaps()
-    .sass('resources/assets/sass/app.scss', 'public/css')
-    .tailwind();
+    .sass('resources/sass/app.scss', 'public/css')
+    .tailwind()
+    .webpackConfig({
+        plugins: [
+            new VueLoaderPlugin()
+        ],
+        resolve: {
+            alias: {
+                'Global': path.resolve('resources/sass')
+              }
+          }
+      });
