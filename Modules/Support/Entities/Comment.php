@@ -38,6 +38,11 @@ class Comment extends BaseModel
     ];
 
     /**
+     * @var array
+     */
+    protected $seedData = [];
+
+    /**
      * The relations to eager load on every query.
      *
      * @var array
@@ -58,5 +63,13 @@ class Comment extends BaseModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }

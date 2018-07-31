@@ -28,10 +28,23 @@ class Category extends BaseModel
     protected $fillable = ['name'];
 
     /**
+     * @var array
+     */
+    protected $seedData = [];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tickets(): HasMany
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }

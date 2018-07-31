@@ -58,6 +58,11 @@ class Profile extends BaseModel
     ];
 
     /**
+     * @var array
+     */
+    protected $seedData = [];
+
+    /**
      * The relations to eager load on every query.
      *
      * @var array
@@ -105,6 +110,14 @@ class Profile extends BaseModel
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }

@@ -68,4 +68,9 @@ abstract class BaseModel extends Model
      * @var array
      */
     protected $withCount = [];
+
+    /**
+     * @return array
+     */
+    abstract protected function getSeedData(): array;
 }

@@ -46,11 +46,16 @@ class Subscription extends BaseModel
     ];
 
     /**
+     * @var array
+     */
+    protected $seedData = [];
+
+    /**
      * Get the user for this model.
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -123,5 +128,13 @@ class Subscription extends BaseModel
     public function getUpdatedAtAttribute($value): array
     {
         return date('j/n/Y g:i A', strtotime($value));
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }
