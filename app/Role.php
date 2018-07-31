@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Models\Role as BaseRole;
 
 /**
@@ -20,9 +21,12 @@ use Spatie\Permission\Models\Role as BaseRole;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[]  $activity
  */
 class Role extends BaseRole
 {
+
+    use LogsActivity;
 
     /**
      * Attributes that should be mass-assignable.
@@ -32,6 +36,45 @@ class Role extends BaseRole
     protected $fillable = [
         'name',
         'guard_name',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $seedData = [
+        ['name' => 'abuse', 'guard_name' => 'web',],
+        ['name' => 'accounting', 'guard_name' => 'web',],
+        ['name' => 'billing', 'guard_name' => 'web',],
+        ['name' => 'collections', 'guard_name' => 'web',],
+        ['name' => 'demo', 'guard_name' => 'web',],
+        ['name' => 'development', 'guard_name' => 'web',],
+        ['name' => 'employee', 'guard_name' => 'web',],
+        ['name' => 'guest', 'guard_name' => 'web',],
+        ['name' => 'hardware', 'guard_name' => 'web',],
+        ['name' => 'humanresources', 'guard_name' => 'web',],
+        ['name' => 'infrastructure', 'guard_name' => 'web',],
+        ['name' => 'investorrelations', 'guard_name' => 'web',],
+        ['name' => 'legal', 'guard_name' => 'web',],
+        ['name' => 'managers', 'guard_name' => 'web',],
+        ['name' => 'marketing', 'guard_name' => 'web',],
+        ['name' => 'networking', 'guard_name' => 'web',],
+        ['name' => 'operations', 'guard_name' => 'web',],
+        ['name' => 'peeringcoordination', 'guard_name' => 'web',],
+        ['name' => 'provisioning', 'guard_name' => 'web',],
+        ['name' => 'qualitycontrol', 'guard_name' => 'web',],
+        ['name' => 'receptionist', 'guard_name' => 'web',],
+        ['name' => 'sales', 'guard_name' => 'web',],
+        ['name' => 'security', 'guard_name' => 'web',],
+        ['name' => 'superadmin', 'guard_name' => 'web',],
+        ['name' => 'supportlevel1', 'guard_name' => 'web',],
+        ['name' => 'supportlevel2', 'guard_name' => 'web',],
+        ['name' => 'systemsadministration', 'guard_name' => 'web',],
+        ['name' => 'vendorrelations', 'guard_name' => 'web',],
+        ['name' => 'webmaster', 'guard_name' => 'web',],
+        ['name' => 'whitegloves', 'guard_name' => 'web',],
+        /**
+         * @todo enumerate all roles.
+         */
     ];
 
     /**
@@ -56,5 +99,13 @@ class Role extends BaseRole
     public function getUpdatedAtAttribute($value): array
     {
         return date('j/n/Y g:i A', strtotime($value));
+    }
+
+    /**
+     * @return array
+     */
+    public function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }

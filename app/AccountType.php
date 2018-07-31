@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\AccountType
  *
- * @property int                                                       $id
- * @property string                                                    $name
- * @property string|null                                               $description
- * @property string|null                                               $zone
- * @property string|null                                               $deleted_at
- * @property \Carbon\Carbon|null                                       $created_at
- * @property \Carbon\Carbon|null                                       $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $users
+ * @property int                                                                                 $id
+ * @property string                                                                              $name
+ * @property string|null                                                                         $description
+ * @property string|null                                                                         $zone
+ * @property string|null                                                                         $deleted_at
+ * @property \Carbon\Carbon|null                                                                 $created_at
+ * @property \Carbon\Carbon|null                                                                 $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[]                           $users
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|\App\AccountType onlyTrashed()
  * @method static bool|null restore()
@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\AccountType withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\AccountType withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
  */
 class AccountType extends BaseModel
 {
@@ -38,7 +39,7 @@ class AccountType extends BaseModel
     /**
      * @var array
      */
-    public $seedData = [
+    protected $seedData = [
         ['name' => 'abuse', 'description' => '', 'zone' => '',],
         ['name' => 'accounting', 'description' => '', 'zone' => '',],
         ['name' => 'billing', 'description' => '', 'zone' => '',],
@@ -83,5 +84,13 @@ class AccountType extends BaseModel
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    /**
+     * @return array
+     */
+    public function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }
