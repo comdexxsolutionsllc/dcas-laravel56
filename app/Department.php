@@ -5,17 +5,18 @@ namespace App;
 /**
  * App\Department
  *
- * @property int                 $id
- * @property string              $name
- * @property string|null         $description
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
+ * @property int                                                                                 $id
+ * @property string                                                                              $name
+ * @property string|null                                                                         $description
+ * @property \Carbon\Carbon|null                                                                 $created_at
+ * @property \Carbon\Carbon|null                                                                 $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
  */
 class Department extends BaseModel
 {
@@ -23,7 +24,7 @@ class Department extends BaseModel
     /**
      * @var array
      */
-    public $seedData = [
+    protected $seedData = [
         ['name' => 'Abuse', 'description' => '',],
         ['name' => 'Accounting', 'description' => '',],
         ['name' => 'Billing', 'description' => '',],
@@ -58,4 +59,12 @@ class Department extends BaseModel
         'name',
         'description',
     ];
+
+    /**
+     * @return array
+     */
+    public function getSeedData(): array
+    {
+        return $this->seedData;
+    }
 }
