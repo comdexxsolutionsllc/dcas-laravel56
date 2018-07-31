@@ -22,7 +22,9 @@ class CreateTicketsTable extends Migration
             $table->string('title');
             $table->string('priority');
             $table->text('message');
+            $table->integer('status_id'); // keep?
             $table->string('status');
+            $table->boolean('ticket_read'); // keep?
             $table->timestamps();
         });
     }
