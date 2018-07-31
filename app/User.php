@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
 use Laravel\Cashier\Billable;
 use Laravel\Passport\HasApiTokens;
 use Modules\Support\Entities\Comment;
+use Modules\Support\Entities\Machine;
 use Modules\Support\Entities\Ticket;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -101,6 +102,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Support\Entities\Comment[] $comments
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Support\Entities\Ticket[]  $tickets
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUsername($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Support\Entities\Machine[] $machines
  */
 class User extends Authenticatable
 {
@@ -189,6 +191,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function machines(): HasMany
+    {
+        return $this->hasMany(Machine::class, 'user_id');
+    }
+
+    /**
      * @return HasOne
      */
     public function profile(): HasOne
@@ -201,6 +211,7 @@ class User extends Authenticatable
      */
     public function tickets(): HasMany
     {
+        // return $this->hasMany('Ticket', 'user_id');
         return $this->hasMany(Ticket::class);
     }
 
