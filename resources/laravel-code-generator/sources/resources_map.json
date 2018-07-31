@@ -1,27 +1,132 @@
 [
-    {
-        "model-name": "Role",
-        "resource-file": "roles.json",
-        "table-name": "roles"
-    },
-    {
-        "model-name": "Profile",
-        "resource-file": "profiles.json",
-        "table-name": "profiles"
-    },
-    {
-        "model-name": "User",
-        "resource-file": "users.json",
-        "table-name": "users"
-    },
-    {
-        "model-name": "Subscription",
-        "resource-file": "subscriptions.json",
-        "table-name": "subscriptions"
-    },
-    {
-        "model-name": "Permission",
-        "resource-file": "permissions.json",
-        "table-name": "permissions"
-    }
+  {
+    "model-name": "Role",
+    "resource-file": "roles.json",
+    "table-name": "roles"
+  },
+  {
+    "model-name": "Profile",
+    "resource-file": "profiles.json",
+    "table-name": "profiles"
+  },
+  {
+    "model-name": "User",
+    "resource-file": "users.json",
+    "table-name": "users"
+  },
+  {
+    "model-name": "Subscription",
+    "resource-file": "subscriptions.json",
+    "table-name": "subscriptions"
+  },
+  {
+    "model-name": "Permission",
+    "resource-file": "permissions.json",
+    "table-name": "permissions"
+  },
+  {
+    "model-name": "AccountType",
+    "resource-file": "account_types.json",
+    "table-name": "account_types"
+  },
+  {
+    "model-name": "Department",
+    "resource-file": "departments.json",
+    "table-name": "departments"
+  },
+  {
+    "model-name": "Category",
+    "resource-file": "categories.json",
+    "table-name": "categories"
+  },
+  {
+    "model-name": "Comment",
+    "resource-file": "comments.json",
+    "table-name": "comments"
+  },
+  {
+    "model-name": "Ticket",
+    "resource-file": "tickets.json",
+    "table-name": "tickets"
+  },
+  {
+    "model-name": "Location",
+    "resource-file": "locations.json",
+    "table-name": "locations"
+  },
+  {
+    "model-name": "LocationGroup",
+    "resource-file": "location_groups.json",
+    "table-name": "location_groups"
+  },
+  {
+    "model-name": "Machine",
+    "resource-file": "machines.json",
+    "table-name": "machines"
+  },
+  {
+    "model-name": "MachineNoteAttachments",
+    "resource-file": "machine_note_attachments.json",
+    "table-name": "machine_note_attachments"
+  },
+  {
+    "model-name": "MachineNotes",
+    "resource-file": "machine_notes.json",
+    "table-name": "machine_notes"
+  },
+  {
+    "model-name": "MachineType",
+    "resource-file": "machine_types.json",
+    "table-name": "machine_types"
+  },
+  {
+    "model-name": "Software",
+    "resource-file": "software.json",
+    "table-name": "software"
+  },
+  {
+    "model-name": "TicketAttachments",
+    "resource-file": "ticket_attachments.json",
+    "table-name": "ticket_attachments"
+  },
+  {
+    "model-name": "TicketCommentAttachments",
+    "resource-file": "ticket_comment_attachments.json",
+    "table-name": "ticket_comment_attachments"
+  },
+  {
+    "model-name": "TicketComments",
+    "resource-file": "ticket_comments.json",
+    "table-name": "ticket_comments"
+  },
+  {
+    "model-name": "TicketWorkers",
+    "resource-file": "ticket_workers.json",
+    "table-name": "ticket_workers"
+  },
+  {
+    "model-name": "TicketStatus",
+    "resource-file": "ticket_statuses.json",
+    "table-name": "ticket_status"
+  },
+  {
+    "model-name": "SoftwareInstalled",
+    "resource-file": "software_installeds.json",
+    "table-name": "software_installed"
+  },
+  {
+    "model-name": "MachineLog",
+    "resource-file": "machine_logs.json",
+    "table-name": "machine_log"
+  },
+  {
+    "model-name": "TicketLog",
+    "resource-file": "ticket_logs.json",
+    "table-name": "ticket_log"
+  },
+  {
+    "model-name": "SoftwareCategory",
+    "resource-file": "software_categories.json",
+    "table-name": "software_category"
+  }
 ]
