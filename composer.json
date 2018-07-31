@@ -72,13 +72,15 @@
     "spatie/laravel-permission": "^2.12",
     "spatie/laravel-query-builder": "^1.10",
     "spatie/laravel-robots-middleware": "^1.0",
+    "spatie/laravel-tags": "^2.0",
     "stevenmaguire/laravel-middleware-csp": "^0.1.1",
     "stripe/stripe-php": "*",
     "symfony/dom-crawler": "^4.1",
     "teamtnt/laravel-scout-tntsearch-driver": "^3.0",
     "todstoychev/calendar-events": "^1.0",
     "yajra/laravel-datatables": "^1.0",
-    "yajra/laravel-datatables-oracle": "~8.0"
+    "yajra/laravel-datatables-oracle": "~8.0",
+    "yosymfony/toml": "^1.0"
   },
   "require-dev": {
     "ahuggins/open-on-make": "^0.0.16",
