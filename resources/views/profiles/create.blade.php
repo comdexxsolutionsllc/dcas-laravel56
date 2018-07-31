@@ -19,7 +19,7 @@
         </div>
 
         <div class="panel-body">
-        
+
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -28,11 +28,12 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('profiles.profile.store') }}" accept-charset="UTF-8" id="create_profile_form" name="create_profile_form" class="form-horizontal">
-            {{ csrf_field() }}
-            @include ('profiles.form', [
-                                        'profile' => null,
-                                      ])
+            <form method="POST" action="{{ route('profiles.profile.store') }}" accept-charset="UTF-8"
+                  id="create_profile_form" name="create_profile_form" class="form-horizontal">
+                {{ csrf_field() }}
+                @include ('profiles.form', [
+                                            'profile' => null,
+                                          ])
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
