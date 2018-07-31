@@ -13,25 +13,19 @@
 
 Route::view('/', 'welcome');
 
+Route::resource('notify', 'NotificationController')->only(['index', 'show', 'update',]);
+Route::post('notify/{notify}/read', 'NotificationController@markAsRead')->name('notify.read');
+
 Auth::routes();
 
 Route::group([
     'prefix' => 'profiles',
 ], function () {
-
-    Route::get('/', 'ProfilesController@index')->name('profiles.profile.index');
-
-    Route::get('/create', 'ProfilesController@create')->name('profiles.profile.create');
-
     Route::get('/show/{profile}', 'ProfilesController@show')->name('profiles.profile.show')->where('id', '[0-9]+');
 
     Route::get('/{profile}/edit', 'ProfilesController@edit')->name('profiles.profile.edit')->where('id', '[0-9]+');
 
-    Route::post('/', 'ProfilesController@store')->name('profiles.profile.store');
-
     Route::put('profile/{profile}', 'ProfilesController@update')->name('profiles.profile.update')->where('id', '[0-9]+');
-
-    Route::delete('/profile/{profile}', 'ProfilesController@destroy')->name('profiles.profile.destroy')->where('id', '[0-9]+');
 });
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
@@ -40,7 +34,6 @@ Route::group(['prefix' => '/dashboard/admin'], function () {
     Route::group([
         'prefix' => 'permissions',
     ], function () {
-
         Route::get('/', 'PermissionsController@index')->name('permissions.permission.index');
 
         Route::get('/create', 'PermissionsController@create')->name('permissions.permission.create');
@@ -59,7 +52,6 @@ Route::group(['prefix' => '/dashboard/admin'], function () {
     Route::group([
         'prefix' => 'roles',
     ], function () {
-
         Route::get('/', 'RolesController@index')->name('roles.role.index');
 
         Route::get('/create', 'RolesController@create')->name('roles.role.create');
@@ -78,7 +70,6 @@ Route::group(['prefix' => '/dashboard/admin'], function () {
     Route::group([
         'prefix' => 'users',
     ], function () {
-
         Route::get('/', 'UsersController@index')->name('users.user.index');
 
         Route::get('/create', 'UsersController@create')->name('users.user.create');
@@ -98,7 +89,6 @@ Route::group(['prefix' => '/dashboard/admin'], function () {
 Route::group([
     'prefix' => 'subscriptions',
 ], function () {
-
     Route::get('/', 'SubscriptionsController@index')->name('subscriptions.subscription.index');
 
     Route::get('/create', 'SubscriptionsController@create')->name('subscriptions.subscription.create');
