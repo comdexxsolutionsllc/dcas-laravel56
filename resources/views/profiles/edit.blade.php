@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="panel panel-default">
-  
+
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
@@ -32,12 +32,13 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('profiles.profile.update', $profile->id) }}" id="edit_profile_form" name="edit_profile_form" accept-charset="UTF-8" class="form-horizontal">
-            {{ csrf_field() }}
-            <input name="_method" type="hidden" value="PUT">
-            @include ('profiles.form', [
-                                        'profile' => $profile,
-                                      ])
+            <form method="POST" action="{{ route('profiles.profile.update', $profile->id) }}" id="edit_profile_form"
+                  name="edit_profile_form" accept-charset="UTF-8" class="form-horizontal">
+                {{ csrf_field() }}
+                <input name="_method" type="hidden" value="PUT">
+                @include ('profiles.form', [
+                                            'profile' => $profile,
+                                          ])
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">

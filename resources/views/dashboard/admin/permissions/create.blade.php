@@ -11,7 +11,8 @@
             </span>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('permissions.permission.index') }}" class="btn btn-primary" title="Show All Permission">
+                <a href="{{ route('permissions.permission.index') }}" class="btn btn-primary"
+                   title="Show All Permission">
                     <span class="fa fa-th-list" aria-hidden="true"></span>
                 </a>
             </div>
@@ -19,7 +20,7 @@
         </div>
 
         <div class="panel-body">
-        
+
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -28,11 +29,12 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('permissions.permission.store') }}" accept-charset="UTF-8" id="create_permission_form" name="create_permission_form" class="form-horizontal">
-            {{ csrf_field() }}
-            @include ('dashboard.admin.permissions.form', [
-                                        'permission' => null,
-                                      ])
+            <form method="POST" action="{{ route('permissions.permission.store') }}" accept-charset="UTF-8"
+                  id="create_permission_form" name="create_permission_form" class="form-horizontal">
+                {{ csrf_field() }}
+                @include ('dashboard.admin.permissions.form', [
+                                            'permission' => null,
+                                          ])
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
