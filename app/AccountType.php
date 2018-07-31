@@ -38,7 +38,7 @@ class AccountType extends BaseModel
     /**
      * @var array
      */
-    public $seedData = [
+    protected $seedData = [
         ['name' => 'abuse', 'description' => '', 'zone' => '',],
         ['name' => 'accounting', 'description' => '', 'zone' => '',],
         ['name' => 'billing', 'description' => '', 'zone' => '',],
@@ -83,5 +83,13 @@ class AccountType extends BaseModel
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    /**
+     * @return array
+     */
+    public function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }
