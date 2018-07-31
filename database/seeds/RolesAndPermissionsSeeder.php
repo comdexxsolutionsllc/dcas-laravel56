@@ -1,32 +1,33 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
 
     public function run()
     {
-        // Reset cached roles and permissions
+        // reset cached roles and permissions.
         app()['cache']->forget('spatie.permission.cache');
 
-        // create permissions
-        Permission::create(['name' => 'edit articles']);
-        Permission::create(['name' => 'delete articles']);
-        Permission::create(['name' => 'publish articles']);
-        Permission::create(['name' => 'unpublish articles']);
+        // create permissions.
+        foreach ((new \App\Permission)->getSeedData() as $permission) {
+            $permission = factory(\App\Permission::class)->create([
+                'name'       => $permission['name'],
+                'guard_name' => $permission['guard_name'],
+            ]);
+        }
 
-        // create roles and assign created permissions
+        // create roles.
+        foreach ((new \App\Role)->getSeedData() as $role) {
+            $role = factory(\App\Role::class)->create([
+                'name'       => $role['name'],
+                'guard_name' => $role['guard_name'],
+            ]);
+        }
 
-        $role = Role::create(['name' => 'writer']);
-        $role->givePermissionTo('edit articles');
-
-        $role = Role::create(['name' => 'moderator']);
-        $role->givePermissionTo(['publish articles', 'unpublish articles']);
-
-        $role = Role::create(['name' => 'super-admin']);
-        $role->givePermissionTo(Permission::all());
+        // give permission to roles.
+        //$role->givePermissionTo(Permission::all());
+        /** @todo */
     }
 }

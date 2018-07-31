@@ -4,6 +4,7 @@ namespace Modules\Support\Providers;
 
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\ServiceProvider;
+use Modules\Support\Console\ViewTicketStats;
 
 class SupportServiceProvider extends ServiceProvider
 {
@@ -96,7 +97,9 @@ class SupportServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->commands([
+            ViewTicketStats::class,
+        ]);
     }
 
     /**
