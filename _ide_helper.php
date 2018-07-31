@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.29 on 2018-07-29 23:10:13.
+ * Generated for Laravel 5.6.29 on 2018-08-01 22:50:36.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -13791,7 +13791,7 @@ namespace Collective\Html {
  
 }
 
-namespace if4lcon\Bareq { 
+namespace awssat\Visits { 
 
     class Visits {
          
@@ -18318,7 +18318,7 @@ namespace  {
 
     class View extends \Illuminate\Support\Facades\View {}
 
-    class Visits extends \if4lcon\Bareq\Visits {}
+    class Visits extends \awssat\Visits\Visits {}
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
