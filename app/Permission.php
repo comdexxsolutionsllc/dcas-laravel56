@@ -29,7 +29,7 @@ class Permission extends BasePermission
     /**
      * @var array
      */
-    public $seedData = [
+    protected $seedData = [
         ['name' => 'deactivated', 'guard_name' => 'web',],
         ['name' => 'marked_fraud', 'guard_name' => 'web',],
         ['name' => 'api', 'guard_name' => 'web',],
@@ -76,5 +76,13 @@ class Permission extends BasePermission
     public function getUpdatedAtAttribute($value): array
     {
         return date('j/n/Y g:i A', strtotime($value));
+    }
+
+    /**
+     * @return array
+     */
+    public function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }

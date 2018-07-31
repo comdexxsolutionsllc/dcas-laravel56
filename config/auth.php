@@ -70,6 +70,11 @@ return [
             'driver' => 'eloquent',
             'model'  => App\User::class,
         ],
+
+        'employees' => [
+            'driver' => 'eloquent',
+            'model'  => \DCAS\Roles\Employee::class,
+        ],
     ],
 
     /*
@@ -88,10 +93,15 @@ return [
     */
 
     'passwords' => [
-        'users' => [
+        'users'       => [
             'provider' => 'users',
             'table'    => 'password_resets',
             'expire'   => 60,
+        ],
+        'employees' => [
+            'provider' => 'employees',
+            'table'    => 'password_resets_employees',
+            'expire'   => 30,
         ],
     ],
 ];
