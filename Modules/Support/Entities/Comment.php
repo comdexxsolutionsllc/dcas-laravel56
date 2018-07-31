@@ -5,6 +5,7 @@ namespace Modules\Support\Entities;
 use App\BaseModel;
 use App\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Tags\HasTags;
 
 /**
  * Modules\Support\Entities\Comment
@@ -24,9 +25,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|\Modules\Support\Entities\Comment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Modules\Support\Entities\Comment whereUserId($value)
  * @mixin \Eloquent
+ * @property \Illuminate\Database\Eloquent\Collection|\Spatie\Tags\Tag[] $tags
+ * @method static \Illuminate\Database\Eloquent\Builder|\Modules\Support\Entities\Comment withAllTags($tags, $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Modules\Support\Entities\Comment withAnyTags($tags, $type = null)
  */
 class Comment extends BaseModel
 {
+
+    use HasTags;
 
     /**
      * @var array
@@ -36,6 +42,11 @@ class Comment extends BaseModel
         'user_id',
         'comment',
     ];
+
+    /**
+     * @var array
+     */
+    protected $seedData = [];
 
     /**
      * The relations to eager load on every query.
@@ -58,5 +69,13 @@ class Comment extends BaseModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }
