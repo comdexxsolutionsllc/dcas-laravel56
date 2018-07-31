@@ -2,24 +2,27 @@
 
 namespace App;
 
+use Cog\Laravel\Love\Likeable\Models\Traits\Likeable;
+use Spatie\Tags\HasTags;
+
 /**
  * App\Profile
  *
- * @property int                 $id
- * @property int|null            $user_id
- * @property string|null         $address_1
- * @property string|null         $address_2
- * @property string|null         $city
- * @property string|null         $state
- * @property string|null         $postal_code
- * @property string|null         $country
- * @property int|null            $country_code
- * @property int|null            $npa_nxx_suffix
- * @property string|null         $phone_type
- * @property array               $deleted_at
- * @property array               $created_at
- * @property array               $updated_at
- * @property-read \App\User|null $user
+ * @property int                                                                                 $id
+ * @property int|null                                                                            $user_id
+ * @property string|null                                                                         $address_1
+ * @property string|null                                                                         $address_2
+ * @property string|null                                                                         $city
+ * @property string|null                                                                         $state
+ * @property string|null                                                                         $postal_code
+ * @property string|null                                                                         $country
+ * @property int|null                                                                            $country_code
+ * @property int|null                                                                            $npa_nxx_suffix
+ * @property string|null                                                                         $phone_type
+ * @property array                                                                               $deleted_at
+ * @property array                                                                               $created_at
+ * @property array                                                                               $updated_at
+ * @property-read \App\User|null                                                                 $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereAddress1($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereAddress2($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereCity($value)
@@ -35,9 +38,27 @@ namespace App;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereUserId($value)
  * @mixin \Eloquent
+ * @property \Illuminate\Database\Eloquent\Collection|\Spatie\Tags\Tag[]                         $tags
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile withAllTags($tags, $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile withAnyTags($tags, $type = null)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
+ * @property-read \Cog\Laravel\Love\LikeCounter\Models\LikeCounter $dislikesCounter
+ * @property-read bool $disliked
+ * @property-read int $dislikes_count
+ * @property-read bool $liked
+ * @property-read int $likes_count
+ * @property-read int $likes_diff_dislikes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cog\Laravel\Love\Like\Models\Like[] $likesAndDislikes
+ * @property-read \Cog\Laravel\Love\LikeCounter\Models\LikeCounter $likesCounter
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile orderByDislikesCount($direction = 'desc')
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile orderByLikesCount($direction = 'desc')
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereDislikedBy($userId = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereLikedBy($userId = null)
  */
 class Profile extends BaseModel
 {
+
+    use HasTags, Likeable;
 
     /**
      * Attributes that should be mass-assignable.
@@ -56,6 +77,11 @@ class Profile extends BaseModel
         'npa_nxx_suffix',
         'phone_type',
     ];
+
+    /**
+     * @var array
+     */
+    protected $seedData = [];
 
     /**
      * The relations to eager load on every query.
@@ -105,6 +131,14 @@ class Profile extends BaseModel
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }
