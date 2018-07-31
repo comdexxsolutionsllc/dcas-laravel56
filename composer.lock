@@ -51,16 +51,16 @@
         },
         {
             "name": "awssat/laravel-visits",
-            "version": "1.3.2",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/awssat/laravel-visits.git",
-                "reference": "52ff6a3826732d7b1738826c714b15f08f20c02c"
+                "reference": "1561906d30ecf2b5fe6a85fe2dc7c07167919a05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/awssat/laravel-visits/zipball/52ff6a3826732d7b1738826c714b15f08f20c02c",
-                "reference": "52ff6a3826732d7b1738826c714b15f08f20c02c",
+                "url": "https://api.github.com/repos/awssat/laravel-visits/zipball/1561906d30ecf2b5fe6a85fe2dc7c07167919a05",
+                "reference": "1561906d30ecf2b5fe6a85fe2dc7c07167919a05",
                 "shasum": ""
             },
             "require": {
@@ -85,16 +85,16 @@
                 },
                 "laravel": {
                     "providers": [
-                        "if4lcon\\Bareq\\BareqServiceProvider"
+                        "awssat\\Visits\\VisitsServiceProvider"
                     ],
                     "aliases": {
-                        "Visits": "if4lcon\\Bareq\\Visits"
+                        "Visits": "awssat\\Visits\\Visits"
                     }
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "if4lcon\\Bareq\\": "src"
+                    "awssat\\Visits\\": "src"
                 },
                 "files": [
                     "src/helpers.php"
@@ -113,7 +113,6 @@
             "description": "Laravel Redis visits counter for Eloquent models",
             "homepage": "https://github.com/awssat/laravel-visits",
             "keywords": [
-                "Bareq",
                 "cache",
                 "counter",
                 "laravel",
@@ -122,7 +121,7 @@
                 "redis",
                 "visits"
             ],
-            "time": "2018-07-26T21:52:48+00:00"
+            "time": "2018-07-31T11:38:15+00:00"
         },
         {
             "name": "beberlei/assert",
@@ -2376,20 +2375,20 @@
         },
         {
             "name": "graze/telnet-client",
-            "version": "v2.0.2",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/graze/telnet-client.git",
-                "reference": "47029f9e39d8ef640e5e80a070059fa8bf8d3a26"
+                "reference": "4c6b4eb7b0855990f0902ef6ebacea5bf500abff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/graze/telnet-client/zipball/47029f9e39d8ef640e5e80a070059fa8bf8d3a26",
-                "reference": "47029f9e39d8ef640e5e80a070059fa8bf8d3a26",
+                "url": "https://api.github.com/repos/graze/telnet-client/zipball/4c6b4eb7b0855990f0902ef6ebacea5bf500abff",
+                "reference": "4c6b4eb7b0855990f0902ef6ebacea5bf500abff",
                 "shasum": ""
             },
             "require": {
-                "clue/socket-raw": "^1.2",
+                "clue/socket-raw": "^1.3",
                 "php": ">5.5.0"
             },
             "require-dev": {
@@ -2448,7 +2447,7 @@
                 "telnet",
                 "telnet-client"
             ],
-            "time": "2018-03-13T23:37:23+00:00"
+            "time": "2018-07-30T22:34:35+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -6465,16 +6464,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "7.3.11",
+            "version": "7.3.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "5ac1ba801601b24a586ca8c322fe4791e8fa4efc"
+                "reference": "cb382e42cf40d43de44e03eb12d42e1ded1f6f48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/5ac1ba801601b24a586ca8c322fe4791e8fa4efc",
-                "reference": "5ac1ba801601b24a586ca8c322fe4791e8fa4efc",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/cb382e42cf40d43de44e03eb12d42e1ded1f6f48",
+                "reference": "cb382e42cf40d43de44e03eb12d42e1ded1f6f48",
                 "shasum": ""
             },
             "require": {
@@ -6544,7 +6543,7 @@
                 "media",
                 "spatie"
             ],
-            "time": "2018-07-27T20:37:43+00:00"
+            "time": "2018-07-30T07:00:10+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -8763,16 +8762,16 @@
         },
         {
             "name": "yajra/laravel-datatables-buttons",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-buttons.git",
-                "reference": "cdf7df773461900791491b1855397b099230b1f8"
+                "reference": "d7ee45d911c8d7224b4f7cb0b76541bfc046c463"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-buttons/zipball/cdf7df773461900791491b1855397b099230b1f8",
-                "reference": "cdf7df773461900791491b1855397b099230b1f8",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-buttons/zipball/d7ee45d911c8d7224b4f7cb0b76541bfc046c463",
+                "reference": "d7ee45d911c8d7224b4f7cb0b76541bfc046c463",
                 "shasum": ""
             },
             "require": {
@@ -8823,7 +8822,7 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2018-02-21T07:00:03+00:00"
+            "time": "2018-07-31T08:07:35+00:00"
         },
         {
             "name": "yajra/laravel-datatables-fractal",
@@ -9365,16 +9364,16 @@
         },
         {
             "name": "beyondcode/laravel-dump-server",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beyondcode/laravel-dump-server.git",
-                "reference": "1e9b872de98595d90e411785925eca4e9f2151b6"
+                "reference": "ae2bd1e509897b880168d1506fc3df9ff9535324"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/beyondcode/laravel-dump-server/zipball/1e9b872de98595d90e411785925eca4e9f2151b6",
-                "reference": "1e9b872de98595d90e411785925eca4e9f2151b6",
+                "url": "https://api.github.com/repos/beyondcode/laravel-dump-server/zipball/ae2bd1e509897b880168d1506fc3df9ff9535324",
+                "reference": "ae2bd1e509897b880168d1506fc3df9ff9535324",
                 "shasum": ""
             },
             "require": {
@@ -9422,7 +9421,7 @@
                 "beyondcode",
                 "laravel-dump-server"
             ],
-            "time": "2018-07-19T13:18:44+00:00"
+            "time": "2018-07-20T11:01:38+00:00"
         },
         {
             "name": "beyondcode/laravel-er-diagram-generator",
