@@ -43,6 +43,12 @@ return [
             'level'  => 'debug',
         ],
 
+        'http_exceptions' => [
+            'driver' => 'single',
+            'path'   => storage_path('logs/http_exceptions.log'),
+            'level'  => 'debug',
+        ],
+
         'daily' => [
             'driver' => 'daily',
             'path'   => storage_path('logs/laravel.log'),
