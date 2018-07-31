@@ -12,6 +12,12 @@ class AccountTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\AccountType::class, 25)->create();
+        foreach ((new \App\AccountType)->getSeedData() as $accountType) {
+            factory(\App\AccountType::class)->create([
+                'name'        => $accountType['name'],
+                'description' => $accountType['description'],
+                'zone'        => $accountType['zone'],
+            ]);
+        }
     }
 }

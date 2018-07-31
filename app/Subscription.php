@@ -5,17 +5,17 @@ namespace App;
 /**
  * App\Subscription
  *
- * @property int            $id
- * @property int            $user_id
- * @property string         $name
- * @property string         $stripe_id
- * @property string         $stripe_plan
- * @property int            $quantity
- * @property array          $trial_ends_at
- * @property array          $ends_at
- * @property array          $created_at
- * @property array          $updated_at
- * @property-read \App\User $user
+ * @property int                                                                                 $id
+ * @property int                                                                                 $user_id
+ * @property string                                                                              $name
+ * @property string                                                                              $stripe_id
+ * @property string                                                                              $stripe_plan
+ * @property int                                                                                 $quantity
+ * @property array                                                                               $trial_ends_at
+ * @property array                                                                               $ends_at
+ * @property array                                                                               $created_at
+ * @property array                                                                               $updated_at
+ * @property-read \App\User                                                                      $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereEndsAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereId($value)
@@ -27,6 +27,7 @@ namespace App;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Subscription whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
  */
 class Subscription extends BaseModel
 {
@@ -46,11 +47,16 @@ class Subscription extends BaseModel
     ];
 
     /**
+     * @var array
+     */
+    protected $seedData = [];
+
+    /**
      * Get the user for this model.
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -123,5 +129,13 @@ class Subscription extends BaseModel
     public function getUpdatedAtAttribute($value): array
     {
         return date('j/n/Y g:i A', strtotime($value));
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }
