@@ -148,6 +148,7 @@ return [
         /*
          * Package Service Providers...
          */
+        \App\Providers\ObserverProvider::class,
 
         /*
          * Application Service Providers...

@@ -17,7 +17,7 @@ class TicketId
      *
      * @return string
      */
-    public static function generate(int $length = 15): string
+    public static function generate(int $length = 10): string
     {
         if ($length <= self::LOWER_BOUNDS) {
             return new \OutOfBoundsException('Ticket ID length must be greater than ' . self::LOWER_BOUNDS . '.');

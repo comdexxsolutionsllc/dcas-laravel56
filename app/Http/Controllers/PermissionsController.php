@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\PermissionsDataTable;
 use App\Permission;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -11,16 +12,21 @@ use Illuminate\View\View;
 class PermissionsController extends Controller
 {
 
-    /**
-     * Display a listing of the permissions.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index(): View
-    {
-        $permissions = Permission::paginate(25);
+    ///**
+    // * Display a listing of the permissions.
+    // *
+    // * @return \Illuminate\View\View
+    // */
+    //public function index(): View
+    //{
+    //    $permissions = Permission::paginate(25);
+    //
+    //    return view('dashboard.admin.permissions.index', compact('permissions'));
+    //}
 
-        return view('dashboard.admin.permissions.index', compact('permissions'));
+    public function index(PermissionsDataTable $dataTable)
+    {
+        return $dataTable->render('permissions');
     }
 
     /**
