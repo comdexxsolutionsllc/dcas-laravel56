@@ -1,6 +1,3 @@
-Feature\Example
- [x] Basic test
-
-Unit\Example
- [x] Basic test
+Feature\Api\FallbackRoute
+ [x] Missing api routes should return a json 404
 
