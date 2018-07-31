@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-07-28 19:15:09.
+    * Generated on 2018-07-31 04:39:33.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -98,6 +98,7 @@ namespace PHPSTORM_META {
         'Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator' => \Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthCalculator::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
         'Spatie\Referer\Referer' => \Spatie\Referer\Referer::class,
+        'stolz.schemaspy.command.spy' => \Stolz\SchemaSpy\Command::class,
         'geoip' => \Torann\GeoIP\GeoIP::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'form' => \Collective\Html\FormBuilder::class,
@@ -304,6 +305,7 @@ namespace PHPSTORM_META {
         'Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator' => \Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthCalculator::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
         'Spatie\Referer\Referer' => \Spatie\Referer\Referer::class,
+        'stolz.schemaspy.command.spy' => \Stolz\SchemaSpy\Command::class,
         'geoip' => \Torann\GeoIP\GeoIP::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'form' => \Collective\Html\FormBuilder::class,
@@ -510,6 +512,7 @@ namespace PHPSTORM_META {
         'Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator' => \Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthCalculator::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
         'Spatie\Referer\Referer' => \Spatie\Referer\Referer::class,
+        'stolz.schemaspy.command.spy' => \Stolz\SchemaSpy\Command::class,
         'geoip' => \Torann\GeoIP\GeoIP::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'form' => \Collective\Html\FormBuilder::class,
@@ -716,6 +719,7 @@ namespace PHPSTORM_META {
         'Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator' => \Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthCalculator::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
         'Spatie\Referer\Referer' => \Spatie\Referer\Referer::class,
+        'stolz.schemaspy.command.spy' => \Stolz\SchemaSpy\Command::class,
         'geoip' => \Torann\GeoIP\GeoIP::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'form' => \Collective\Html\FormBuilder::class,
@@ -922,6 +926,7 @@ namespace PHPSTORM_META {
         'Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator' => \Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthCalculator::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
         'Spatie\Referer\Referer' => \Spatie\Referer\Referer::class,
+        'stolz.schemaspy.command.spy' => \Stolz\SchemaSpy\Command::class,
         'geoip' => \Torann\GeoIP\GeoIP::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'form' => \Collective\Html\FormBuilder::class,
@@ -1128,6 +1133,7 @@ namespace PHPSTORM_META {
         'Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator' => \Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthCalculator::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
         'Spatie\Referer\Referer' => \Spatie\Referer\Referer::class,
+        'stolz.schemaspy.command.spy' => \Stolz\SchemaSpy\Command::class,
         'geoip' => \Torann\GeoIP\GeoIP::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'form' => \Collective\Html\FormBuilder::class,
@@ -1334,6 +1340,7 @@ namespace PHPSTORM_META {
         'Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator' => \Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthCalculator::class,
         'Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator' => \Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\Blurred::class,
         'Spatie\Referer\Referer' => \Spatie\Referer\Referer::class,
+        'stolz.schemaspy.command.spy' => \Stolz\SchemaSpy\Command::class,
         'geoip' => \Torann\GeoIP\GeoIP::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'form' => \Collective\Html\FormBuilder::class,
