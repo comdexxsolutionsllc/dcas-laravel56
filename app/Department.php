@@ -23,7 +23,7 @@ class Department extends BaseModel
     /**
      * @var array
      */
-    public $seedData = [
+    protected $seedData = [
         ['name' => 'Abuse', 'description' => '',],
         ['name' => 'Accounting', 'description' => '',],
         ['name' => 'Billing', 'description' => '',],
@@ -58,4 +58,12 @@ class Department extends BaseModel
         'name',
         'description',
     ];
+
+    /**
+     * @return array
+     */
+    public function getSeedData(): array
+    {
+        return $this->seedData;
+    }
 }

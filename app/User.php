@@ -16,8 +16,10 @@ use Illuminate\Support\Collection;
 use Laravel\Cashier\Billable;
 use Laravel\Passport\HasApiTokens;
 use Modules\Support\Entities\Comment;
+use Modules\Support\Entities\Machine;
 use Modules\Support\Entities\Ticket;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Tags\HasTags;
 
 /**
  * App\User
@@ -101,11 +103,17 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Support\Entities\Comment[] $comments
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Support\Entities\Ticket[]  $tickets
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUsername($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Support\Entities\Machine[] $machines
+ * @property string|null $register_ip
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRegisterIp($value)
+ * @property \Illuminate\Database\Eloquent\Collection|\Spatie\Tags\Tag[] $tags
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User withAllTags($tags, $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User withAnyTags($tags, $type = null)
  */
 class User extends Authenticatable
 {
 
-    use Billable, HasApiTokens, HasRoles, HasSlug, Notifiable, SoftCascadeTrait, SoftDeletes;
+    use Billable, HasApiTokens, HasRoles, HasSlug, HasTags, Notifiable, SoftCascadeTrait, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -189,6 +197,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function machines(): HasMany
+    {
+        return $this->hasMany(Machine::class, 'user_id');
+    }
+
+    /**
      * @return HasOne
      */
     public function profile(): HasOne
@@ -201,6 +217,7 @@ class User extends Authenticatable
      */
     public function tickets(): HasMany
     {
+        // return $this->hasMany('Ticket', 'user_id');
         return $this->hasMany(Ticket::class);
     }
 

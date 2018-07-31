@@ -11,7 +11,8 @@
             </span>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('subscriptions.subscription.index') }}" class="btn btn-primary" title="Show All Subscription">
+                <a href="{{ route('subscriptions.subscription.index') }}" class="btn btn-primary"
+                   title="Show All Subscription">
                     <span class="fa fa-th-list" aria-hidden="true"></span>
                 </a>
             </div>
@@ -19,7 +20,7 @@
         </div>
 
         <div class="panel-body">
-        
+
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -28,11 +29,12 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('subscriptions.subscription.store') }}" accept-charset="UTF-8" id="create_subscription_form" name="create_subscription_form" class="form-horizontal">
-            {{ csrf_field() }}
-            @include ('subscriptions.form', [
-                                        'subscription' => null,
-                                      ])
+            <form method="POST" action="{{ route('subscriptions.subscription.store') }}" accept-charset="UTF-8"
+                  id="create_subscription_form" name="create_subscription_form" class="form-horizontal">
+                {{ csrf_field() }}
+                @include ('subscriptions.form', [
+                                            'subscription' => null,
+                                          ])
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
