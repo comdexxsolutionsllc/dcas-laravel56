@@ -4,6 +4,7 @@ namespace Modules\Support\Entities;
 
 use App\BaseModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Tags\HasTags;
 
 /**
  * Modules\Support\Entities\Category
@@ -18,9 +19,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\Modules\Support\Entities\Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Modules\Support\Entities\Category whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property \Illuminate\Database\Eloquent\Collection|\Spatie\Tags\Tag[] $tags
+ * @method static \Illuminate\Database\Eloquent\Builder|\Modules\Support\Entities\Category withAllTags($tags, $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Modules\Support\Entities\Category withAnyTags($tags, $type = null)
  */
 class Category extends BaseModel
 {
+
+    use HasTags;
 
     /**
      * @var array
@@ -28,10 +34,23 @@ class Category extends BaseModel
     protected $fillable = ['name'];
 
     /**
+     * @var array
+     */
+    protected $seedData = [];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tickets(): HasMany
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }

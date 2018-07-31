@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Spatie\Tags\HasTags;
+
 /**
  * App\Profile
  *
@@ -35,9 +37,14 @@ namespace App;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile whereUserId($value)
  * @mixin \Eloquent
+ * @property \Illuminate\Database\Eloquent\Collection|\Spatie\Tags\Tag[] $tags
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile withAllTags($tags, $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Profile withAnyTags($tags, $type = null)
  */
 class Profile extends BaseModel
 {
+
+    use HasTags;
 
     /**
      * Attributes that should be mass-assignable.
@@ -56,6 +63,11 @@ class Profile extends BaseModel
         'npa_nxx_suffix',
         'phone_type',
     ];
+
+    /**
+     * @var array
+     */
+    protected $seedData = [];
 
     /**
      * The relations to eager load on every query.
@@ -105,6 +117,14 @@ class Profile extends BaseModel
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }
