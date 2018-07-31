@@ -2,10 +2,14 @@
 
 @section('content')
     <div class="container mx-auto">
+        {{--<portal-target name="destination"></portal-target>--}}
+
         <div class="flex flex-wrap justify-center">
             <div class="md:w-2/3 pr-4 pl-4">
                 <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
-                    <div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest">Dashboard</div>
+                    <div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest">
+                        Dashboard
+                    </div>
 
                     <div class="flex-auto p-6">
                         @if (session('status'))
@@ -15,13 +19,11 @@
                         @endif
 
                         You are logged in!
-
-                        {{--<passport-clients></passport-clients>--}}
-                        {{--<passport-authorized-clients></passport-authorized-clients>--}}
-                        {{--<passport-personal-access-tokens></passport-personal-access-tokens>--}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{--<notifier userid="{{ auth()->user()->id }}"></notifier>--}}
 @endsection

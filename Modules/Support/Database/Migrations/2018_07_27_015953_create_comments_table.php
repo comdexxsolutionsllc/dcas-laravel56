@@ -14,6 +14,9 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
+        /**
+         * @todo get rid of?
+         */
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ticket_id')->unsigned();
