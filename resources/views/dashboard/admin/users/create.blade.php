@@ -19,7 +19,7 @@
         </div>
 
         <div class="panel-body">
-        
+
             @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -28,11 +28,12 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('users.user.store') }}" accept-charset="UTF-8" id="create_user_form" name="create_user_form" class="form-horizontal">
-            {{ csrf_field() }}
-            @include ('dashboard.admin.users.form', [
-                                        'user' => null,
-                                      ])
+            <form method="POST" action="{{ route('users.user.store') }}" accept-charset="UTF-8" id="create_user_form"
+                  name="create_user_form" class="form-horizontal">
+                {{ csrf_field() }}
+                @include ('dashboard.admin.users.form', [
+                                            'user' => null,
+                                          ])
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
