@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('notify/{user}/count', 'Api\NotificationController@notificationCount');
+
+Route::fallback(function () {
+    return response()->json(['message' => 'Not Found.'], 404);
+})->name('api.fallback.404');

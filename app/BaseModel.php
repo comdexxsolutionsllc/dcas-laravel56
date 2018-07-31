@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class BaseModel
@@ -12,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 abstract class BaseModel extends Model
 {
+
+    use LogsActivity;
 
     /**
      * Indicates if the model should be timestamped.
@@ -68,4 +71,9 @@ abstract class BaseModel extends Model
      * @var array
      */
     protected $withCount = [];
+
+    /**
+     * @return array
+     */
+    abstract protected function getSeedData(): array;
 }
