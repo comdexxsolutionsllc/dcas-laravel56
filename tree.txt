@@ -4,14 +4,21 @@
 │   ├── ./app/BaseModel.php
 │   ├── ./app/Console
 │   │   ├── ./app/Console/Commands
-│   │   │   └── ./app/Console/Commands/AuthPermissionCommand.php
+│   │   │   ├── ./app/Console/Commands/ClearProjectFiles.php
+│   │   │   ├── ./app/Console/Commands/MakePHPDevelopmentReports.php
+│   │   │   └── ./app/Console/Commands/MakeTreeOutput.php
 │   │   └── ./app/Console/Kernel.php
+│   ├── ./app/DataTables
+│   │   └── ./app/DataTables/PermissionsDataTable.php
 │   ├── ./app/DCAS
 │   │   ├── ./app/DCAS/Classes
 │   │   │   └── ./app/DCAS/Classes/TicketId.php
 │   │   ├── ./app/DCAS/Contracts
+│   │   ├── ./app/DCAS/Roles
+│   │   │   └── ./app/DCAS/Roles/Employee.php
 │   │   └── ./app/DCAS/Traits
-│   │       └── ./app/DCAS/Traits/Authorizable.php
+│   │       ├── ./app/DCAS/Traits/Authorizable.php
+│   │       └── ./app/DCAS/Traits/LogHttpError.php
 │   ├── ./app/Department.php
 │   ├── ./app/Exceptions
 │   │   └── ./app/Exceptions/Handler.php
@@ -46,6 +53,9 @@
 │   │   ├── ./app/Listeners/LogRegisteredUser.php
 │   │   ├── ./app/Listeners/LogSuccessfulLogin.php
 │   │   └── ./app/Listeners/LogSuccessfulLogout.php
+│   ├── ./app/Observers
+│   │   ├── ./app/Observers/EmployeeObserver.php
+│   │   └── ./app/Observers/UserObserver.php
 │   ├── ./app/Permission.php
 │   ├── ./app/Profile.php
 │   ├── ./app/Providers
@@ -53,6 +63,7 @@
 │   │   ├── ./app/Providers/AuthServiceProvider.php
 │   │   ├── ./app/Providers/BroadcastServiceProvider.php
 │   │   ├── ./app/Providers/EventServiceProvider.php
+│   │   ├── ./app/Providers/ObserverProvider.php
 │   │   └── ./app/Providers/RouteServiceProvider.php
 │   ├── ./app/Role.php
 │   ├── ./app/Subscription.php
@@ -60,22 +71,18 @@
 ├── ./artisan
 ├── ./behat.yml
 ├── ./bin
-│   ├── ./bin/clear-project-files.sh
 │   ├── ./bin/git-branch_status.sh
 │   ├── ./bin/git-branch-status-v2.sh
-│   ├── ./bin/insert-phpcsxsl-into-xml.php
 │   ├── ./bin/install-php.sh
 │   ├── ./bin/make-swagger-documentation.sh
-│   ├── ./bin/make-tree-output.sh
 │   ├── ./bin/migrate-seed-database-tables.sh
-│   ├── ./bin/phpcs-report.sh
 │   ├── ./bin/phpdoc
 │   ├── ./bin/phpdoc.sh
-│   ├── ./bin/phpmd-report.sh
 │   ├── ./bin/start-laravel-dump-server.sh
 │   └── ./bin/start-webdriver.sh
 ├── ./composer.json
 ├── ./config
+│   ├── ./config/activitylog.php
 │   ├── ./config/analytics.php
 │   ├── ./config/app.php
 │   ├── ./config/auth.php
@@ -95,6 +102,7 @@
 │   ├── ./config/erd-generator.php
 │   ├── ./config/excel.php
 │   ├── ./config/filesystems.php
+│   ├── ./config/geoip.php
 │   ├── ./config/hashing.php
 │   ├── ./config/horizon.php
 │   ├── ./config/ide-helper.php
@@ -111,12 +119,14 @@
 │   ├── ./config/query-builder.php
 │   ├── ./config/querydetector.php
 │   ├── ./config/queue.php
+│   ├── ./config/referer.php
 │   ├── ./config/scout.php
 │   ├── ./config/self-diagnosis.php
 │   ├── ./config/services.php
 │   ├── ./config/session.php
 │   ├── ./config/shield.php
 │   ├── ./config/spy.php
+│   ├── ./config/tags.php
 │   ├── ./config/tinker.php
 │   ├── ./config/tinx.php
 │   ├── ./config/trustedproxy.php
@@ -130,10 +140,16 @@
 │   ├── ./database/factories
 │   │   ├── ./database/factories/AccountTypeFactory.php
 │   │   ├── ./database/factories/DepartmentFactory.php
+│   │   ├── ./database/factories/PermissionFactory.php
+│   │   ├── ./database/factories/RoleFactory.php
 │   │   └── ./database/factories/UserFactory.php
 │   ├── ./database/migrations
+│   │   ├── ./database/migrations/2014_10_12_000000_create_employees_table.php
 │   │   ├── ./database/migrations/2014_10_12_000000_create_users_table.php
+│   │   ├── ./database/migrations/2014_10_12_100000_create_password_resets_employees_table.php
 │   │   ├── ./database/migrations/2014_10_12_100000_create_password_resets_table.php
+│   │   ├── ./database/migrations/2016_09_02_153301_create_love_likes_table.php
+│   │   ├── ./database/migrations/2016_09_02_163301_create_love_like_counters_table.php
 │   │   ├── ./database/migrations/2018_06_12_210214_create_notifications_table.php
 │   │   ├── ./database/migrations/2018_06_12_210247_create_failed_jobs_table.php
 │   │   ├── ./database/migrations/2018_06_12_210307_create_sessions_table.php
@@ -141,7 +157,10 @@
 │   │   ├── ./database/migrations/2018_07_14_205924_create_permission_tables.php
 │   │   ├── ./database/migrations/2018_07_27_000703_create_account_types_table.php
 │   │   ├── ./database/migrations/2018_07_27_001627_create_account_type_user_pivot_table.php
-│   │   └── ./database/migrations/2018_07_28_200543_create_departments_table.php
+│   │   ├── ./database/migrations/2018_07_28_200543_create_departments_table.php
+│   │   ├── ./database/migrations/2018_07_31_204641_create_media_table.php
+│   │   ├── ./database/migrations/2018_08_03_030453_create_tag_tables.php
+│   │   └── ./database/migrations/2018_08_08_035205_create_activity_log_table.php
 │   ├── ./database/schema
 │   └── ./database/seeds
 │       ├── ./database/seeds/AccountTypeTableSeeder.php
@@ -168,26 +187,109 @@
 │       │   ├── ./Modules/Support/Database/factories
 │       │   │   ├── ./Modules/Support/Database/factories/CategoryFactory.php
 │       │   │   ├── ./Modules/Support/Database/factories/CommentFactory.php
-│       │   │   └── ./Modules/Support/Database/factories/TicketFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/LocationFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/LocationGroupFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/MachineFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/MachineLogFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/MachineNoteAttachmentFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/MachineNoteFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/MachineTypeFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/SoftwareCategoryFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/SoftwareFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/SoftwareInstalledFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/SubcategoryFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/TicketAttachmentFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/TicketCommentAttachmentFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/TicketFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/TicketLogFactory.php
+│       │   │   ├── ./Modules/Support/Database/factories/TicketStatusFactory.php
+│       │   │   └── ./Modules/Support/Database/factories/TicketWorkerFactory.php
 │       │   ├── ./Modules/Support/Database/Migrations
 │       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_27_015716_create_tickets_table.php
 │       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_27_015946_create_categories_table.php
-│       │   │   └── ./Modules/Support/Database/Migrations/2018_07_27_015953_create_comments_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_27_015953_create_comments_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_location_groups_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_locations_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_machine_log_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_machine_note_attachments_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_machine_notes_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_machines_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_machine_types_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_software_category_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_software_installed_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_software_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_ticket_attachments_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_ticket_comment_attachments_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_ticket_comments_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_ticket_log_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_ticket_status_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_07_30_063824_create_ticket_workers_table.php
+│       │   │   ├── ./Modules/Support/Database/Migrations/2018_08_03_013634_create_subcategories_table.php
+│       │   │   └── ./Modules/Support/Database/Migrations/2018_08_03_013853_create_category_subcategory_pivot_table.php
 │       │   └── ./Modules/Support/Database/Seeders
 │       │       ├── ./Modules/Support/Database/Seeders/CategoryTableSeeder.php
 │       │       ├── ./Modules/Support/Database/Seeders/CommentTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/LocationGroupTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/LocationTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/MachineLogTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/MachineNoteAttachmentTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/MachineNoteTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/MachineTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/MachineTypeTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/SoftwareCategoryTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/SoftwareInstalledTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/SoftwareTableSeeder.php
 │       │       ├── ./Modules/Support/Database/Seeders/SupportDatabaseSeeder.php
-│       │       └── ./Modules/Support/Database/Seeders/TicketTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/TicketAttachmentTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/TicketCommentAttachmentTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/TicketLogTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/TicketStatusTableSeeder.php
+│       │       ├── ./Modules/Support/Database/Seeders/TicketTableSeeder.php
+│       │       └── ./Modules/Support/Database/Seeders/TicketWorkerTableSeeder.php
 │       ├── ./Modules/Support/Emails
 │       ├── ./Modules/Support/Entities
 │       │   ├── ./Modules/Support/Entities/Category.php
+│       │   ├── ./Modules/Support/Entities/CategorySubcategory.php
 │       │   ├── ./Modules/Support/Entities/Comment.php
-│       │   └── ./Modules/Support/Entities/Ticket.php
+│       │   ├── ./Modules/Support/Entities/LocationGroup.php
+│       │   ├── ./Modules/Support/Entities/Location.php
+│       │   ├── ./Modules/Support/Entities/MachineLog.php
+│       │   ├── ./Modules/Support/Entities/MachineNoteAttachments.php
+│       │   ├── ./Modules/Support/Entities/MachineNotes.php
+│       │   ├── ./Modules/Support/Entities/Machine.php
+│       │   ├── ./Modules/Support/Entities/MachineType.php
+│       │   ├── ./Modules/Support/Entities/SoftwareCategory.php
+│       │   ├── ./Modules/Support/Entities/SoftwareInstalled.php
+│       │   ├── ./Modules/Support/Entities/Software.php
+│       │   ├── ./Modules/Support/Entities/Subcategory.php
+│       │   ├── ./Modules/Support/Entities/TicketAttachments.php
+│       │   ├── ./Modules/Support/Entities/TicketCommentAttachments.php
+│       │   ├── ./Modules/Support/Entities/TicketComments.php
+│       │   ├── ./Modules/Support/Entities/TicketLog.php
+│       │   ├── ./Modules/Support/Entities/Ticket.php
+│       │   ├── ./Modules/Support/Entities/TicketStatus.php
+│       │   └── ./Modules/Support/Entities/TicketWorkers.php
 │       ├── ./Modules/Support/Events
 │       ├── ./Modules/Support/Http
 │       │   ├── ./Modules/Support/Http/Controllers
 │       │   │   ├── ./Modules/Support/Http/Controllers/CommentsController.php
-│       │   │   └── ./Modules/Support/Http/Controllers/TicketsController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/LocationController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/LocationGroupController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/MachineController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/MachineLogController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/MachineNoteAttachmentsController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/MachineNotesController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/MachineTypeController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/SoftwareCategoryController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/SoftwareController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/SoftwareInstalledController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/TicketAttachmentsController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/TicketCommentAttachmentsController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/TicketCommentsController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/TicketLogController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/TicketsController.php
+│       │   │   ├── ./Modules/Support/Http/Controllers/TicketStatusController.php
+│       │   │   └── ./Modules/Support/Http/Controllers/TicketWorkersController.php
 │       │   ├── ./Modules/Support/Http/Middleware
 │       │   │   └── ./Modules/Support/Http/Middleware/AdminMiddleware.php
 │       │   ├── ./Modules/Support/Http/Requests
@@ -205,6 +307,18 @@
 │       │   ├── ./Modules/Support/Resources/assets
 │       │   ├── ./Modules/Support/Resources/lang
 │       │   └── ./Modules/Support/Resources/views
+│       │       ├── ./Modules/Support/Resources/views/categories
+│       │       │   ├── ./Modules/Support/Resources/views/categories/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/categories/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/categories/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/categories/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/categories/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/comments
+│       │       │   ├── ./Modules/Support/Resources/views/comments/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/comments/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/comments/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/comments/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/comments/show.blade.php
 │       │       ├── ./Modules/Support/Resources/views/emails
 │       │       │   ├── ./Modules/Support/Resources/views/emails/ticket_comments.blade.php
 │       │       │   ├── ./Modules/Support/Resources/views/emails/ticket_info.blade.php
@@ -213,11 +327,115 @@
 │       │       │   └── ./Modules/Support/Resources/views/includes/flash.blade.php
 │       │       ├── ./Modules/Support/Resources/views/layouts
 │       │       │   └── ./Modules/Support/Resources/views/layouts/master.blade.php
-│       │       └── ./Modules/Support/Resources/views/tickets
-│       │           ├── ./Modules/Support/Resources/views/tickets/create.blade.php
-│       │           ├── ./Modules/Support/Resources/views/tickets/index.blade.php
-│       │           ├── ./Modules/Support/Resources/views/tickets/show.blade.php
-│       │           └── ./Modules/Support/Resources/views/tickets/user_tickets.blade.php
+│       │       ├── ./Modules/Support/Resources/views/location_groups
+│       │       │   ├── ./Modules/Support/Resources/views/location_groups/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/location_groups/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/location_groups/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/location_groups/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/location_groups/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/locations
+│       │       │   ├── ./Modules/Support/Resources/views/locations/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/locations/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/locations/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/locations/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/locations/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/machine_logs
+│       │       │   ├── ./Modules/Support/Resources/views/machine_logs/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/machine_logs/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/machine_logs/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/machine_logs/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/machine_logs/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/machine_note_attachments
+│       │       │   ├── ./Modules/Support/Resources/views/machine_note_attachments/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/machine_note_attachments/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/machine_note_attachments/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/machine_note_attachments/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/machine_note_attachments/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/machine_notes
+│       │       │   ├── ./Modules/Support/Resources/views/machine_notes/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/machine_notes/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/machine_notes/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/machine_notes/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/machine_notes/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/machines
+│       │       │   └── ./Modules/Support/Resources/views/machines/Modules
+│       │       │       └── ./Modules/Support/Resources/views/machines/Modules/Support
+│       │       │           └── ./Modules/Support/Resources/views/machines/Modules/Support/Resources
+│       │       │               └── ./Modules/Support/Resources/views/machines/Modules/Support/Resources/views
+│       │       │                   ├── ./Modules/Support/Resources/views/machines/Modules/Support/Resources/views/create.blade.php
+│       │       │                   ├── ./Modules/Support/Resources/views/machines/Modules/Support/Resources/views/edit.blade.php
+│       │       │                   ├── ./Modules/Support/Resources/views/machines/Modules/Support/Resources/views/form.blade.php
+│       │       │                   ├── ./Modules/Support/Resources/views/machines/Modules/Support/Resources/views/index.blade.php
+│       │       │                   └── ./Modules/Support/Resources/views/machines/Modules/Support/Resources/views/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/machine_types
+│       │       │   └── ./Modules/Support/Resources/views/machine_types/Modules
+│       │       │       └── ./Modules/Support/Resources/views/machine_types/Modules/Support
+│       │       │           └── ./Modules/Support/Resources/views/machine_types/Modules/Support/Resources
+│       │       │               └── ./Modules/Support/Resources/views/machine_types/Modules/Support/Resources/views
+│       │       │                   ├── ./Modules/Support/Resources/views/machine_types/Modules/Support/Resources/views/create.blade.php
+│       │       │                   ├── ./Modules/Support/Resources/views/machine_types/Modules/Support/Resources/views/edit.blade.php
+│       │       │                   ├── ./Modules/Support/Resources/views/machine_types/Modules/Support/Resources/views/form.blade.php
+│       │       │                   ├── ./Modules/Support/Resources/views/machine_types/Modules/Support/Resources/views/index.blade.php
+│       │       │                   └── ./Modules/Support/Resources/views/machine_types/Modules/Support/Resources/views/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/software
+│       │       │   ├── ./Modules/Support/Resources/views/software/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/software/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/software/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/software/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/software/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/software_categories
+│       │       │   ├── ./Modules/Support/Resources/views/software_categories/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/software_categories/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/software_categories/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/software_categories/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/software_categories/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/software_installed
+│       │       │   ├── ./Modules/Support/Resources/views/software_installed/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/software_installed/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/software_installed/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/software_installed/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/software_installed/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/ticket_attachments
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_attachments/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_attachments/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_attachments/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_attachments/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/ticket_attachments/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/ticket_comment_attachments
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_comment_attachments/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_comment_attachments/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_comment_attachments/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_comment_attachments/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/ticket_comment_attachments/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/ticket_comments
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_comments/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_comments/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_comments/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_comments/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/ticket_comments/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/ticket_logs
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_logs/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_logs/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_logs/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_logs/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/ticket_logs/show.blade.php
+│       │       ├── ./Modules/Support/Resources/views/tickets
+│       │       │   ├── ./Modules/Support/Resources/views/tickets/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/tickets/index.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/tickets/show.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/tickets/user_tickets.blade.php
+│       │       ├── ./Modules/Support/Resources/views/ticket_statuses
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_statuses/create.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_statuses/edit.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_statuses/form.blade.php
+│       │       │   ├── ./Modules/Support/Resources/views/ticket_statuses/index.blade.php
+│       │       │   └── ./Modules/Support/Resources/views/ticket_statuses/show.blade.php
+│       │       └── ./Modules/Support/Resources/views/ticket_workers
+│       │           ├── ./Modules/Support/Resources/views/ticket_workers/create.blade.php
+│       │           ├── ./Modules/Support/Resources/views/ticket_workers/edit.blade.php
+│       │           ├── ./Modules/Support/Resources/views/ticket_workers/form.blade.php
+│       │           ├── ./Modules/Support/Resources/views/ticket_workers/index.blade.php
+│       │           └── ./Modules/Support/Resources/views/ticket_workers/show.blade.php
 │       ├── ./Modules/Support/Rules
 │       ├── ./Modules/Support/start.php
 │       ├── ./Modules/Support/Tests
@@ -329,19 +547,15 @@
 │   ├── ./public/phpcs.xsl
 │   └── ./public/phpmd.html
 ├── ./resources
-│   ├── ./resources/assets
-│   │   ├── ./resources/assets/js
-│   │   │   ├── ./resources/assets/js/app.js
-│   │   │   ├── ./resources/assets/js/bootstrap.js
-│   │   │   └── ./resources/assets/js/components
-│   │   │       ├── ./resources/assets/js/components/ExampleComponent.vue
-│   │   │       └── ./resources/assets/js/components/passport
-│   │   │           ├── ./resources/assets/js/components/passport/AuthorizedClients.vue
-│   │   │           ├── ./resources/assets/js/components/passport/Clients.vue
-│   │   │           └── ./resources/assets/js/components/passport/PersonalAccessTokens.vue
-│   │   └── ./resources/assets/sass
-│   │       ├── ./resources/assets/sass/app.scss
-│   │       └── ./resources/assets/sass/_variables.scss
+│   ├── ./resources/js
+│   │   ├── ./resources/js/app.js
+│   │   ├── ./resources/js/bootstrap.js
+│   │   └── ./resources/js/components
+│   │       ├── ./resources/js/components/ExampleComponent.vue
+│   │       └── ./resources/js/components/passport
+│   │           ├── ./resources/js/components/passport/AuthorizedClients.vue
+│   │           ├── ./resources/js/components/passport/Clients.vue
+│   │           └── ./resources/js/components/passport/PersonalAccessTokens.vue
 │   ├── ./resources/lang
 │   │   └── ./resources/lang/en
 │   │       ├── ./resources/lang/en/auth.php
@@ -350,11 +564,32 @@
 │   │       └── ./resources/lang/en/validation.php
 │   ├── ./resources/laravel-code-generator
 │   │   ├── ./resources/laravel-code-generator/sources
+│   │   │   ├── ./resources/laravel-code-generator/sources/account_types.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/categories.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/comments.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/departments.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/location_groups.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/locations.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/machine_logs.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/machine_note_attachments.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/machine_notes.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/machines.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/machine_types.json
 │   │   │   ├── ./resources/laravel-code-generator/sources/permissions.json
 │   │   │   ├── ./resources/laravel-code-generator/sources/profiles.json
 │   │   │   ├── ./resources/laravel-code-generator/sources/resources_map.json
 │   │   │   ├── ./resources/laravel-code-generator/sources/roles.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/software_categories.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/software_installeds.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/software.json
 │   │   │   ├── ./resources/laravel-code-generator/sources/subscriptions.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/ticket_attachments.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/ticket_comment_attachments.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/ticket_comments.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/ticket_logs.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/tickets.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/ticket_statuses.json
+│   │   │   ├── ./resources/laravel-code-generator/sources/ticket_workers.json
 │   │   │   └── ./resources/laravel-code-generator/sources/users.json
 │   │   ├── ./resources/laravel-code-generator/system
 │   │   │   └── ./resources/laravel-code-generator/system/migration_tracker.json
@@ -459,6 +694,9 @@
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/show.blade.stub
 │   │           ├── ./resources/laravel-code-generator/templates/default-collective/show.row.blade.stub
 │   │           └── ./resources/laravel-code-generator/templates/default-collective/view-model.stub
+│   ├── ./resources/sass
+│   │   ├── ./resources/sass/app.scss
+│   │   └── ./resources/sass/_variables.scss
 │   └── ./resources/views
 │       ├── ./resources/views/auth
 │       │   ├── ./resources/views/auth/login.blade.php
@@ -488,9 +726,11 @@
 │       │           └── ./resources/views/dashboard/admin/users/show.blade.php
 │       ├── ./resources/views/home.blade.php
 │       ├── ./resources/views/layouts
-│       │   └── ./resources/views/layouts/app.blade.php
+│       │   ├── ./resources/views/layouts/app.blade.php
+│       │   └── ./resources/views/layouts/datatable.blade.php
 │       ├── ./resources/views/partials
 │       │   └── ./resources/views/partials/favicon.blade.php
+│       ├── ./resources/views/permissions.blade.php
 │       ├── ./resources/views/profiles
 │       │   ├── ./resources/views/profiles/create.blade.php
 │       │   ├── ./resources/views/profiles/edit.blade.php
@@ -540,4 +780,4 @@
 ├── ./webpack.config.js
 └── ./webpack.mix.js
 
-104 directories, 436 files
+132 directories, 648 files
