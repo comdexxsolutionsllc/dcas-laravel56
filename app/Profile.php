@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Spatie\Tags\HasTags;
+
 /**
  * App\Profile
  *
@@ -39,6 +41,8 @@ namespace App;
 class Profile extends BaseModel
 {
 
+    use HasTags;
+
     /**
      * Attributes that should be mass-assignable.
      *
@@ -56,6 +60,11 @@ class Profile extends BaseModel
         'npa_nxx_suffix',
         'phone_type',
     ];
+
+    /**
+     * @var array
+     */
+    protected $seedData = [];
 
     /**
      * The relations to eager load on every query.
@@ -105,6 +114,14 @@ class Profile extends BaseModel
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }

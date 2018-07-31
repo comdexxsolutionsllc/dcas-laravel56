@@ -36,7 +36,8 @@
 
                             <div class="mb-4 flex flex-wrap mb-0">
                                 <div class="md:w-1/2 pr-4 pl-4 md:mx-1/3">
-                                    <button type="submit" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-blue-lightest bg-blue hover:bg-blue-light">
+                                    <button type="submit"
+                                            class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-blue-lightest bg-blue hover:bg-blue-light">
                                         {{ __('Send Password Reset Link') }}
                                     </button>
                                 </div>

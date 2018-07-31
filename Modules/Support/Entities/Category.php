@@ -4,6 +4,7 @@ namespace Modules\Support\Entities;
 
 use App\BaseModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Tags\HasTags;
 
 /**
  * Modules\Support\Entities\Category
@@ -22,10 +23,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends BaseModel
 {
 
+    use HasTags;
+
     /**
      * @var array
      */
     protected $fillable = ['name'];
+
+    /**
+     * @var array
+     */
+    protected $seedData = [];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -33,5 +41,13 @@ class Category extends BaseModel
     public function tickets(): HasMany
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSeedData(): array
+    {
+        return $this->seedData;
     }
 }
