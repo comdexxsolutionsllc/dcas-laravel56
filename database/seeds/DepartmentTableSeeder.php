@@ -12,6 +12,11 @@ class DepartmentTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Department::class, 15)->create();
+        foreach ((new \App\Department)->getSeedData() as $department) {
+            factory(\App\Department::class)->create([
+                'name'        => $department['name'],
+                'description' => $department['description'],
+            ]);
+        }
     }
 }
