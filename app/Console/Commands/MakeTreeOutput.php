@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 
 class MakeTreeOutput extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
